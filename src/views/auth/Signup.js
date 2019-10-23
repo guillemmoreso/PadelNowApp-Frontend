@@ -1,37 +1,47 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withAuth } from '../../Context/AuthContext';
 
 class Signup extends Component {
-
   state = {
-    username: "",
-    password: "",
+    nameAndSurname: '',
+    email: '',
+    password: '',
   };
 
-  handleChange = (event) => {  
-    const {name, value} = event.target;
-    this.setState({[name]: value});
-  }
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
-    const { username, password } = this.state;
+    const { nameAndSurname, email, password } = this.state;
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
+          <label>Name and Surname:</label>
+          <input
+            type="text"
+            name="nameAndSurname"
+            placeholder="Ex: Joe Doe"
+            value={nameAndSurname}
+            onChange={this.handleChange}
+          />
+          <label>Email:</label>
+          <input type="email" name="email" placeholder="Email address" value={email} onChange={this.handleChange} />
           <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+          <input type="password" name="password" placeholder="" value={password} onChange={this.handleChange} />
           <input type="submit" value="Signup" />
         </form>
-
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
-        </p>
-
+        <div>
+          <p>
+            Already have an account?
+            <Link to={'/login'}> Login</Link>
+          </p>
+        </div>
       </div>
-    )
+    );
   }
 }
 
-export default Signup;
+export default withAuth(Signup);
