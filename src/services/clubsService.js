@@ -12,7 +12,7 @@ class ClubsService {
     return this.clubs.get('/clubs').then(({ data: clubs }) => clubs);
   }
 
-  getBookById(id) {
+  getClubById(id) {
     return this.clubs.get(`/clubs/${id}`).then(({ data: clubs }) => clubs);
   }
 }

@@ -6,7 +6,7 @@ import clubsService from '../services/clubsService';
 class Clubs extends Component {
   state = {
     clubs: [],
-    isLoading: false,
+    isLoading: true,
   };
 
   async componentDidMount() {

@@ -7,6 +7,8 @@ import PrivateView from './views/PrivateView';
 import Login from './views/auth/Login';
 import Signup from './views/auth/Signup';
 import Clubs from './views/Clubs';
+import ClubsDetail from './views/ClubsDetail';
+
 import Bookings from './views/Bookings';
 import Profile from './views/Profile';
 
@@ -29,6 +31,7 @@ class App extends Component {
               <AnonRoute exact path="/signup" component={Signup} />
               <PrivateRoute exact path="/private" component={PrivateView} />
               <AnonRoute exact path="/clubs" component={Clubs} />
+              <AnonRoute exact path="/clubs/:id" component={ClubsDetail} />
               <AnonRoute exact path="/bookings" component={Bookings} />
               <AnonRoute exact path="/profile" component={Profile} />
             </Switch>
