@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
+import searchService from '../services/searchService';
 import DatePicker from 'react-date-picker';
 
 class Search extends Component {

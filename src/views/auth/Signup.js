@@ -4,7 +4,8 @@ import { withAuth } from '../../Context/AuthContext';
 
 class Signup extends Component {
   state = {
-    nameAndSurname: '',
+    name: '',
+    surname: '',
     email: '',
     password: '',
   };
@@ -14,23 +15,30 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
+  handleFormSubmit = e => {
+    e.preventDefault();
+    const { name, surname, email, password } = this.state;
+    this.props.handleSignup({
+      name,
+      surname,
+      email,
+      password,
+    });
+  };
+
   render() {
-    const { nameAndSurname, email, password } = this.state;
+    const { name, surname, email, password } = this.state;
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name and Surname:</label>
-          <input
-            type="text"
-            name="nameAndSurname"
-            placeholder="Ex: Joe Doe"
-            value={nameAndSurname}
-            onChange={this.handleChange}
-          />
+          <label>Name:</label>
+          <input type="text" name="name" value={name} onChange={this.handleChange} />
+          <label>Surname:</label>
+          <input type="text" name="surname" value={surname} onChange={this.handleChange} />
           <label>Email:</label>
-          <input type="email" name="email" placeholder="Email address" value={email} onChange={this.handleChange} />
+          <input type="text" name="email" value={email} onChange={this.handleChange} />
           <label>Password:</label>
-          <input type="password" name="password" placeholder="" value={password} onChange={this.handleChange} />
+          <input type="password" name="password" value={password} onChange={this.handleChange} />
           <input type="submit" value="Signup" />
         </form>
         <div>
