@@ -3,7 +3,7 @@ import { withAuth } from '../../Context/AuthContext';
 
 class Login extends Component {
   state = {
-    email: '',
+    username: '',
     password: '',
   };
 
@@ -14,19 +14,19 @@ class Login extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { username, password } = this.state;
     this.props.handleLogin({
-      email,
+      username,
       password,
     });
   };
 
   render() {
-    const { email, password } = this.state;
+    const { username, password } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={this.handleChange} />
+        <label>Username:</label>
+        <input type="text" name="username" value={username} onChange={this.handleChange} />
         <label>Password:</label>
         <input type="password" name="password" value={password} onChange={this.handleChange} />
         <input type="submit" value="Login" />
