@@ -3,7 +3,7 @@ import { withAuth } from '../Context/AuthContext';
 
 const ClubCard = props => {
   const {
-    club: { name, description, city, price },
+    club: { name, description, city, price, openingHours },
   } = props;
   return (
     <div>
@@ -16,6 +16,8 @@ const ClubCard = props => {
       <p>{description}</p>
       <label htmlFor="">Price</label>
       <p>{price}</p>
+      <label htmlFor="">Hours</label>
+      <p>{openingHours}</p>
     </div>
   );
 };
