@@ -7,7 +7,6 @@ const ClubCard = props => {
   } = props;
   return (
     <div>
-      <p>Club</p>
       <label htmlFor="">Name</label>
       <p>{name}</p>
       <label htmlFor="">City</label>
@@ -17,7 +16,11 @@ const ClubCard = props => {
       <label htmlFor="">Price</label>
       <p>{price}</p>
       <label htmlFor="">Hours</label>
-      <p>{openingHours}</p>
+      <ul>
+        {openingHours.map(hour => {
+          return <li>{hour}</li>;
+        })}
+      </ul>
     </div>
   );
 };

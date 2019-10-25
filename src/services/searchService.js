@@ -8,8 +8,8 @@ class SearchService {
     });
   }
 
-  getAllClubs() {
-    return this.clubs.get('/clubs').then(({ data: clubs }) => clubs);
+  getClubsByHour() {
+    return this.clubs.get('/search').then(({ data: clubs }) => clubs);
   }
 }
 
