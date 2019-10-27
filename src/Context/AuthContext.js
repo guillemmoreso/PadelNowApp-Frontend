@@ -1,6 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import React, { Component, createContext } from 'react';
 import authService from '../services/authService';
+import Loading from '../components/Loading/Loading';
 
 const AuthContext = createContext();
 
@@ -115,7 +116,7 @@ export default class AuthProvider extends Component {
     const { isLoading, isLoggedin, user } = this.state;
     const { children } = this.props;
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
     return (
       <Provider

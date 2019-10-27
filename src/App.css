@@ -1,14 +1,17 @@
-/*GENERAL*/
+/* --- General --- */
+
 * {
   font-family: 'Fira Sans', sans-serif;
-  background-color: rgb(249, 249, 249);
+  /* background-color: rgb(249, 249, 249); */
   margin: 0;
   box-sizing: border-box;
 }
 #root {
   margin: 5%;
 }
-
+nav {
+  background-color: none;
+}
 img {
   width: 100%;
 }
@@ -30,7 +33,7 @@ span {
   color: rgb(218, 226, 228);
 }
 
-/*HOMEPAGE*/
+/* --- Homepage --- */
 
 #logo-large {
   width: 100px;
@@ -70,6 +73,7 @@ span {
   border: 1px;
   margin: 10px 0;
   background-color: white;
+  box-shadow: 0 30px 40px 30px rgba(82, 93, 193, 0.15);
 }
 
 #highlight-clubs-card-img {
@@ -100,4 +104,130 @@ a {
   width: 80%;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+#home-club-text {
+  font-size: 0.8em;
+  color: #010101;
+  text-align: center;
+}
+
+/* --- Loading --- */
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle {
+  display: inline-block;
+  margin-right: 5px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--colorPrimary);
+  border-radius: 50%;
+  animation: loading 1.5s cubic-bezier(0.8, 0.5, 0.2, 1.4) infinite;
+  transform-origin: bottom center;
+  position: relative;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0px);
+    background-color: var(--colorTerciary);
+  }
+  50% {
+    transform: translateY(50px);
+    background-color: var(--colorPrimary);
+  }
+  100% {
+    transform: translateY(0px);
+    background-color: var(--colorTerciary);
+  }
+}
+.circle-1 {
+  animation-delay: 0.1s;
+}
+.circle-2 {
+  animation-delay: 0.2s;
+}
+.circle-3 {
+  animation-delay: 0.3s;
+}
+.circle-4 {
+  animation-delay: 0.4s;
+}
+.circle-5 {
+  animation-delay: 0.5s;
+  margin-right: 0;
+}
+
+/* --- Nav --- */
+
+.nav-container {
+  position: fixed;
+  bottom: -10vh;
+  -webkit-animation: slide-top 0.5s ease-in forwards;
+  animation: slide-top 0.5s ease-in forwards;
+  z-index: 2;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10vh);
+    transform: translateY(-10vh);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10vh);
+    transform: translateY(-10vh);
+  }
+}
+
+nav {
+  margin-left: -5%;
+  width: 100vw;
+  background: white;
+  position: relative;
+  box-shadow: 0 30px 40px 30px rgba(82, 93, 193, 0.15);
+  border-radius: 30px 30px 0 0;
+}
+
+nav ul {
+  flex-direction: row;
+  padding-inline-start: 0;
+  list-style: none;
+  justify-content: space-around;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+nav ul li {
+  margin: 0;
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+nav ul li a img {
+  width: 4.5vh;
+  margin: 0 auto 5px auto;
+  display: block;
 }

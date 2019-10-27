@@ -9,7 +9,7 @@ class Bookings extends Component {
   componentDidMount() {}
 
   render() {
-    const { Bookings } = this.state;
+    // const { Bookings } = this.state;
 
     return (
       <>
