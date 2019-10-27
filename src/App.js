@@ -24,7 +24,7 @@ class App extends Component {
     const { handleLogout } = this.props;
     return (
       <>
-        <button onClick={handleLogout}>logout</button>
+        {/* <button onClick={handleLogout}>logout</button> */}
         <Router>
           <div className="data-container">
             <Switch>

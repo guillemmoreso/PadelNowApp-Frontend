@@ -7,8 +7,8 @@ import DatePicker from 'react-date-picker';
 class Search extends Component {
   state = {
     date: new Date(),
-    currentDate: new Date().getDate(),
-    startingHour: new Date().getHours(),
+    // currentDate: new Date().getDate(),
+    startingHour: 12,
     clubs: [],
     isLoading: true,
   };
@@ -26,13 +26,13 @@ class Search extends Component {
   }
 
   onDateChange = date => {
-    console.log('dateeeee', date);
     this.setState({ date });
+    console.log('dateeeee', date);
   };
 
-  onHourChange = hour => {
-    console.log('houuuur', hour.target.value);
-    this.setState({ hour });
+  onHourChange = startingHour => {
+    console.log('houuuur', startingHour.target.value);
+    this.setState({ startingHour });
   };
 
   // handleChange = event => this.setState({ startingHour: event.target.value });
@@ -77,18 +77,18 @@ class Search extends Component {
           </label>
         </form>
         <header className="header-clubs">
-          <h1>Clubs</h1>
+          <h3>Clubs still with available courts</h3>
         </header>
         {!isLoading &&
           clubs.map(club => {
             return (
               <div key={club._id}>
                 <p>{club.name}</p>
-                <ul>
+                {/* <ul>
                   {club.openingHours.map(hour => {
                     return <li>{hour}</li>;
                   })}
-                </ul>{' '}
+                </ul>{' '} */}
               </div>
             );
           })}
