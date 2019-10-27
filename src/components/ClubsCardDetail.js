@@ -1,7 +1,7 @@
 import React from 'react';
 import { withAuth } from '../Context/AuthContext';
 
-const ClubCard = props => {
+const ClubsCardDetail = props => {
   const {
     club: { name, description, city, price, openingHours },
   } = props;
@@ -25,4 +25,4 @@ const ClubCard = props => {
   );
 };
 
-export default withAuth(ClubCard);
+export default withAuth(ClubsCardDetail);

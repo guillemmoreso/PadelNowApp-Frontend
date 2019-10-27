@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
+import SearchClubs from '../components/SearchClubs';
+import ClubsCards from '../components/ClubsCards';
+import clubsService from '../services/clubsService';
 
 class Homepage extends Component {
   state = {
@@ -7,6 +10,14 @@ class Homepage extends Component {
   };
 
   componentDidMount() {}
+
+  handleQuery = query => {
+    clubsService.getQuery(query).then(clubs => {
+      this.setState({
+        clubs,
+      });
+    });
+  };
 
   render() {
     const { clubs } = this.state;
@@ -28,7 +39,8 @@ class Homepage extends Component {
                   <div id="map-btn">Clubs near you</div>
                 </a>
                 <button type="button" className="button-search">
-                  <div>Adress, Club, name, city</div>
+                  {/* <div>Adress, Club, name, city</div> */}
+                  <SearchClubs query={this.handleQuery} />
                 </button>
               </div>
             </div>
@@ -36,7 +48,9 @@ class Homepage extends Component {
           <div id="highlight-clubs">
             <div id="highlight-clubs-header">
               <h3> Top Clubs in Barcelona:</h3>
-              <div id="highlight-clubs-card">
+              <ClubsCards />
+
+              {/* <div id="highlight-clubs-card">
                 <img id="highlight-clubs-card-img" src="../../images/padel-example.jpeg"></img>
                 <div id="highlight-clubs-card-content">
                   <h3>Club tenis la Salut</h3>
@@ -45,7 +59,7 @@ class Homepage extends Component {
                     <div id="home-book-btn">Book now</div>
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

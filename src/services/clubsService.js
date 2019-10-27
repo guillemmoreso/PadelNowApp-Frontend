@@ -15,6 +15,10 @@ class ClubsService {
   getClubById(id) {
     return this.clubs.get(`/clubs/${id}`).then(({ data: clubs }) => clubs);
   }
+
+  getQuery(query) {
+    return this.clubs.get(`search?q=${query}`).then(({ data: clubs }) => clubs);
+  }
 }
 
 const clubsService = new ClubsService();

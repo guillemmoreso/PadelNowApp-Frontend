@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
-import ClubsCard from '../components/ClubsCard';
+import ClubsCardDetail from '../components/ClubsCardDetail';
 
 class ClubsDetail extends Component {
   state = {
@@ -34,7 +34,7 @@ class ClubsDetail extends Component {
     return (
       <>
         {isLoading && <div>Loading...</div>}
-        {!isLoading && <ClubsCard club={club} />}
+        {!isLoading && <ClubsCardDetail club={club} />}
       </>
     );
   }
