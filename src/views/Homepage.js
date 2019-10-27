@@ -21,10 +21,12 @@ class Homepage extends Component {
             <div id="home-banner-title">
               <h1>Book your padel court easily with PadelNow!</h1>
             </div>
-            <div id="home-banner-text">Book your court in the bests clubs in Barcelona!</div>
+            <div id="home-banner-text">Find all available courts in the bests clubs!</div>
             <div id="home-banner-search">
               <div id="home-search">
-                {/* AIXO HA DE SER UN SEARCHBAR */}
+                <a id="map-btn-div">
+                  <div id="map-btn">Clubs near you</div>
+                </a>
                 <button type="button" className="button-search">
                   <div>Adress, Club, name, city</div>
                 </button>
@@ -33,11 +35,16 @@ class Homepage extends Component {
           </div>
           <div id="highlight-clubs">
             <div id="highlight-clubs-header">
-              Top Clubs in Barcelona
+              <h3> Top Clubs in Barcelona:</h3>
               <div id="highlight-clubs-card">
                 <img id="highlight-clubs-card-img" src="../../images/padel-example.jpeg"></img>
-
-                <h1>Club tenis la Salut</h1>
+                <div id="highlight-clubs-card-content">
+                  <h3>Club tenis la Salut</h3>
+                  <p>Avenida de bla bla bla</p>
+                  <a id="home-book-btn-div">
+                    <div id="home-book-btn">Book now</div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
