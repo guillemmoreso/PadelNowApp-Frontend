@@ -386,7 +386,21 @@ select::placeholder {
   border: 1px solid #6d7bfa;
 }
 
+/* --- Bookings --- */
+
+#booking-card {
+  border: 1px solid grey;
+  text-align: center;
+}
+
 #moment-booking :first-child {
-  color: red;
-  font-size: 100px;
+  color: #000000;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#booking-card-details p {
+  color: #000000;
+  font-size: 1em;
+  padding-top: 3px;
 }

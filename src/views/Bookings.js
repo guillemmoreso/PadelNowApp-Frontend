@@ -37,11 +37,19 @@ class Bookings extends Component {
               return (
                 <div id="booking-card" key={booking._id}>
                   <div id="moment-booking">
-                    <Moment format="DD/MM HH"></Moment>
+                    <Moment format=" dddd DD/MM"></Moment>
                   </div>
-
-                  <p>{booking.startingHour}</p>
-                  <p>{booking.day}</p>
+                  <div id="booking-card-details">
+                    <p>
+                      Time: {booking.startingHour}h - {booking.startingHour + 1}h
+                    </p>
+                    <p>Price: {booking.club.price}€</p>
+                    <p>Court: {booking.court.courtName}</p>
+                  </div>
+                  <Link id="home-book-btn-div" to="#">
+                    {/* <Link id="home-book-btn-div" to={`/bookings/${booking._id}`}> */}
+                    <div id="home-book-btn">Cancel booking</div>
+                  </Link>
                 </div>
               );
             })}
