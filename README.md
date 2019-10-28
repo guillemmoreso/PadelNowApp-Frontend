@@ -8,15 +8,13 @@ PadelNow is a platform for all padel players that want to book a court instantly
 
 **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
 
-**500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-
-**Homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-
 **Sign up** - As a user I want to sign up on the webpage so that I can see all the events and do my reservations.
 
 **Login** - As a user I want to be able to log in on the webpage so that I can get back to my account
 
 **Logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
+
+**Homepage** - As a user I want to be able to access the homepage so that I see what the app is about and send me to login and signup
 
 **Edit my profile** - As a user I can edit the information on my profile and change my picture
 
@@ -68,10 +66,11 @@ User model
 
     {
 
-    	username: {type: String, required: true, unique: true},
-    	email: {type: String, required: true, unique: true},
-    	password: {type: String, required: true},
-    	img: {type: String},
+    username: { type: String, required: true, unique: true },
+    name: { type: String },
+    surname: { type: String },
+    hashedPassword: { type: String },
+    img: { type: String },
 
     }
 
@@ -79,11 +78,12 @@ Booking model
 
     {
 
-    	club: {type: Schema.Types.ObjectId,ref:'club'},
-    	day: {type: Date},
-    	startingHour: {type: String},
-    	user: [{type: Schema.Types.ObjectId,ref:'user'}],
-    	courtId: {type: String},
+    user: { type: ObjectId, ref: 'User' },
+    club: { type: ObjectId, ref: 'Club' },
+    court: { type: ObjectId, ref: 'Court' },
+    day: { type: Date },
+    startingHour: { type: String },
+    gameResult: { type: String },
 
 
     }
@@ -91,35 +91,27 @@ Booking model
 Club model
 
     {
-    	name: {type: String, required: true},
-    	description: {type: String, required: true},
-    	city: {type: String, required: true},
-    	location: {lat: Number, long: Number, required: true},
-    	logo: {type: String, required: true},
-    	clubImages: {type: String},
-    	price: {type: Number},
-    	rating: {type: Number},
-    	comments: {type: String},
-    	numberOfCourts: {type: Number, required: true},
 
-    	//Entiendo que cada club deberia tener su propio array de pistas con cada pista y cada una de estas su array de horarios (Faltaria limitar la length del array con el numero de pistas de cada club)
-
-    	courtsArray: [{type: Schema.Types.ObjectId,ref:'court'}],
+    courts: [{ type: ObjectId, ref: 'Court' }],
+    name: { type: String },
+    description: { type: String},
+    city: { type: String },
+    logo: { type: String },
+    clubImages: [{ type: String }],
+    price: { type: Number },
+    rating: { type: Number },
+    comments: { type: String },
+    location: { type: String },
+    openingHours: [{ type: Number }],
 
     }
 
 Court model
 
     {
-    	courtName: {type: String},
 
-    	//Plantear este punto para poder marcar si la pista se encuentra reservada y facilitar la integración con el apartado de booking
-    	timetableArray: [{type: String}],
-    	day: {type: Date},
-
-    	//Crear un array para marcar si la pista se encuentra reservada o no
-    	courtsBooked: [{type: Schema.Types.ObjectId,ref:'booking'}],
-
+    clubCourt: [{ type: ObjectId, ref: 'Club' }],
+    courtName: { type: String },
 
     }
 

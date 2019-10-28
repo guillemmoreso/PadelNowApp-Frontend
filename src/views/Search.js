@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import searchService from '../services/searchService';
 import DatePicker from 'react-date-picker';
+import Loading from '../components/Loading/Loading';
 
 class Search extends Component {
   state = {
@@ -92,7 +93,7 @@ class Search extends Component {
               </div>
             );
           })}
-        {isLoading && <div>loading...</div>}
+        {isLoading && <Loading />}
       </div>
     );
   }

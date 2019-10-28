@@ -11,7 +11,7 @@ class Navbar extends Component {
             {this.props.isLoggedIn ? null : (
               <>
                 <li>
-                  <Link to="/booking">
+                  <Link to="/bookings">
                     <img src={'/images/booking.svg'} alt="Booking" />
                     Bookings
                   </Link>

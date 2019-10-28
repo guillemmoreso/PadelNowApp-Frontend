@@ -7,6 +7,10 @@ class BookingsService {
       withCredentials: true,
     });
   }
+
+  getAllUserBookings() {
+    return this.bookings.get('/bookings').then(({ data: bookings }) => bookings);
+  }
 }
 
 const bookingsService = new BookingsService();

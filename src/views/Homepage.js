@@ -25,7 +25,7 @@ class Homepage extends Component {
     return (
       <>
         <div id="full-mobile-page">
-          <div>
+          <div id="logo-div">
             <img id="logo-large" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
           </div>
           <div id="home-banner">
@@ -35,9 +35,9 @@ class Homepage extends Component {
             <div id="home-banner-text">Find all available courts in the bests clubs!</div>
             <div id="home-banner-search">
               <div id="home-search">
-                <a href="/map" id="map-btn-div">
+                {/* <a href="/map" id="map-btn-div">
                   <div id="map-btn">Clubs near you</div>
-                </a>
+                </a> */}
                 <button type="button" className="button-search">
                   {/* <div>Adress, Club, name, city</div> */}
                   <SearchClubs query={this.handleQuery} />

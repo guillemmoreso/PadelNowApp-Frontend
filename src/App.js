@@ -35,15 +35,15 @@ class App extends Component {
                   <AnonRoute exact path="/login" component={Login} />
                   <AnonRoute exact path="/signup" component={Signup} />
                   <PrivateRoute exact path="/private" component={PrivateView} />
-                  <AnonRoute exact path="/search" component={Search} />
-                  <AnonRoute exact path="/clubs" component={Clubs} />
-                  <AnonRoute exact path="/clubs/:id" component={ClubsDetail} />
-                  <AnonRoute exact path="/bookings" component={Bookings} />
-                  <AnonRoute exact path="/profile" component={Profile} />
+                  <PrivateRoute exact path="/search" component={Search} />
+                  <PrivateRoute exact path="/clubs" component={Clubs} />
+                  <PrivateRoute exact path="/clubs/:id" component={ClubsDetail} />
+                  <PrivateRoute exact path="/bookings" component={Bookings} />
+                  <PrivateRoute exact path="/profile" component={Profile} />
                   <Route component={ErrorPage} />
                 </Switch>
               </div>
-              <AnonRoute component={Navbar} />
+              <PrivateRoute component={Navbar} />
             </AuthProvider>
           </div>
         </Router>

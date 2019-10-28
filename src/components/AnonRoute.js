@@ -6,13 +6,13 @@ function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
   return (
     <Route
       {...rest}
-      render={(props) =>
+      render={props =>
         !isLoggedin ? (
           <Comp {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: "/private",
+              pathname: '/search',
             }}
           />
         )
