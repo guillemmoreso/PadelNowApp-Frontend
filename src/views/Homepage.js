@@ -25,9 +25,9 @@ class Homepage extends Component {
     return (
       <>
         <div id="full-mobile-page">
-          <nav>
-            <img id="logo-large" src="../../images/logo-playtomic-dkv-color.png" alt="nav-avatar"></img>
-          </nav>
+          <div>
+            <img id="logo-large" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
+          </div>
           <div id="home-banner">
             <div id="home-banner-title">
               <h1>Book your padel court easily with PadelNow!</h1>

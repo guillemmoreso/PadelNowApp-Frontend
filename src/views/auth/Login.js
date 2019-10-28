@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../../Context/AuthContext';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -24,13 +25,19 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" value={username} onChange={this.handleChange} />
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={this.handleChange} />
-        <input type="submit" value="Login" />
-      </form>
+      <div className="log-sign-container">
+        <img id="logo-login" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
+        <form onSubmit={this.handleFormSubmit}>
+          {/* <label>Username:</label> */}
+          <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />
+          {/* <label>Password:</label> */}
+          <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
+          <input type="submit" value="Login" className="btn" />
+        </form>
+        <p className="alternative">
+          Don't have an account yet? <Link to={'/signup'}>Signup</Link>
+        </p>
+      </div>
     );
   }
 }

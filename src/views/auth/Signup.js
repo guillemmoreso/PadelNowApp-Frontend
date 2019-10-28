@@ -29,24 +29,54 @@ class Signup extends Component {
   render() {
     const { name, surname, username, password } = this.state;
     return (
-      <div>
+      <div className="log-sign-container">
+        <img id="logo-login" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={this.handleChange} />
+          {/* <label>Name:</label> */}
+          <input
+            id="signup-input"
+            type="text"
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+            placeholder="Name"
+          />
           <br />
-          <label>Surname:</label>
-          <input type="text" name="surname" value={surname} onChange={this.handleChange} />
+          {/* <label>Surname:</label> */}
+          <input
+            id="signup-input"
+            type="text"
+            name="surname"
+            value={surname}
+            onChange={this.handleChange}
+            placeholder="Surname"
+          />
           <br />
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
+          {/* <label>Username:</label> */}
+          <input
+            id="signup-input"
+            type="text"
+            name="username"
+            value={username}
+            onChange={this.handleChange}
+            placeholder="Username"
+          />
           <br />
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+          {/* <label>Password:</label> */}
+          <input
+            id="signup-input"
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+            placeholder="Password"
+          />
           <br />
-          <input type="submit" value="Signup" />
+          <input id="signup-input" type="submit" value="Signup" className="btn" />
         </form>
+
         <div>
-          <p>
+          <p className="alternative">
             Already have an account?
             <Link to={'/login'}> Login</Link>
           </p>
