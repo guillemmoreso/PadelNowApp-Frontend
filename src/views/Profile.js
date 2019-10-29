@@ -17,6 +17,12 @@ class Profile extends Component {
           <span>Profile</span>
         </div>
         <img src="../../images/profile.svg" />
+        <div id="other-features">
+          <Link id="home-book-btn-div" to={'/clubs'}>
+            <a>Clubs</a>
+          </Link>
+        </div>
+
         <div id="logout-btn-div">
           <button onClick={handleLogout} id="logout-btn">
             Logout

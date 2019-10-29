@@ -33,7 +33,6 @@ class ClubsDetail extends Component {
     const { club, isLoading } = this.state;
     return (
       <>
-        {isLoading && <div>Loading...</div>}
         {!isLoading && <ClubsCardDetail club={club} />}
       </>
     );

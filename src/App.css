@@ -49,6 +49,7 @@ h2 {
   font-weight: bold;
   font-family: 'Work Sans', sans-serif;
 }
+
 #viewport-with-navbar {
   margin: 0 0 12vh 0;
 }
@@ -419,4 +420,21 @@ select::placeholder {
 
 #datePicker input {
   height: 40px;
+}
+
+/* --- Club Detail --- */
+
+#club-header-image {
+  top: 0;
+  margin-top: -6%;
+  margin-left: -6%;
+  margin-right: -6%;
+}
+
+#club-header-image img {
+  width: 100%;
+}
+
+#club-detail-header {
+  font-size: 1.5em;
 }

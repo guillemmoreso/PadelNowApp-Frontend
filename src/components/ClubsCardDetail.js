@@ -3,24 +3,20 @@ import { withAuth } from '../Context/AuthContext';
 
 const ClubsCardDetail = props => {
   const {
-    club: { name, description, city, price, openingHours },
+    club: { name, location, price, openingHours, clubImages },
   } = props;
   return (
     <div>
-      <label htmlFor="">Name</label>
-      <p>{name}</p>
-      <label htmlFor="">City</label>
-      <p>{city}</p>
-      <label htmlFor="">Description</label>
-      <p>{description}</p>
-      <label htmlFor="">Price</label>
-      <p>{price}</p>
-      <label htmlFor="">Hours</label>
-      <ul>
-        {openingHours.map(hour => {
-          return <li>{hour}</li>;
-        })}
-      </ul>
+      <div id="club-header-image">
+        <img src={clubImages[0]} alt="club-avatar"></img>
+      </div>
+      <h1 id="club-detail-header">{name}</h1>
+      <p>{location}</p>
+      <p>Court Price: {price}€</p>
+      <p>Opening hours: </p>
+      {openingHours.map(hour => {
+        return <p>{hour}</p>;
+      })}
     </div>
   );
 };
