@@ -47,10 +47,14 @@ class Search extends Component {
     const { clubs, isLoading } = this.state;
     return (
       <div>
-        <h1>Search here your next game:</h1>
+        <div id="page-name">
+          <span>Search</span>
+        </div>
         Select date:
         <br />
-        <DatePicker onChange={this.onDateChange} value={this.state.date} />
+        <div id="datePicker">
+          <DatePicker onChange={this.onDateChange} value={this.state.date} />
+        </div>
         <br />
         <form onSubmit={this.handleFormSubmit}>
           <label>

@@ -28,9 +28,9 @@ class Bookings extends Component {
 
     return (
       <>
-        <header className="header-bookings">
-          <h1>Bookings</h1>
-        </header>
+        <div id="page-name">
+          <span>Bookings</span>
+        </div>
         {bookings.length > 0 ? (
           <>
             {bookings.map(booking => {

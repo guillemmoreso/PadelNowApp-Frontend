@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
+import ClubsCards from '../components/ClubsCards';
 
 class Clubs extends Component {
   state = {
@@ -23,21 +24,15 @@ class Clubs extends Component {
 
   render() {
     const { clubs, isLoading } = this.state;
-    console.log("clubs",clubs);
+    console.log('clubs', clubs);
     return (
       <>
-        <header className="header-clubs">
-          <h1>Clubs</h1>
-        </header>
-        {!isLoading &&
-          clubs.map(club => {
-            return (
-              <div key={club._id}>
-                <Link to={`/clubs/${club._id}`}>{club.name}</Link>
-              </div>
-            );
-          })}
-        {isLoading && <div>loading...</div>}
+        <div id="viewport-with-navbar">
+          <div id="page-name">
+            <span>Clubs</span>
+          </div>
+          <ClubsCards />
+        </div>
       </>
     );
   }

@@ -33,8 +33,8 @@ class ClubsCards extends Component {
                 <div id="highlight-clubs-card-content">
                   <h3>{club.name}</h3>
                   <p id="home-club-text">{club.location}</p>
-                  <Link id="home-book-btn-div" to="/login">
-                    {/* <Link id="home-book-btn-div" to={`/clubs/${club._id}`}> */}
+                  {/* <Link id="home-book-btn-div" to="/login"> */}
+                    <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
                     <div id="home-book-btn">Book now</div>
                   </Link>
                 </div>

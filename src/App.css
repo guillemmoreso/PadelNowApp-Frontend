@@ -2,16 +2,17 @@
 
 * {
   font-family: 'Fira Sans', sans-serif;
-  /* background-color: rgb(249, 249, 249); */
   margin: 0;
   box-sizing: border-box;
 }
 #root {
   margin: 5%;
 }
+
 img {
   width: 100%;
 }
+
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -23,11 +24,11 @@ h2 {
   font-size: 1.6em;
 }
 
-span {
-  color: rgb(37, 53, 105);
-  color: rgb(133, 196, 205);
-  color: rgb(237, 92, 115);
-  color: rgb(218, 226, 228);
+:root {
+  --blue: rgb(37, 53, 105);
+  --bluelight: rgb(133, 196, 205);
+  --red: rgb(237, 92, 115);
+  --grey: rgb(218, 226, 228);
 }
 
 #page-name {
@@ -36,7 +37,6 @@ span {
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  /* border-bottom: 1px solid grey; */
   margin-top: -5%;
   margin-left: -5%;
   margin-right: -5%;
@@ -49,13 +49,33 @@ span {
   font-weight: bold;
   font-family: 'Work Sans', sans-serif;
 }
+#viewport-with-navbar {
+  margin: 0 0 12vh 0;
+}
 
 /* --- Homepage --- */
 
+#logo-div {
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  /* border-bottom: 1px solid grey; */
+  margin-top: -5%;
+  margin-left: -5%;
+  margin-right: -5%;
+  /* padding: 5px; */
+}
+
 #logo-large {
-  width: 100px;
+  width: 150px;
   height: auto;
   margin: 0;
+}
+
+#home-banner-title h1 {
+  margin-top: 0;
 }
 
 #home-banner-text {
@@ -63,40 +83,29 @@ span {
   color: #2f3333;
 }
 
-#highlight-clubs-header h3 {
+#highlight-clubs-header {
   text-align: center;
   margin: 5px;
 }
 
-#map-btn-div {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  margin: 20px 0;
-}
-
-#map-btn {
-  border-radius: 0.2em;
-  background-color: rgb(37, 53, 105);
-  color: #ffffff;
-  text-align: center;
+#club-search-input {
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 15px 0;
 }
 
 #highlight-clubs-card {
-  border-radius: 5px;
   border: 1px;
   margin: 10px 0;
   background-color: white;
   box-shadow: 0 30px 40px 30px rgba(82, 93, 193, 0.15);
+  text-align: center;
 }
 
 #highlight-clubs-card-img {
   width: 100%;
   max-height: 150px;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   background-color: #ffffff;
 }
 
@@ -121,6 +130,7 @@ a {
   width: 80%;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #home-club-text {
@@ -322,16 +332,16 @@ input,
 select {
   font-size: 0.9em;
   border-radius: 8px;
-  border: solid 1px #a0a9f8;
+  border: solid 1px var(--blue);
   height: 6vh;
   padding: 10px;
   background: transparent;
-  color: #000000;
+  color: var(--blue);
 }
 
 input::placeholder,
 select::placeholder {
-  color: #a0a9f8;
+  color: var(--blue);
   font-size: 0.9em;
 }
 
@@ -341,12 +351,12 @@ select::placeholder {
   width: 80vw;
   min-height: 55px;
   border-radius: 8px;
-  box-shadow: 0 10px 20px -10px #6d7bfa;
+  /* box-shadow: 0 10px 20px -10px #6d7bfa; */
   font-size: 1.5em;
   margin: 10px auto;
   display: block;
   text-decoration: none;
-  background-color: rgb(37, 53, 105);
+  background-color: var(--blue);
   color: white;
   border-color: transparent;
 }
@@ -403,4 +413,10 @@ select::placeholder {
   color: #000000;
   font-size: 1em;
   padding-top: 3px;
+}
+
+/* --- Search --- */
+
+#datePicker input {
+  height: 40px;
 }
