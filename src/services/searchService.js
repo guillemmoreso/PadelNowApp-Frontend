@@ -11,10 +11,6 @@ class SearchService {
   getClubsByHour() {
     return this.clubs.get('/search').then(({ data: clubs }) => clubs);
   }
-
-  getHourInput() {
-    return this.clubs.get('/search').then(({ data: date }) => date);
-  }
 }
 
 const searchService = new SearchService();

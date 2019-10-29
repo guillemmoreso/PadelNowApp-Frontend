@@ -8,7 +8,6 @@ import Loading from '../components/Loading/Loading';
 class Search extends Component {
   state = {
     date: new Date(),
-    // currentDate: new Date().getDate(),
     startingHour: 12,
     clubs: [],
     isLoading: true,
@@ -33,14 +32,32 @@ class Search extends Component {
 
   onHourChange = startingHour => {
     console.log('houuuur', startingHour.target.value);
-    this.setState({ startingHour });
+    this.setState({ startingHour: startingHour.target.value });
   };
 
   // handleChange = event => this.setState({ startingHour: event.target.value });
+  handleDatePicker = () => {
+    searchService
+      .then((startingHour, date) => {
+        this.setState({
+          startingHour,
+          date,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          isLoading: false,
+        });
+      });
+  };
 
-  handleFormSubmit = e => {
-    e.preventDefault();
-    // const { clubs } = this.state;
+  handleFormSubmit = () => {
+    // e.preventDefault();
+    const { startingHour, date } = this.state;
+    this.handleDatePicker({
+      startingHour,
+      date,
+    });
   };
 
   render() {
@@ -56,7 +73,8 @@ class Search extends Component {
           <DatePicker onChange={this.onDateChange} value={this.state.date} />
         </div>
         <br />
-        <form onSubmit={this.handleFormSubmit}>
+        <form>
+          {/* <form onSubmit={this.handleFormSubmit}> */}
           <label>
             Select starting hour:
             <br />
@@ -78,9 +96,10 @@ class Search extends Component {
               <option value="21">21:00</option>
               <option value="22">22:00</option>
             </select>
-            <input type="submit" value="Submit" />
+            {/* <input type="submit" value="Submit" /> */}
           </label>
         </form>
+        <input type="submit" value="Submit" onSubmit={this.handleFormSubmit} />
         <header className="header-clubs">
           <h3>Clubs still with available courts</h3>
         </header>

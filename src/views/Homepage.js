@@ -37,6 +37,7 @@ class Homepage extends Component {
 
   render() {
     const { clubs, isLoading } = this.state;
+    console.log('Renderizando...');
 
     return (
       <>
