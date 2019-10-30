@@ -36,20 +36,6 @@ class Search extends Component {
   };
 
   // handleChange = event => this.setState({ startingHour: event.target.value });
-  handleDatePicker = () => {
-    searchService
-      .then((startingHour, date) => {
-        this.setState({
-          startingHour,
-          date,
-        });
-      })
-      .catch(() => {
-        this.setState({
-          isLoading: false,
-        });
-      });
-  };
 
   handleFormSubmit = () => {
     // e.preventDefault();
@@ -58,6 +44,17 @@ class Search extends Component {
       startingHour,
       date,
     });
+  };
+
+  handleDatePicker = user => {
+    searchService
+      .dataPicker(user)
+      .then(() => {})
+      .catch(() => {
+        this.setState({
+          isLoading: false,
+        });
+      });
   };
 
   render() {
@@ -99,7 +96,7 @@ class Search extends Component {
             {/* <input type="submit" value="Submit" /> */}
           </label>
         </form>
-        <input type="submit" value="Submit" onSubmit={this.handleFormSubmit} />
+        <input type="submit" value="Submit" onClick={this.handleFormSubmit} />
         <header className="header-clubs">
           <h3>Clubs still with available courts</h3>
         </header>

@@ -28,23 +28,21 @@ class App extends Component {
         {/* <button onClick={handleLogout}>logout</button> */}
         <Router>
           <div className="container">
-            <AuthProvider>
-              <div className="data-container">
-                <Switch>
-                  <AnonRoute exact path="/" component={Homepage} />
-                  <AnonRoute exact path="/login" component={Login} />
-                  <AnonRoute exact path="/signup" component={Signup} />
-                  <PrivateRoute exact path="/private" component={PrivateView} />
-                  <PrivateRoute exact path="/search" component={Search} />
-                  <PrivateRoute exact path="/clubs" component={Clubs} />
-                  <PrivateRoute exact path="/clubs/:id" component={ClubsDetail} />
-                  <PrivateRoute exact path="/bookings" component={Bookings} />
-                  <PrivateRoute exact path="/profile" component={Profile} />
-                  <Route component={ErrorPage} />
-                </Switch>
-              </div>
-              <PrivateRoute component={Navbar} />
-            </AuthProvider>
+            <div className="data-container">
+              <Switch>
+                <AnonRoute exact path="/" component={Homepage} />
+                <AnonRoute exact path="/login" component={Login} />
+                <AnonRoute exact path="/signup" component={Signup} />
+                <PrivateRoute exact path="/private" component={PrivateView} />
+                <PrivateRoute exact path="/search" component={Search} />
+                <PrivateRoute exact path="/clubs" component={Clubs} />
+                <PrivateRoute exact path="/clubs/:id" component={ClubsDetail} />
+                <PrivateRoute exact path="/bookings" component={Bookings} />
+                <PrivateRoute exact path="/profile" component={Profile} />
+                <Route component={ErrorPage} />
+              </Switch>
+            </div>
+            <PrivateRoute component={Navbar} />
           </div>
         </Router>
       </>

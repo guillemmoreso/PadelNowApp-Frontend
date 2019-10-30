@@ -2,14 +2,24 @@ import axios from 'axios';
 
 class SearchService {
   constructor() {
-    this.clubs = axios.create({
+    this.search = axios.create({
       baseURL: process.env.REACT_APP_BACKEND_BASE_URL,
       withCredentials: true,
     });
   }
 
   getClubsByHour() {
-    return this.clubs.get('/search').then(({ data: clubs }) => clubs);
+    return this.search.get('/search').then(({ data: clubs }) => clubs);
+  }
+
+  dataPicker(user) {
+    const { startingHour, date } = user;
+    console.log('datePicker ', user);
+
+    return this.search.post('/search', { startingHour, date }).then(({ data }) => {
+      console.log('Respuesta: ', data);
+      return data;
+    });
   }
 }
 
