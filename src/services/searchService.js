@@ -13,10 +13,10 @@ class SearchService {
   }
 
   dataPicker(user) {
-    const { startingHour, date } = user;
+    const { searchStartingHour, date } = user;
     console.log('datePicker ', user);
 
-    return this.search.post('/search', { startingHour, date }).then(({ data }) => {
+    return this.search.post('/search', { searchStartingHour, date }).then(({ data }) => {
       console.log('Respuesta: ', data);
       return data;
     });
