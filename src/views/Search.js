@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import searchService from '../services/searchService';
 import DatePicker from 'react-date-picker';
-import Loading from '../components/Loading/Loading';
+// import Loading from '../components/Loading/Loading';
 
 class Search extends Component {
   state = {
     date: new Date(),
-    searchStartingHour: 12,
+    searchStartingHour: 9,
     clubs: [],
     isLoading: true,
   };
@@ -16,7 +16,7 @@ class Search extends Component {
   async componentDidMount() {
     try {
       const clubs = await searchService.getClubsByHour();
-      console.log('clubs????', clubs);
+      // console.log('clubs????', clubs);
       this.setState({
         clubs,
         isLoading: false,
@@ -28,34 +28,28 @@ class Search extends Component {
 
   onDateChange = date => {
     this.setState({ date });
-    console.log('dateeeee', date);
+    // console.log('dateeeee', date);
   };
 
   onHourChange = searchStartingHour => {
-    console.log('houuuur', searchStartingHour.target.value);
+    // console.log('houuuur', searchStartingHour.target.value);
     this.setState({ searchStartingHour: searchStartingHour.target.value });
   };
 
   // handleChange = event => this.setState({ searchStartingHour: event.target.value });
 
-  handleFormSubmit = () => {
+  handleFormSubmit = async () => {
     // e.preventDefault();
-    const { searchStartingHour, date } = this.state;
-    this.handleDatePicker({
-      searchStartingHour,
-      date,
-    });
-  };
+    console.log('state', this.state);
 
-  handleDatePicker = user => {
-    searchService
-      .dataPicker(user)
-      .then(() => {})
-      .catch(() => {
-        this.setState({
-          isLoading: false,
-        });
-      });
+    try {
+      const { searchStartingHour, date } = this.state;
+      const userSearchResult = await searchService.dataPicker({ searchStartingHour, date });
+      console.log('result: ', userSearchResult);
+      this.setState({ clubs: userSearchResult });
+    } catch (error) {
+      console.error('Error buscando pistas disponibles');
+    }
   };
 
   render() {
@@ -77,12 +71,12 @@ class Search extends Component {
             Select starting hour:
             <br />
             <select onChange={this.onHourChange}>
-              <option value="9">09:00</option>
+              <option defaultValue value="9">
+                09:00
+              </option>
               <option value="10">10:00</option>
               <option value="11">11:00</option>
-              <option defaultValue value="12">
-                12:00
-              </option>
+              <option value="12">12:00</option>
               <option value="13">13:00</option>
               <option value="14">14:00</option>
               <option value="15">15:00</option>

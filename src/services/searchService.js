@@ -12,9 +12,8 @@ class SearchService {
     return this.search.get('/search').then(({ data: clubs }) => clubs);
   }
 
-  dataPicker(user) {
-    const { searchStartingHour, date } = user;
-    console.log('datePicker ', user);
+  dataPicker(search) {
+    const { searchStartingHour, date } = search;
 
     return this.search.post('/search', { searchStartingHour, date }).then(({ data }) => {
       console.log('Respuesta: ', data);
