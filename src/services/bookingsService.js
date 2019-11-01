@@ -11,6 +11,10 @@ class BookingsService {
   getAllUserBookings() {
     return this.bookings.get('/bookings').then(({ data: bookings }) => bookings);
   }
+
+  getClubById(id) {
+    return this.bookings.get(`/bookings/${id}`).then(({ data: clubs }) => clubs);
+  }
 }
 
 const bookingsService = new BookingsService();

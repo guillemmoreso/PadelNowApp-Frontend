@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import searchService from '../services/searchService';
 import DatePicker from 'react-date-picker';
@@ -16,7 +16,6 @@ class Search extends Component {
   async componentDidMount() {
     try {
       const clubs = await searchService.getClubsByHour();
-      // console.log('clubs????', clubs);
       this.setState({
         clubs,
         isLoading: false,
@@ -28,18 +27,13 @@ class Search extends Component {
 
   onDateChange = date => {
     this.setState({ date });
-    // console.log('dateeeee', date);
   };
 
   onHourChange = searchStartingHour => {
-    // console.log('houuuur', searchStartingHour.target.value);
     this.setState({ searchStartingHour: searchStartingHour.target.value });
   };
 
-  // handleChange = event => this.setState({ searchStartingHour: event.target.value });
-
   handleFormSubmit = async () => {
-    // e.preventDefault();
     console.log('state', this.state);
 
     try {
@@ -66,7 +60,6 @@ class Search extends Component {
         </div>
         <br />
         <form>
-          {/* <form onSubmit={this.handleFormSubmit}> */}
           <label>
             Select starting hour:
             <br />
@@ -88,7 +81,6 @@ class Search extends Component {
               <option value="21">21:00</option>
               <option value="22">22:00</option>
             </select>
-            {/* <input type="submit" value="Submit" /> */}
           </label>
         </form>
         <input type="submit" value="Submit" onClick={this.handleFormSubmit} />
@@ -100,6 +92,9 @@ class Search extends Component {
             return (
               <div key={club._id}>
                 <p>{club.name}</p>
+                <Link id="home-book-btn-div" to={`/bookings/${club._id}`}>
+                  <div id="home-book-btn">Book now</div>
+                </Link>
                 {/* <ul>
                   {club.openingHours.map(hour => {
                     return <li>{hour}</li>;

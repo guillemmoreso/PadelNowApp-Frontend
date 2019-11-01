@@ -9,6 +9,7 @@ import Signup from './views/auth/Signup';
 import Clubs from './views/Clubs';
 import Search from './views/Search';
 import ClubsDetail from './views/ClubsDetail';
+import BookingDetail from './views/BookingDetail';
 import Bookings from './views/Bookings';
 import Profile from './views/Profile';
 import ErrorPage from './views/ErrorPage';
@@ -37,6 +38,7 @@ class App extends Component {
                 <PrivateRoute exact path="/search" component={Search} />
                 <PrivateRoute exact path="/clubs" component={Clubs} />
                 <PrivateRoute exact path="/clubs/:id" component={ClubsDetail} />
+                <PrivateRoute exact path="/bookings/:id" component={BookingDetail} />
                 <PrivateRoute exact path="/bookings" component={Bookings} />
                 <PrivateRoute exact path="/profile" component={Profile} />
                 <Route component={ErrorPage} />
