@@ -31,48 +31,16 @@ class Signup extends Component {
     return (
       <div className="log-sign-container">
         <img id="logo-login" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
-        <form onSubmit={this.handleFormSubmit}>
-          {/* <label>Name:</label> */}
-          <input
-            id="signup-input"
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-            placeholder="Name"
-          />
+        <form onSubmit={this.handleFormSubmit} id="signup-input">
+          <input type="text" name="name" value={name} onChange={this.handleChange} placeholder="Name" />
           <br />
-          {/* <label>Surname:</label> */}
-          <input
-            id="signup-input"
-            type="text"
-            name="surname"
-            value={surname}
-            onChange={this.handleChange}
-            placeholder="Surname"
-          />
+          <input type="text" name="surname" value={surname} onChange={this.handleChange} placeholder="Surname" />
           <br />
-          {/* <label>Username:</label> */}
-          <input
-            id="signup-input"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-            placeholder="Username"
-          />
+          <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />
           <br />
-          {/* <label>Password:</label> */}
-          <input
-            id="signup-input"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-            placeholder="Password"
-          />
+          <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
           <br />
-          <input id="signup-input" type="submit" value="Signup" className="btn" />
+          <input type="submit" value="Signup" className="btn" />
         </form>
 
         <div>

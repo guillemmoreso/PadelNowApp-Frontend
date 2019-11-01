@@ -19,7 +19,10 @@ class Profile extends Component {
         <img src="../../images/profile.svg" />
         <div id="other-features">
           <Link id="home-book-btn-div" to={'/clubs'}>
-            <a>Clubs</a>
+            <p>Clubs</p>
+          </Link>
+          <Link id="home-book-btn-div" to={'/profile/edit-profile'}>
+            <p>Edit Profile</p>
           </Link>
         </div>
 

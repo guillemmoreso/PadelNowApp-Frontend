@@ -95,15 +95,9 @@ class Search extends Component {
                 <Link id="home-book-btn-div" to={`/bookings/${club._id}`}>
                   <div id="home-book-btn">Book now</div>
                 </Link>
-                {/* <ul>
-                  {club.openingHours.map(hour => {
-                    return <li>{hour}</li>;
-                  })}
-                </ul>{' '} */}
               </div>
             );
           })}
-        {/* {isLoading && <Loading />} */}
       </div>
     );
   }

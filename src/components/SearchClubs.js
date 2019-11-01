@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class SearchClubs extends Component {
   state = {
-    input: '',
-  };
-
-  handleInput = e => {
-    const { query } = this.props;
-    const { input } = this.state;
-    this.setState({
-      input: e.target.value,
-    });
-    query(input);
+    value: '',
   };
 
   render() {
-    const { input } = this.state;
+    const { clubs } = this.props;
+
     return (
       <div>
-        <input value={input} onChange={this.handleInput}></input>
+        <div id="highlight-clubs-card" key={clubs._id}>
+          <img id="highlight-clubs-card-img" src={clubs.clubImages[0]} alt="club-avatar"></img>
+          <div id="highlight-clubs-card-content">
+            <h3>{clubs.name}</h3>
+            <p id="home-club-text">{clubs.location}</p>
+            <Link id="home-book-btn-div" to="/login">
+              {/* <Link id="home-book-btn-div" to={`/clubs/${club._id}`}> */}
+              <div id="home-book-btn">Book now</div>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

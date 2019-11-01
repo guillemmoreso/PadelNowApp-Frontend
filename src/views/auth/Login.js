@@ -28,9 +28,7 @@ class Login extends Component {
       <div className="log-sign-container">
         <img id="logo-login" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
         <form onSubmit={this.handleFormSubmit}>
-          {/* <label>Username:</label> */}
           <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />
-          {/* <label>Password:</label> */}
           <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
           <input type="submit" value="Login" className="btn" />
         </form>

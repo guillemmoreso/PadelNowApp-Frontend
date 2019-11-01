@@ -18,7 +18,6 @@ class Homepage extends Component {
 
   async componentDidMount() {
     try {
-      // const clubs = await clubsService.getAllClubs();
       const clubs = await searchService.getClubsByHour();
       console.log('Clubs: ', clubs);
 
@@ -35,12 +34,10 @@ class Homepage extends Component {
     this.setState({
       value,
     });
-    console.log('value', value);
   };
 
   render() {
     const { clubs, isLoading } = this.state;
-    console.log('Renderizando...');
 
     return (
       <>
@@ -55,7 +52,6 @@ class Homepage extends Component {
             <div id="home-banner-text">Find all available courts in the bests clubs!</div>
             <div id="home-banner-search">
               <div id="home-search">
-                {/* <SearchClubs query={this.handleQuery} /> */}
                 <SearchInput filterClubs={this.filterClubs} />
               </div>
             </div>
@@ -63,7 +59,6 @@ class Homepage extends Component {
           <div id="highlight-clubs">
             <div id="highlight-clubs-header">
               <h3> Top Clubs in Barcelona:</h3>
-              {/* <ClubsCards /> */}
 
               {clubs.length > 0 ? (
                 clubs.map(club => {
@@ -75,7 +70,6 @@ class Homepage extends Component {
                           <h3>{club.name}</h3>
                           <p id="home-club-text">{club.location}</p>
                           <Link id="home-book-btn-div" to="/login">
-                            {/* <Link id="home-book-btn-div" to={`/clubs/${club._id}`}> */}
                             <div id="home-book-btn">Book now</div>
                           </Link>
                         </div>
