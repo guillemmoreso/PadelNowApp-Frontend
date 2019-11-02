@@ -14,7 +14,16 @@ export const withAuth = Comp => {
     render() {
       return (
         <AuthConsumer>
-          {({ isLoading, isLoggedin, user, handleLogin, handleLogout, handleSignup, handleProfileUpdate }) => (
+          {({
+            isLoading,
+            isLoggedin,
+            user,
+            handleLogin,
+            handleLogout,
+            handleSignup,
+            handleProfileUpdate,
+            handleUserDelete,
+          }) => (
             <Comp
               {...this.props}
               isLoading={isLoading}
@@ -24,6 +33,7 @@ export const withAuth = Comp => {
               handleLogout={handleLogout}
               handleSignup={handleSignup}
               handleProfileUpdate={handleProfileUpdate}
+              handleUserDelete={handleUserDelete}
             />
           )}
         </AuthConsumer>
@@ -130,6 +140,28 @@ export default class AuthProvider extends Component {
       });
   };
 
+  handleUserDelete = () => {
+    this.setState({
+      isLoading: true,
+    });
+    authService
+      .userDelete()
+      .then(() => {
+        this.setState({
+          isLoggedin: false,
+          user: undefined,
+          isLoading: false,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          isLoading: false,
+          isLoggedin: false,
+          user: undefined,
+        });
+      });
+  };
+
   render() {
     const { isLoading, isLoggedin, user } = this.state;
     const { children } = this.props;
@@ -146,6 +178,7 @@ export default class AuthProvider extends Component {
           handleLogout: this.handleLogout,
           handleSignup: this.handleSignup,
           handleProfileUpdate: this.handleProfileUpdate,
+          handleUserDelete: this.handleUserDelete,
         }}
       >
         {children}

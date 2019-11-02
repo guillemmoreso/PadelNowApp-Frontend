@@ -28,7 +28,7 @@ class EditProfile extends Component {
 
   render() {
     const { name, surname, username, password } = this.state;
-    const { handleLogout } = this.props;
+    const { handleUserDelete } = this.props;
 
     return (
       <div className="log-sign-container">
@@ -48,10 +48,10 @@ class EditProfile extends Component {
             placeholder="New Password"
           />
           <br />
-            <input type="submit" value="Submit" className="btn" />
-x        </form>
+          <input type="submit" value="Submit" className="btn" />
+        </form>
         <div id="logout-btn-div">
-          <button onClick={handleLogout} id="logout-btn">
+          <button onClick={handleUserDelete} id="logout-btn">
             Delete Account
           </button>
         </div>

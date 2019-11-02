@@ -33,6 +33,10 @@ class AuthService {
     return this.auth.get('/logout', {}).then(response => response.data);
   }
 
+  userDelete() {
+    return this.auth.post('/profile/edit-profile/delete', {}).then(response => response.data);
+  }
+
   me(user) {
     return this.auth.get('/me').then(response => response.data);
   }
