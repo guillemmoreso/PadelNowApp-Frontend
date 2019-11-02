@@ -16,6 +16,14 @@ class AuthService {
     });
   }
 
+  profileUpdate(user) {
+    const { username, password, name, surname } = user;
+    return this.auth.post('/profile/edit-profile', { username, password, name, surname }).then(({ data }) => {
+      console.log('Respuesta: ', data);
+      return data;
+    });
+  }
+
   login(user) {
     const { username, password } = user;
     return this.auth.post('/login', { username, password }).then(({ data }) => data);

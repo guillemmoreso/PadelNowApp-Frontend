@@ -4,9 +4,9 @@ import { withAuth } from '../Context/AuthContext';
 
 class EditProfile extends Component {
   state = {
-    name: '',
-    surname: '',
-    username: '',
+    name: this.props.user.name,
+    surname: this.props.user.surname,
+    username: this.props.user.username,
     password: '',
   };
 
@@ -18,7 +18,7 @@ class EditProfile extends Component {
   handleFormSubmit = e => {
     e.preventDefault();
     const { name, surname, username, password } = this.state;
-    this.props.handleSignup({
+    this.props.handleProfileUpdate({
       name,
       surname,
       username,
@@ -27,7 +27,7 @@ class EditProfile extends Component {
   };
 
   render() {
-    const { name, surname, username, password } = this.props.user;
+    const { name, surname, username, password } = this.state;
     const { handleLogout } = this.props;
 
     return (
@@ -48,8 +48,8 @@ class EditProfile extends Component {
             placeholder="New Password"
           />
           <br />
-          <input type="submit" value="Signup" className="btn" />
-        </form>
+            <input type="submit" value="Submit" className="btn" />
+x        </form>
         <div id="logout-btn-div">
           <button onClick={handleLogout} id="logout-btn">
             Delete Account

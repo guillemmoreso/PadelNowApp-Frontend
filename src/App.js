@@ -16,7 +16,7 @@ import EditProfile from './views/Edit-Profile';
 
 import ErrorPage from './views/ErrorPage';
 
-import AuthProvider, { withAuth } from './Context/AuthContext';
+import { withAuth } from './Context/AuthContext';
 
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
@@ -25,10 +25,8 @@ import Navbar from './components/Navigation/Navbar';
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
   render() {
-    // const { handleLogout } = this.props;
     return (
       <>
-        {/* <button onClick={handleLogout}>logout</button> */}
         <Router>
           <div className="container">
             <div className="data-container">
