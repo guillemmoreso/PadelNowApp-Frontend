@@ -53,9 +53,9 @@ class Search extends Component {
         <div id="page-name">
           <span>Search</span>
         </div>
-        Select date:
         <br />
         <div id="datePicker">
+          <span id="select-date">Select date:</span>
           <DatePicker onChange={this.onDateChange} value={this.state.date} />
         </div>
         <br />

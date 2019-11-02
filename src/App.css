@@ -376,25 +376,44 @@ select::placeholder {
   padding-top: 15px;
   padding-bottom: 15px;
   position: absolute;
-  bottom: 15vh;
+  bottom: 11vh;
 }
 /* --- User Profile --- */
 
 .profile-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
-.profile-container img {
-  margin-top: 20px;
-  width: 25vw;
-  height: 25vw;
+#user-profile {
+  width: 35vw;
+  height: 35vw;
   background: white;
   border-radius: 50%;
-  object-fit: cover;
   border: 1px solid #6d7bfa;
+}
+
+#profile-categories {
+  margin: 25px 0;
+  /* border: 1px solid #000000; */
+  width: 85vw;
+  display: flex;
+  justify-content: space-between;
+}
+#profile-categories p {
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  text-transform: none;
+  transform: translateY(25%);
+}
+#category-img {
+  width: 4.5vh;
+  margin: 0 auto 5px auto;
+  /* display: block; */
+  transform: translateY(10%);
 }
 
 /* --- Bookings --- */
@@ -419,7 +438,25 @@ select::placeholder {
 /* --- Search --- */
 
 #datePicker input {
+  width: 100%;
   height: 40px;
+}
+#select-date {
+  padding-left: 5%;
+  transform: translateY(-50%);
+  position: relative;
+  top: 30px;
+  z-index: 1;
+}
+.react-date-picker__wrapper {
+  width: 90vw;
+  background-color: var(--grey);
+  border: none !important;
+  border-radius: 5px;
+}
+
+.react-date-picker__inputGroup {
+  justify-content: flex-end;
 }
 
 /* --- Club Detail --- */
