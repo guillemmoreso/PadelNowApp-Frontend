@@ -288,6 +288,21 @@ nav ul li a img {
   display: block;
 }
 
+.go-back {
+  background-color: var(--colorSecondary);
+  text-align: left;
+  padding: 2vh 5vw;
+}
+
+.go-back a {
+  text-decoration: none;
+  color: var(--colorPrimary);
+}
+
+.go-back a:before {
+  content: '<';
+}
+
 /* --- Login / Signup --- */
 
 .log-sign-container {

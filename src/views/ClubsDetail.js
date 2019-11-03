@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
-import ClubsCardDetail from '../components/ClubsCardDetail';
+import Backbar from '../components/Navigation/Backbar';
 
 class ClubsDetail extends Component {
   state = {
@@ -46,6 +46,7 @@ class ClubsDetail extends Component {
     // return <>{!isLoading && <ClubsCardDetail club={club} userClubs={userClubs} />}</>;
     return (
       <section className="club-detail-container">
+        <Backbar history={this.props.history} />
         <div id="club-header-image">
           <img src={clubImages} alt="club-avatar"></img>
         </div>
