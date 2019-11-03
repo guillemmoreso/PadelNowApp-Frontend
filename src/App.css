@@ -459,8 +459,44 @@ select::placeholder {
   justify-content: flex-end;
 }
 
+#hour-select {
+  width: 50vw;
+  background-color: var(--grey);
+  border: none !important;
+  border-radius: 5px;
+}
+
+#display-block {
+  display: flex;
+  flex-direction: row;
+  border: 5px solid olive;
+  width: 100%;
+  float: left;
+}
+
+#hour-select-div {
+  width: 70vw;
+  /* transform: translateY(46%); */
+  box-sizing: border-box;
+}
+#submit-datapicker {
+  width: 30vw;
+  box-sizing: content-box;
+
+  /* transform: translateY(46%); */
+}
+
 /* --- Club Detail --- */
 
+.heart {
+  width: 80px;
+  height: 82px;
+  position: absolute;
+  /* right: 4vw;
+  bottom: -5.5vh; */
+  z-index: 1;
+  filter: none;
+}
 #club-header-image {
   top: 0;
   margin-top: -6%;

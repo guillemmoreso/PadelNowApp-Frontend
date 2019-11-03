@@ -19,6 +19,10 @@ class ClubsService {
   getQuery(query) {
     return this.clubs.get(`search?q=${query}`).then(({ data: clubs }) => clubs);
   }
+
+  saveClub(id) {
+    return this.clubs.put(`/clubs/${id}/switch`).then(response => response.data);
+  }
 }
 
 const clubsService = new ClubsService();

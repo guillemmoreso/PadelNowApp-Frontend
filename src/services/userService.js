@@ -7,7 +7,6 @@ class UserService {
       withCredentials: true,
     });
   }
-
 }
 
 const userService = new UserService();
