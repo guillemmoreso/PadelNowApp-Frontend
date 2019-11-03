@@ -24,7 +24,6 @@ class Clubs extends Component {
 
   render() {
     const { clubs, isLoading } = this.state;
-    console.log('clubs', clubs);
     return (
       <>
         <div id="viewport-with-navbar">

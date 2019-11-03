@@ -13,6 +13,8 @@ import BookingDetail from './views/BookingDetail';
 import Bookings from './views/Bookings';
 import Profile from './views/Profile';
 import EditProfile from './views/Edit-Profile';
+import FavoriteClubs from './views/FavoriteClubs';
+import MatchResults from './views/MatchResults';
 
 import ErrorPage from './views/ErrorPage';
 
@@ -41,6 +43,8 @@ class App extends Component {
                 <PrivateRoute exact path="/bookings/:id" component={BookingDetail} />
                 <PrivateRoute exact path="/bookings" component={Bookings} />
                 <PrivateRoute exact path="/profile" component={Profile} />
+                <PrivateRoute exact path="/profile/favorites" component={FavoriteClubs} />
+                <PrivateRoute exact path="/profile/results" component={MatchResults} />
                 <PrivateRoute exact path="/profile/edit-profile" component={EditProfile} />
 
                 <Route component={ErrorPage} />

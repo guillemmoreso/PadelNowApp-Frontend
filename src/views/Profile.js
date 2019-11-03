@@ -34,7 +34,7 @@ class Profile extends Component {
             </div>
           </Link>
 
-          <Link to={'/favorites'}>
+          <Link to={'/profile/favorites'}>
             <div id="profile-categories">
               <p>My Favorite Clubs</p>
               <div>
@@ -42,7 +42,7 @@ class Profile extends Component {
               </div>
             </div>
           </Link>
-          <Link to={'/results'}>
+          <Link to={'/profile/results'}>
             <div id="profile-categories">
               <p>My Results</p>
               <div>

@@ -7,6 +7,14 @@ class UserService {
       withCredentials: true,
     });
   }
+
+  getAllFavoriteClubs() {
+    return this.user.get('/profile/favorites').then(({ data: clubs }) => clubs);
+  }
+
+  getAllUserBookings() {
+    return this.user.get('/profile/results').then(({ data: bookings }) => bookings);
+  }
 }
 
 const userService = new UserService();

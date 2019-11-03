@@ -19,7 +19,6 @@ class Homepage extends Component {
   async componentDidMount() {
     try {
       const clubs = await searchService.getClubsByHour();
-      console.log('Clubs: ', clubs);
 
       this.setState({
         clubs,
@@ -62,7 +61,7 @@ class Homepage extends Component {
 
               {clubs.length > 0 ? (
                 clubs.map(club => {
-                  if (club.name.includes(this.state.value)) {
+                  if (club.name.toLowerCase().includes(this.state.value.toLowerCase())) {
                     return (
                       <div id="highlight-clubs-card" key={club._id}>
                         <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
-import clubsService from '../services/clubsService';
+import userService from '../services/userService';
 
-class ClubsCards extends Component {
+class FavoriteClubs extends Component {
   state = {
     clubs: [],
     userClubs: this.props.user.clubs,
@@ -12,7 +12,7 @@ class ClubsCards extends Component {
 
   async componentDidMount() {
     try {
-      const clubs = await clubsService.getAllClubs();
+      const clubs = await userService.getAllFavoriteClubs();
       this.setState({
         clubs,
         isLoading: false,
@@ -23,7 +23,7 @@ class ClubsCards extends Component {
   }
 
   saveClub = id => {
-    clubsService.saveClub(id).then(response => {
+    userService.saveClub(id).then(response => {
       this.setState({
         userClubs: response.updatedUser.clubs,
       });
@@ -75,4 +75,4 @@ class ClubsCards extends Component {
   }
 }
 
-export default withAuth(ClubsCards);
+export default withAuth(FavoriteClubs);
