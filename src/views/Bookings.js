@@ -4,6 +4,7 @@ import bookingsService from '../services/bookingsService';
 import Loading from '../components/Loading/Loading';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
+import Backbar from '../components/Navigation/Backbar';
 
 class Bookings extends Component {
   state = {
@@ -24,12 +25,13 @@ class Bookings extends Component {
   }
 
   render() {
-    const { bookings, isLoading } = this.state;
+    const { bookings } = this.state;
 
     return (
       <>
         <div id="page-name">
-          <span>Bookings</span>
+          <Backbar history={this.props.history} />
+          <h1>Bookings</h1>
         </div>
         {bookings.length > 0 ? (
           <>
@@ -37,7 +39,7 @@ class Bookings extends Component {
               return (
                 <div id="booking-card" key={booking._id}>
                   <div id="moment-booking">
-                    <Moment format=" dddd DD/MM"></Moment>
+                    <Moment format=" dddd DD/MM">{booking.day}</Moment>
                   </div>
                   <div id="booking-card-details">
                     <p>

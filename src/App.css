@@ -22,32 +22,45 @@ h1 {
 
 h2 {
   font-size: 1.6em;
+  color: var(--blue);
 }
 
 :root {
-  --blue: rgb(37, 53, 105);
-  --bluelight: rgb(133, 196, 205);
+  --blue: #23346d;
+  --bluelight: #73c6cf;
   --red: rgb(237, 92, 115);
   --grey: rgb(218, 226, 228);
 }
 
 #page-name {
+  width: 100vw;
   top: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: #ffffff;
-  margin-top: -5%;
-  margin-left: -5%;
-  margin-right: -5%;
-  padding: 5px;
+  background-color: var(--blue);
+  margin-top: -6%;
+  margin-left: -6%;
 }
-#page-name span {
-  padding: 2px;
+#page-name h1 {
+  margin: 0;
+  padding: 10px;
   font-size: 1.2em;
-  color: #000000;
-  font-weight: bold;
-  font-family: 'Work Sans', sans-serif;
+  color: #ffffff;
+}
+
+#page-name-profile {
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--blue);
+  margin-top: -6%;
+}
+#page-name-profile h1 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2em;
+  color: #ffffff;
 }
 
 #viewport-with-navbar {
@@ -110,12 +123,14 @@ h2 {
   background-color: #ffffff;
 }
 
-#highlight-clubs-card-content > h3,
-p,
-a {
+#highlight-clubs-card-content > h3 {
   background-color: #ffffff;
 }
 
+#club-name-card {
+  font-size: 1.2em;
+  z-index: 1;
+}
 #home-book-btn-div {
   display: flex;
   justify-content: center;
@@ -289,18 +304,8 @@ nav ul li a img {
 }
 
 .go-back {
-  background-color: var(--colorSecondary);
-  text-align: left;
-  padding: 2vh 5vw;
-}
-
-.go-back a {
-  text-decoration: none;
-  color: var(--colorPrimary);
-}
-
-.go-back a:before {
-  content: '<';
+  width: 4vw;
+  height: auto;
 }
 
 /* --- Login / Signup --- */
@@ -403,19 +408,23 @@ select::placeholder {
 }
 
 #user-profile {
+  margin: 5% 0;
   width: 35vw;
   height: 35vw;
   background: white;
   border-radius: 50%;
-  border: 1px solid #6d7bfa;
+  /* border: 1px solid #6d7bfa; */
+  border: 0.2rem solid var(--bluelight);
 }
 
 #profile-categories {
   margin: 25px 0;
-  /* border: 1px solid #000000; */
-  width: 85vw;
+  border: 1.5px solid var(--grey);
+  width: 100vw;
+  height: 7vh;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 2px 8px 0 var(--grey), 0 6px 10px 0 var(--grey);
 }
 #profile-categories p {
   text-decoration: none;
@@ -429,6 +438,18 @@ select::placeholder {
   margin: 0 auto 5px auto;
   /* display: block; */
   transform: translateY(10%);
+}
+
+#profile-bg {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  background-color: var(--grey);
+  /* border: 5px solid tomato; */
+}
+
+#profile-bg img {
+  margin: 5%;
 }
 
 /* --- Bookings --- */
@@ -504,11 +525,12 @@ select::placeholder {
 /* --- Club Detail --- */
 
 .heart {
-  width: 80px;
-  height: 82px;
+  width: 60px;
+  height: 62px;
   position: absolute;
-  /* right: 4vw;
-  bottom: -5.5vh; */
+  margin-top: 1%;
+  margin-left: 15%;
+  right: 4vw;
   z-index: 1;
   filter: none;
 }
@@ -525,4 +547,33 @@ select::placeholder {
 
 #club-detail-header {
   font-size: 1.5em;
+}
+
+/* --- Edit Profile --- */
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-profile-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-container input {
+  margin: 10px 0;
+}
+
+#user-profile-edit {
+  width: 35vw;
+  height: 35vw;
+  background: white;
+  border-radius: 50%;
+  border: 1px solid #6d7bfa;
+  margin-top: 1vh;
+  /* object-fit: cover; */
+  margin-bottom: 10vh;
 }

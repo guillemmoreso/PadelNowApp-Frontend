@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
 import ClubsCards from '../components/ClubsCards';
+import Backbar from '../components/Navigation/Backbar';
 
 class Clubs extends Component {
   state = {
@@ -23,12 +24,13 @@ class Clubs extends Component {
   }
 
   render() {
-    const { clubs, isLoading } = this.state;
+    // const { clubs, isLoading } = this.state;
     return (
       <>
         <div id="viewport-with-navbar">
           <div id="page-name">
-            <span>Clubs</span>
+            <Backbar history={this.props.history} />
+            <h1>Clubs</h1>
           </div>
           <ClubsCards />
         </div>

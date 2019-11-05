@@ -59,7 +59,7 @@ class ClubsCards extends Component {
                   </span>
                 )}
                 <div id="highlight-clubs-card-content">
-                  <h3>{club.name}</h3>
+                  <h1 id="club-name-card">{club.name}</h1>
                   <p id="home-club-text">{club.location}</p>
 
                   {/* <Link id="home-book-btn-div" to="/login"> */}

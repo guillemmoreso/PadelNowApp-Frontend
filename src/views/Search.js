@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import searchService from '../services/searchService';
 import DatePicker from 'react-date-picker';
+import Backbar from '../components/Navigation/Backbar';
+
 // import HourSelector from '../components/HourSelector';
 
 // import Loading from '../components/Loading/Loading';
@@ -33,6 +35,7 @@ class Search extends Component {
 
   onHourChange = searchStartingHour => {
     this.setState({ searchStartingHour: searchStartingHour.target.value });
+    console.log('searchStartingHour', searchStartingHour);
   };
 
   handleFormSubmit = async () => {
@@ -53,7 +56,8 @@ class Search extends Component {
     return (
       <div>
         <div id="page-name">
-          <span>Search</span>
+          <Backbar history={this.props.history} />
+          <h1>Profile</h1>
         </div>
         <br />
         <div id="datePicker">

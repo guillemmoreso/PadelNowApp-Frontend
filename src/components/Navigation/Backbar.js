@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import { withAuth } from '../../Context/AuthContext';
 
 class Backbar extends Component {
-    render() {
-        return (
-            <div className='go-back'>
-                <a onClick={() => {
-                    this.props.history.goBack();
-                }
-                }> Back </a>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <>
+        <img
+          className="go-back"
+          src="../../images/left-arrow.svg"
+          onClick={() => {
+            this.props.history.goBack();
+          }}
+        ></img>
+      </>
+    );
+  }
 }
 
 export default Backbar;

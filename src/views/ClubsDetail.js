@@ -46,7 +46,10 @@ class ClubsDetail extends Component {
     // return <>{!isLoading && <ClubsCardDetail club={club} userClubs={userClubs} />}</>;
     return (
       <section className="club-detail-container">
-        <Backbar history={this.props.history} />
+        <div id="page-name">
+          <Backbar history={this.props.history} />
+          <h1>{name}</h1>
+        </div>
         <div id="club-header-image">
           <img src={clubImages} alt="club-avatar"></img>
         </div>

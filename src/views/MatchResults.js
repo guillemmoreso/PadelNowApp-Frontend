@@ -4,6 +4,7 @@ import { withAuth } from '../Context/AuthContext';
 import userService from '../services/userService';
 import Moment from 'react-moment';
 import Loading from '../components/Loading/Loading';
+import Backbar from '../components/Navigation/Backbar';
 
 class MatchResults extends Component {
   state = {
@@ -24,10 +25,14 @@ class MatchResults extends Component {
   }
 
   render() {
-    const { userBookings, isLoading } = this.state;
+    const { userBookings } = this.state;
 
     return (
       <>
+        <div id="page-name">
+          <Backbar history={this.props.history} />
+          <h1>Match Results</h1>
+        </div>
         {userBookings.length > 0 ? (
           <>
             {userBookings.map(booking => {
@@ -42,7 +47,8 @@ class MatchResults extends Component {
                     </p>
                     <p>Price: {booking.club.price}€</p>
                     <p>Court: {booking.court.courtName}</p>
-                    {!booking.gameResult &&
+                    
+                    {!booking.gameResult ? (
                       userBookings.map(booking => {
                         return (
                           <>
@@ -50,12 +56,11 @@ class MatchResults extends Component {
                             <h3>{booking.club.city}</h3>
                           </>
                         );
-                      })}
+                      })
+                    ) : (
+                      <p>Hola</p>
+                    )}
                   </div>
-                  <Link id="home-book-btn-div" to="#">
-                    {/* <Link id="home-book-btn-div" to={`/bookings/${booking._id}`}> */}
-                    <div id="home-book-btn">Cancel booking</div>
-                  </Link>
                 </div>
               );
             })}

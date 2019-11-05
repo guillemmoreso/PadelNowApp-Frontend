@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
-import clubsService from '../services/clubsService';
+// import clubsService from '../services/clubsService';
 import bookingsService from '../services/bookingsService';
 
 import BookingDescription from '../components/BookingDescription';

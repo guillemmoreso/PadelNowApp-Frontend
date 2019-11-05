@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import userService from '../services/userService';
+import Backbar from '../components/Navigation/Backbar';
 
 class FavoriteClubs extends Component {
   state = {
@@ -34,6 +35,10 @@ class FavoriteClubs extends Component {
     const { clubs, isLoading, userClubs } = this.state;
     return (
       <>
+        <div id="page-name">
+          <Backbar history={this.props.history} />
+          <h1>Favorite Clubs</h1>
+        </div>
         {!isLoading &&
           clubs.map(club => {
             return (

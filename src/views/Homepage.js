@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
 import searchService from '../services/searchService';
-
 import SearchClubs from '../components/SearchClubs';
 import ClubsCards from '../components/ClubsCards';
 import SearchInput from '../components/SearchInput';
