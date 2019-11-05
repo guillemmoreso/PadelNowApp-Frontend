@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import userService from '../services/userService';
+import clubsService from '../services/clubsService';
 import Backbar from '../components/Navigation/Backbar';
 
 class FavoriteClubs extends Component {
@@ -24,7 +25,7 @@ class FavoriteClubs extends Component {
   }
 
   saveClub = id => {
-    userService.saveClub(id).then(response => {
+    clubsService.saveClub(id).then(response => {
       this.setState({
         userClubs: response.updatedUser.clubs,
       });
@@ -33,6 +34,7 @@ class FavoriteClubs extends Component {
 
   render() {
     const { clubs, isLoading, userClubs } = this.state;
+    console.log('Userclubs', userClubs);
     return (
       <>
         <div id="page-name">

@@ -48,9 +48,8 @@ class Bookings extends Component {
                     <p>Price: {booking.club.price}€</p>
                     <p>Court: {booking.court.courtName}</p>
                   </div>
-                  <Link id="home-book-btn-div" to="#">
-                    {/* <Link id="home-book-btn-div" to={`/bookings/${booking._id}`}> */}
-                    <div id="home-book-btn">Cancel booking</div>
+                  <Link id="home-book-btn-div" to={`/bookings/${booking._id}`}>
+                    <div id="home-book-btn">More details </div>
                   </Link>
                 </div>
               );

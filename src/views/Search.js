@@ -35,7 +35,6 @@ class Search extends Component {
 
   onHourChange = searchStartingHour => {
     this.setState({ searchStartingHour: searchStartingHour.target.value });
-    console.log('searchStartingHour', searchStartingHour);
   };
 
   handleFormSubmit = async () => {
@@ -52,7 +51,7 @@ class Search extends Component {
   };
 
   render() {
-    const { clubs, isLoading } = this.state;
+    const { clubs, isLoading, searchStartingHour, date } = this.state;
     return (
       <div>
         <div id="page-name">
@@ -105,7 +104,10 @@ class Search extends Component {
             return (
               <div key={club._id}>
                 <p>{club.name}</p>
-                <Link id="home-book-btn-div" to={`/bookings/${club._id}`}>
+                <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
+                  <div id="home-book-btn">Club details</div>
+                </Link>
+                <Link id="home-book-btn-div" to={`/reservation/${club._id}`}>
                   <div id="home-book-btn">Book now</div>
                 </Link>
               </div>

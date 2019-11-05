@@ -12,8 +12,12 @@ class BookingsService {
     return this.bookings.get('/bookings').then(({ data: bookings }) => bookings);
   }
 
-  getClubById(id) {
-    return this.bookings.get(`/bookings/${id}`).then(({ data: clubs }) => clubs);
+  getBookingById(id) {
+    return this.bookings.get(`/bookings/${id}`).then(({ data: bookings }) => bookings);
+  }
+
+  bookingDelete(id) {
+    return this.bookings.post(`/bookings/${id}/delete`, {}).then(response => response.data);
   }
 }
 
