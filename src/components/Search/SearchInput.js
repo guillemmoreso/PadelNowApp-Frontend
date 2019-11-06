@@ -14,13 +14,17 @@ class SearchInput extends Component {
 
   render() {
     return (
-      <input
-        id="club-search-input"
-        type="text"
-        value={this.state.value}
-        onChange={this.changeInputValue}
-        placeholder="Search here the club"
-      />
+      <div id="div-search-input">
+        <img src="../../images/search.svg" alt="search-icon"></img>
+        <input
+          id="club-search-input"
+          type="text"
+          value={this.state.value}
+          onChange={this.changeInputValue}
+          placeholder="Where do you want to play?"
+        />
+        <span id="input-search-focus-border"></span>
+      </div>
     );
   }
 }
