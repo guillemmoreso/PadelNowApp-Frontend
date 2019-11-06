@@ -34,13 +34,13 @@ class Reservation extends Component {
 
   render() {
     const { club, isLoading, searchStartingHour } = this.state;
-    const { name, location, price, openingHours, clubImages, _id } = this.state.club;
+    const { name, location, price, openingHours, clubImages, _id, courts } = this.state.club;
 
-    console.log('PROPS', this.props.searchStartingHour);
+    console.log('PROPS', this.state.club.courts);
     return (
       <>
         <h1 id="club-detail-header">{name}</h1>
-        <p>{location}</p>
+        {/* <p>{courts[0].courtName}</p> */}
         <p>Court Price: {price}€</p>
       </>
     );

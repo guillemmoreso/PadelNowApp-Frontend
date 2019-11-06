@@ -40,6 +40,7 @@ class BookingDetail extends Component {
       const booking = await bookingsService.bookingDelete(id);
       console.log('result:booking ', booking);
       this.setState({ booking });
+      this.props.history.push('/bookings');
     } catch (error) {
       console.error('Error buscando pistas disponibles');
     }

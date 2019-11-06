@@ -20,6 +20,15 @@ class SearchService {
       return data;
     });
   }
+
+  // bookNow(search) {
+  //   const { searchStartingHour, date } = search;
+
+  //   return this.search.post('/search', { searchStartingHour, date }).then(({ data }) => {
+  //     console.log('Respuesta:Booknow ', data);
+  //     return data;
+  //   });
+  // }
 }
 
 const searchService = new SearchService();

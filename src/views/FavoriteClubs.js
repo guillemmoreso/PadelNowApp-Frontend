@@ -26,15 +26,16 @@ class FavoriteClubs extends Component {
 
   saveClub = id => {
     clubsService.saveClub(id).then(response => {
+      console.log('response', response);
       this.setState({
         userClubs: response.updatedUser.clubs,
       });
+      this.props.history.push('/profile/favorites');
     });
   };
 
   render() {
     const { clubs, isLoading, userClubs } = this.state;
-    console.log('Userclubs', userClubs);
     return (
       <>
         <div id="page-name">
