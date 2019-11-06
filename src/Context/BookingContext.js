@@ -1,52 +1,79 @@
-// // eslint-disable-next-line max-classes-per-file
-// import React, { Component, createContext } from 'react';
-// import bookingsService from '../services/bookingsService';
-// import Loading from '../components/Loading/Loading';
+// eslint-disable-next-line max-classes-per-file
+import React, { Component, createContext } from 'react';
+import bookingsService from '../services/bookingsService';
+import searchService from '../services/searchService';
 
-// const BookingContext = createContext();
+const BookingContext = createContext();
 
-// const { Provider } = BookingContext;
+const { Provider } = BookingContext;
 
-// const BookingConsumer = BookingContext.Consumer;
+const BookingConsumer = BookingContext.Consumer;
 
-// export const withBooking = Comp => {
-//   return class withBooking extends Component {
-//     render() {
-//       return (
-//         <BookingConsumer>
-//           {({ searchStartingHour, date, isLoading }) => (
-//             <Comp {...this.props} searchStartingHour={searchStartingHour} date={date} isLoading={isLoading} />
-//           )}
-//         </BookingConsumer>
-//       );
-//     }
-//   };
-// };
+export const withBooking = Comp => {
+  return class withBooking extends Component {
+    render() {
+      return (
+        <BookingConsumer>
+          {({ searchStartingHour, date }) => (
+            <Comp {...this.props} searchStartingHour={searchStartingHour} date={date} />
+          )}
+        </BookingConsumer>
+      );
+    }
+  };
+};
 
-// export default class BookingProvider extends Component {
-//   state = {
-//     searchStartingHour: null,
-//     date: null,
-//     isLoading: true,
-//   };
-//   //Tiene que permitir modificorlos set date y searching hour (getters & Setters)
+export default class BookingProvider extends Component {
+  state = {
+    searchStartingHour: '',
+    date: null,
+  };
+  //Tiene que permitir modificorlos set date y searching hour (getters & Setters)
 
-//   render() {
-//     const { isLoading, searchStartingHour, date } = this.state;
-//     const { children } = this.props;
-//     if (isLoading) {
-//       return <Loading />;
-//     }
-//     return (
-//       <Provider
-//         value={{
-//           isLoading,
-//           searchStartingHour,
-//           date,
-//         }}
-//       >
-//         {children}
-//       </Provider>
-//     );
-//   }
-// }
+  // handleDataPicker = user => {
+  //   searchService
+  //     .signup(user)
+  //     .then(searchStartingHourEdit => {
+  //       this.setState({
+  //         searchStartingHour: searchStartingHourEdit,
+  //       });
+  //     })
+  //     .catch(() => {
+  //       this.setState({
+  //         searchStartingHour: 'error',
+  //         date: 'error',
+  //       });
+  //     });
+  // };
+
+  handleHourChange = selectInput => {
+    searchService
+      .hourChange(selectInput)
+      .then(registeredInput => {
+        this.setState({
+          searchStartingHour: registeredInput,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          searchStartingHour: null,
+        });
+      });
+  };
+
+  render() {
+    const { searchStartingHour, date } = this.state;
+    const { children } = this.props;
+
+    return (
+      <Provider
+        value={{
+          searchStartingHour,
+          date,
+        }}
+      >
+        {children}
+      </Provider>
+    );
+  }
+}

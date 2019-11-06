@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
+import { withBooking } from '../Context/BookingContext';
+
 import searchService from '../services/searchService';
 import DatePicker from 'react-date-picker';
 import Backbar from '../components/Navigation/Backbar';
-// import HourSelector from '../components/HourSelector';
+import HourSelector from '../components/HourSelector';
 // import Loading from '../components/Loading/Loading';
 
 class Search extends Component {
   state = {
     date: new Date(),
-    searchStartingHour: 9,
+    searchStartingHour: this.props.searchStartingHour,
     clubs: [],
     isLoading: true,
   };
@@ -31,13 +33,40 @@ class Search extends Component {
     this.setState({ date });
   };
 
-  onHourChange = searchStartingHour => {
-    this.setState({ searchStartingHour: searchStartingHour.target.value });
+  // onHourChange = searchStartingHour => {
+  //   this.setState({ searchStartingHour: searchStartingHour.target.value });
+  // };
+
+  // onHourChange = e => {
+  //   e.preventDefault();
+  //   const { searchStartingHour } = this.state;
+  //   this.props.handleHourChange({
+  //     searchStartingHour,
+  //   });
+  // };
+
+  // handleFormSubmit = async () => {
+  //   const { searchStartingHour, date } = this.state;
+  //   this.props.handleDataPicker({
+  //     searchStartingHour,
+  //     date,
+  //   });
+  // };
+
+  handleFormSubmit2 = e => {
+    e.preventDefault();
+    console.log('hola');
+    const { searchStartingHour, date } = this.state;
+    this.props.handleDataPicker({
+      searchStartingHour,
+      date,
+    });
   };
 
   handleFormSubmit = async () => {
     try {
       const { searchStartingHour, date } = this.state;
+      console.log('State', this.state);
       const userSearchResult = await searchService.dataPicker({ searchStartingHour, date });
       // console.log('userSearchResult: ', userSearchResult);
       this.setState({ clubs: userSearchResult });
@@ -46,6 +75,14 @@ class Search extends Component {
     }
   };
 
+  // handleDataPickerSubmit = () => {
+  //   const { searchStartingHour, date } = this.state;
+  //   console.log('holaaa');
+  //   this.props.handleDataPicker({
+  //     searchStartingHour,
+  //     date,
+  //   });
+  // };
   // handleUserSearchData = () => {
   //   const { searchStartingHour, date } = this.state;
   //   this.props.handleDataPicker({
@@ -80,13 +117,12 @@ class Search extends Component {
           <DatePicker onChange={this.onDateChange} value={this.state.date} />
         </div>
         <br />
-        {/* <HourSelector /> */}
         <div id="display-block">
           <div id="hour-select-div">
-            <label>
-              {/* Select starting hour: */}
-              <br />
-              <select id="hour-select" onChange={this.onHourChange}>
+            <br />
+            <HourSelector />
+
+            {/* <select id="hour-select" onChange={this.onHourChange}>
                 <option defaultValue value="9">
                   09:00
                 </option>
@@ -103,8 +139,7 @@ class Search extends Component {
                 <option value="20">20:00</option>
                 <option value="21">21:00</option>
                 <option value="22">22:00</option>
-              </select>
-            </label>
+              </select> */}
           </div>
           <div id="submit-datapicker">
             <input type="submit" value="Submit" onClick={this.handleFormSubmit} id="submit-datapicker" />
@@ -121,12 +156,12 @@ class Search extends Component {
                 <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
                   <div id="home-book-btn">Club details</div>
                 </Link>
-                {/* <Link id="home-book-btn-div" to={`/reservation/${club._id}`}>
+                <Link id="home-book-btn-div" to={`/reservation/${club._id}`}>
                   <div id="home-book-btn">Book now</div>
-                </Link> */}
-                <div id="home-book-btn-div">
-                  <input type="submit" value="Book Now" onClick={this.handleBookNow} id="home-book-btn" />
-                </div>
+                </Link>
+                {/* <div id="home-book-btn-div">
+                  <input type="submit" value="Book Now" onClick={this.handleDataPickerSubmit} id="home-book-btn" />
+                </div> */}
               </div>
             );
           })}
@@ -135,5 +170,5 @@ class Search extends Component {
   }
 }
 
-// export default withAuth(withBooking(Search));
-export default withAuth(Search);
+export default withAuth(withBooking(Search));
+// export default withAuth(Search);

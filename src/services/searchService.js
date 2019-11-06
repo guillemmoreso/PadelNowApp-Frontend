@@ -21,6 +21,22 @@ class SearchService {
     });
   }
 
+  hourChange(selectInput) {
+    const { searchStartingHour } = selectInput;
+    return this.search.post('/search', { searchStartingHour }).then(({ data }) => {
+      console.log('Respuesta Context: ', data);
+      return data;
+    });
+  }
+
+  signup(user) {
+    const { searchStartingHour, date } = user;
+    return this.search.post('/search', { searchStartingHour, date }).then(({ data }) => {
+      console.log('Respuesta: Context ', data);
+      return data;
+    });
+  }
+
   // bookNow(search) {
   //   const { searchStartingHour, date } = search;
 

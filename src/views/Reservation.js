@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
+import { withBooking } from '../Context/BookingContext';
+
 import clubsService from '../services/clubsService';
 import ClubsCards from '../components/ClubsCards';
 import Backbar from '../components/Navigation/Backbar';
@@ -9,7 +11,7 @@ class Reservation extends Component {
   state = {
     club: {},
     isLoading: true,
-    searchStartingHour: '',
+    searchStartingHour: this.props.searchStartingHour,
   };
 
   async componentDidMount() {
@@ -36,7 +38,7 @@ class Reservation extends Component {
     const { club, isLoading, searchStartingHour } = this.state;
     const { name, location, price, openingHours, clubImages, _id, courts } = this.state.club;
 
-    console.log('PROPS', this.state.club.courts);
+    console.log('PROPS searchStartingHour', this.state.searchStartingHour);
     return (
       <>
         <h1 id="club-detail-header">{name}</h1>
@@ -47,4 +49,5 @@ class Reservation extends Component {
   }
 }
 
-export default withAuth(Reservation);
+// export default withAuth(Reservation);
+export default withAuth(withBooking(Reservation));
