@@ -1,18 +1,18 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { withAuth } from '../Context/AuthContext';
+import { withAuth } from '../../Context/AuthContext';
 
-function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
+function PrivateRoute({ component: Comp, isLoggedin, ...rest }) {
   return (
     <Route
       {...rest}
       render={props =>
-        !isLoggedin ? (
+        isLoggedin ? (
           <Comp {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: '/search',
+              pathname: '/',
             }}
           />
         )
@@ -21,4 +21,4 @@ function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
   );
 }
 
-export default withAuth(AnonRoute);
+export default withAuth(PrivateRoute);

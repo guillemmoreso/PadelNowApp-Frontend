@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
 import Loading from '../components/Loading/Loading';
-import Moment from 'react-moment';
-import { Link } from 'react-router-dom';
 import Backbar from '../components/Navigation/Backbar';
 
 class Bookings extends Component {
@@ -61,7 +61,6 @@ class Bookings extends Component {
             <Loading />
 
             <Link id="logout-btn-div" to="/search">
-              {/* <Link id="home-book-btn-div" to={`/clubs/${club._id}`}> */}
               <div id="logout-btn">Book now</div>
             </Link>
           </>

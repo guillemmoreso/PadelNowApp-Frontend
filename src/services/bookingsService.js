@@ -8,10 +8,6 @@ class BookingsService {
     });
   }
 
-  // currentBookingData(booking) {
-  //   return this.bookings.get('/search').then(response => response.data);
-  // }
-
   getAllUserBookings() {
     return this.bookings.get('/bookings').then(({ data: bookings }) => bookings);
   }

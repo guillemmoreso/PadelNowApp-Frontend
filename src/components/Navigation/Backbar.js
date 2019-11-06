@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withAuth } from '../../Context/AuthContext';
 
 class Backbar extends Component {
   render() {
@@ -11,6 +10,7 @@ class Backbar extends Component {
           onClick={() => {
             this.props.history.goBack();
           }}
+          alt="arrow-back"
         ></img>
       </>
     );

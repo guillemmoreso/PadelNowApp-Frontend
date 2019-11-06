@@ -8,7 +8,6 @@ class Profile extends Component {
     img: '',
   };
 
-  // eslint-disable-next-line class-methods-use-this
   render() {
     const { handleLogout } = this.props;
     const { name, surname } = this.props.user;

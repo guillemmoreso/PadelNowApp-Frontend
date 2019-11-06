@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { withAuth } from '../Context/AuthContext';
-import clubsService from '../services/clubsService';
+import { withAuth } from '../../Context/AuthContext';
+import clubsService from '../../services/clubsService';
 
 class ClubsCards extends Component {
   state = {
@@ -23,7 +23,7 @@ class ClubsCards extends Component {
   }
 
   saveClub = id => {
-    clubsService.saveClub(id).then(response => {
+    clubsService.saveClubToFavorites(id).then(response => {
       this.setState({
         userClubs: response.updatedUser.clubs,
       });

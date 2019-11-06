@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { withAuth } from '../Context/AuthContext';
-import userService from '../services/userService';
 import Moment from 'react-moment';
+import { withAuth } from '../Context/AuthContext';
+import profileService from '../services/profileService';
 import Loading from '../components/Loading/Loading';
 import Backbar from '../components/Navigation/Backbar';
 
@@ -14,7 +14,7 @@ class MatchResults extends Component {
 
   async componentDidMount() {
     try {
-      const userBookings = await userService.getAllUserBookings();
+      const userBookings = await profileService.getAllUserBookings();
       this.setState({
         userBookings,
         isLoading: false,
@@ -47,7 +47,7 @@ class MatchResults extends Component {
                     </p>
                     <p>Price: {booking.club.price}€</p>
                     <p>Court: {booking.court.courtName}</p>
-                    
+
                     {!booking.gameResult ? (
                       userBookings.map(booking => {
                         return (
@@ -71,7 +71,6 @@ class MatchResults extends Component {
             <Loading />
 
             <Link id="logout-btn-div" to="/search">
-              {/* <Link id="home-book-btn-div" to={`/clubs/${club._id}`}> */}
               <div id="logout-btn">Book now</div>
             </Link>
           </>

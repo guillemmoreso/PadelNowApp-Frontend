@@ -1,11 +1,11 @@
 import React from 'react';
-import { withAuth } from '../Context/AuthContext';
+import { withAuth } from '../../Context/AuthContext';
 import Moment from 'react-moment';
 
 const BookingDescription = props => {
   const {
     // eslint-disable-next-line react/prop-types
-    booking: { startingHour, club, user, court, day },
+    booking: { startingHour, club, court, day },
   } = props;
   return (
     <div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withBooking } from '../Context/BookingContext';
-import { withAuth } from '../Context/AuthContext';
+import { withBooking } from '../../Context/BookingContext';
+import { withAuth } from '../../Context/AuthContext';
 
 class HourSelector extends Component {
   state = {
@@ -12,9 +12,7 @@ class HourSelector extends Component {
     this.handleOnHourSubmit();
   };
 
-  handleOnHourSubmit = () => {
-    console.log('hola', this.state.searchStartingHour);
-  };
+  handleOnHourSubmit = () => {};
 
   render() {
     return (

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
-import ClubsCards from '../components/ClubsCards';
+import ClubsCards from '../components/Club/ClubsCards';
 import Backbar from '../components/Navigation/Backbar';
 
 class Clubs extends Component {

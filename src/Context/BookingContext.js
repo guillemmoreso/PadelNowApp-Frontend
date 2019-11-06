@@ -1,6 +1,5 @@
 // eslint-disable-next-line max-classes-per-file
 import React, { Component, createContext } from 'react';
-import bookingsService from '../services/bookingsService';
 import searchService from '../services/searchService';
 
 const BookingContext = createContext();

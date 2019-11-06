@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { withAuth } from '../Context/AuthContext';
-import clubsService from '../services/clubsService';
-import searchService from '../services/searchService';
-import SearchClubs from '../components/SearchClubs';
-import ClubsCards from '../components/ClubsCards';
-import SearchInput from '../components/SearchInput';
-
 import { Link } from 'react-router-dom';
+import { withAuth } from '../Context/AuthContext';
+import searchService from '../services/searchService';
+import SearchInput from '../components/Search/SearchInput';
+
 
 class Homepage extends Component {
   state = {
@@ -35,7 +32,7 @@ class Homepage extends Component {
   };
 
   render() {
-    const { clubs, isLoading } = this.state;
+    const { clubs } = this.state;
 
     return (
       <>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
-import userService from '../services/userService';
+import profileService from '../services/profileService';
 import clubsService from '../services/clubsService';
 import Backbar from '../components/Navigation/Backbar';
 
@@ -14,7 +14,7 @@ class FavoriteClubs extends Component {
 
   async componentDidMount() {
     try {
-      const clubs = await userService.getAllFavoriteClubs();
+      const clubs = await profileService.getAllFavoriteClubs();
       this.setState({
         clubs,
         isLoading: false,
@@ -25,8 +25,7 @@ class FavoriteClubs extends Component {
   }
 
   saveClub = id => {
-    clubsService.saveClub(id).then(response => {
-      console.log('response', response);
+    clubsService.saveClubToFavorites(id).then(response => {
       this.setState({
         userClubs: response.updatedUser.clubs,
       });
@@ -70,7 +69,6 @@ class FavoriteClubs extends Component {
                   <h3>{club.name}</h3>
                   <p id="home-club-text">{club.location}</p>
 
-                  {/* <Link id="home-book-btn-div" to="/login"> */}
                   <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
                     <div id="home-book-btn">Book now</div>
                   </Link>

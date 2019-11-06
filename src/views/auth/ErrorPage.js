@@ -1,7 +1,7 @@
 import React from 'react';
-import Loading from '../components/Loading/Loading';
+import Loading from '../../components/Loading/Loading';
 
-function ErrorPage(props) {
+function ErrorPage() {
   return (
     <div>
       <h1>ERROR 404 </h1>

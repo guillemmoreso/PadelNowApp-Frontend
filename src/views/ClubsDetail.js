@@ -31,7 +31,7 @@ class ClubsDetail extends Component {
   }
 
   saveClub = id => {
-    clubsService.saveClub(id).then(response => {
+    clubsService.saveClubToFavorites(id).then(response => {
       this.setState({
         userClubs: response.updatedUser.clubs,
       });
@@ -39,11 +39,9 @@ class ClubsDetail extends Component {
   };
 
   render() {
-    const { club, isLoading, userClubs } = this.state;
-    console.log('userClubs', userClubs);
-    const { name, location, price, openingHours, clubImages, _id } = this.state.club;
+    const { userClubs } = this.state;
+    const { name, location, price, clubImages, _id } = this.state.club;
 
-    // return <>{!isLoading && <ClubsCardDetail club={club} userClubs={userClubs} />}</>;
     return (
       <section className="club-detail-container">
         <div id="page-name">

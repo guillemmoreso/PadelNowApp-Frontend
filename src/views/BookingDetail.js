@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
-import BookingDescription from '../components/BookingDescription';
-import { Link } from 'react-router-dom';
+import BookingDescription from '../components/Booking/BookingDescription';
 
 class BookingDetail extends Component {
   state = {
@@ -38,11 +38,10 @@ class BookingDetail extends Component {
     } = this.props;
     try {
       const booking = await bookingsService.bookingDelete(id);
-      console.log('result:booking ', booking);
       this.setState({ booking });
       this.props.history.push('/bookings');
     } catch (error) {
-      console.error('Error buscando pistas disponibles');
+      console.error('Error while booking delete');
     }
   };
 
@@ -64,7 +63,6 @@ class BookingDetail extends Component {
             <h1>You sucessfully deleted your booking...</h1>
 
             <Link id="logout-btn-div" to="/search">
-              {/* <Link id="home-book-btn-div" to={`/clubs/${club._id}`}> */}
               <div id="logout-btn">Book now</div>
             </Link>
           </>
