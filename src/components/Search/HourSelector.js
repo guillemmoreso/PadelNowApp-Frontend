@@ -3,16 +3,9 @@ import { withBooking } from '../../Context/BookingContext';
 import { withAuth } from '../../Context/AuthContext';
 
 class HourSelector extends Component {
-  state = {
-    searchStartingHour: 9,
-  };
-
-  onHourChange = searchStartingHour => {
-    // e.persist();
-    this.setState({ searchStartingHour: searchStartingHour.target.value });
-    this.props.handleHourChange({
-      searchStartingHour,
-    });
+  onHourChange = e => {
+    e.preventDefault();
+    this.props.handleHourChange(e.target.value);
   };
 
   // handleOnHourSubmit = e => {
@@ -25,12 +18,11 @@ class HourSelector extends Component {
   // };
 
   render() {
-    console.log('searchStartingHour', this.state.searchStartingHour);
     return (
       <select id="selector" onChange={this.onHourChange}>
         {/* // <select id="selector" onChange={this.handleOnHourSubmit}> */}
         <option defaultValue value="9">
-          09:00
+          9:00
         </option>
         <option value="10">10:00</option>
         <option value="11">11:00</option>

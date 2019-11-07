@@ -27,8 +27,8 @@ class SearchService {
   }
 
   hourChange(selectInput) {
-    const { searchStartingHour } = selectInput;
-    return this.search.post('/search', { searchStartingHour }).then(({ data: selectedHour }) => selectedHour);
+    console.log('input: ', selectInput);
+    return this.search.post('/search', { selectInput }).then(({ data: selectedHour }) => selectedHour);
   }
 }
 

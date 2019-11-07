@@ -10,8 +10,6 @@ import HourSelector from '../components/Search/HourSelector';
 
 class Search extends Component {
   state = {
-    date: new Date(),
-    searchStartingHour: this.props.searchStartingHour,
     clubs: [],
     isLoading: true,
   };
@@ -29,7 +27,7 @@ class Search extends Component {
   }
 
   onDateChange = date => {
-    this.setState({ date });
+    this.props.handleDateSubmit(date).bind(this);
   };
 
   handleFormSubmit = async () => {
@@ -44,7 +42,6 @@ class Search extends Component {
 
   render() {
     const { clubs, isLoading, searchStartingHour } = this.state;
-    console.log('searchStartingHour', searchStartingHour);
     return (
       <div id="viewport-with-navbar">
         <div id="page-name">
@@ -53,7 +50,7 @@ class Search extends Component {
         </div>
         <div id="datePicker">
           <span id="select-date">Select date:</span>
-          <DatePicker onChange={this.onDateChange} value={this.state.date} />
+          <DatePicker onChange={this.onDateChange} value={this.props.date} />
         </div>
         <br />
         <div id="display-block">

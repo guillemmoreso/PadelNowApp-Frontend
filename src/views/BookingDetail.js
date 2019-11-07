@@ -40,7 +40,7 @@ class BookingDetail extends Component {
       },
     } = this.props;
     try {
-      const booking = await bookingsService.bookingDelete(id);
+      await bookingsService.bookingDelete(id);
       toast.success('Booking deleted');
 
       this.props.history.push('/bookings');
