@@ -49,7 +49,6 @@ class Search extends Component {
           <Backbar history={this.props.history} />
           <h1>Search</h1>
         </div>
-        <br />
         <div id="datePicker">
           <span id="select-date">Select date:</span>
           <DatePicker onChange={this.onDateChange} value={this.state.date} />
@@ -57,16 +56,15 @@ class Search extends Component {
         <br />
         <div id="display-block">
           <div id="hour-select-div">
-            <br />
             <HourSelector />
           </div>
           <div id="submit-datapicker">
             <input type="submit" value="Submit" onClick={this.handleFormSubmit} id="submit-datapicker" />
           </div>
         </div>
-        <header className="header-clubs">
+        {/* <header className="header-clubs">
           <h3>Clubs still with available courts</h3>
-        </header>
+        </header> */}
         {!isLoading &&
           clubs.map(club => {
             return (

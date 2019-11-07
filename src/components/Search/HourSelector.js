@@ -16,7 +16,7 @@ class HourSelector extends Component {
 
   render() {
     return (
-      <select onChange={this.onHourChange}>
+      <select id="selector" onChange={this.onHourChange}>
         <option defaultValue value="9">
           09:00
         </option>
