@@ -12,11 +12,23 @@ class SearchService {
     return this.search.get('/search').then(({ data: clubs }) => clubs);
   }
 
+  // dataPicker(search) {
+  //   const { searchStartingHour, date } = search;
+  //   return this.search.post('/search', { searchStartingHour, date }).then(({ data }) => {
+  //     return data;
+  //   });
+  // }
+
   dataPicker(search) {
-    const { searchStartingHour, date } = search;
-    return this.search.post('/search', { searchStartingHour, date }).then(({ data }) => {
+    const { date } = search;
+    return this.search.post('/search', { date }).then(({ data }) => {
       return data;
     });
+  }
+
+  hourChange(selectInput) {
+    const { searchStartingHour } = selectInput;
+    return this.search.post('/search', { searchStartingHour }).then(({ data: selectedHour }) => selectedHour);
   }
 }
 

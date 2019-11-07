@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
 import BookingDescription from '../components/Booking/BookingDescription';
@@ -39,7 +41,8 @@ class BookingDetail extends Component {
     } = this.props;
     try {
       const booking = await bookingsService.bookingDelete(id);
-      this.setState({ booking });
+      toast.success('Booking deleted');
+
       this.props.history.push('/bookings');
     } catch (error) {
       console.error('Error while booking delete');

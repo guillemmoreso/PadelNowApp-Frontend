@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
 import './App.css';
 
 import Homepage from './views/Homepage';
@@ -28,6 +30,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <ToastContainer autoClose={2000} />
         <Router>
           <div className="container">
             <div className="data-container">

@@ -8,15 +8,27 @@ class HourSelector extends Component {
   };
 
   onHourChange = searchStartingHour => {
+    // e.persist();
     this.setState({ searchStartingHour: searchStartingHour.target.value });
-    this.handleOnHourSubmit();
+    this.props.handleHourChange({
+      searchStartingHour,
+    });
   };
 
-  handleOnHourSubmit = () => {};
+  // handleOnHourSubmit = e => {
+  //   e.preventDefault();
+  //   const { searchStartingHour } = this.state;
+  //   this.setState({ searchStartingHour: searchStartingHour.target.value });
+  //   this.props.handleHourChange({
+  //     searchStartingHour,
+  //   });
+  // };
 
   render() {
+    console.log('searchStartingHour', this.state.searchStartingHour);
     return (
       <select id="selector" onChange={this.onHourChange}>
+        {/* // <select id="selector" onChange={this.handleOnHourSubmit}> */}
         <option defaultValue value="9">
           09:00
         </option>

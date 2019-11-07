@@ -13,8 +13,13 @@ export const withBooking = Comp => {
     render() {
       return (
         <BookingConsumer>
-          {({ searchStartingHour, date }) => (
-            <Comp {...this.props} searchStartingHour={searchStartingHour} date={date} />
+          {({ handleHourChange, searchStartingHour, date }) => (
+            <Comp
+              {...this.props}
+              searchStartingHour={searchStartingHour}
+              date={date}
+              handleHourChange={handleHourChange}
+            />
           )}
         </BookingConsumer>
       );
@@ -28,22 +33,6 @@ export default class BookingProvider extends Component {
     date: null,
   };
   //Tiene que permitir modificorlos set date y searching hour (getters & Setters)
-
-  // handleDataPicker = user => {
-  //   searchService
-  //     .signup(user)
-  //     .then(searchStartingHourEdit => {
-  //       this.setState({
-  //         searchStartingHour: searchStartingHourEdit,
-  //       });
-  //     })
-  //     .catch(() => {
-  //       this.setState({
-  //         searchStartingHour: 'error',
-  //         date: 'error',
-  //       });
-  //     });
-  // };
 
   handleHourChange = selectInput => {
     searchService
@@ -63,11 +52,12 @@ export default class BookingProvider extends Component {
   render() {
     const { searchStartingHour, date } = this.state;
     const { children } = this.props;
-
+    console.log('Context searchStartingHour ', searchStartingHour);
     return (
       <Provider
         value={{
           searchStartingHour,
+          handleHourChange: this.handleHourChange,
           date,
         }}
       >

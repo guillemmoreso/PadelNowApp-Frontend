@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
-import Backbar from '../components/Navigation/Backbar';
 
 class Profile extends Component {
   state = {
@@ -13,53 +12,48 @@ class Profile extends Component {
     const { name, surname } = this.props.user;
 
     return (
-      <div className="profile-container">
-        <div id="page-name-profile">
-          <Backbar history={this.props.history} />
-          <h1>Profile</h1>
-        </div>
+      <div id="viewport-with-navbar">
         <div id="profile-bg">
+          <h1>
+            {name} {surname}
+          </h1>
           <img
             id="user-profile"
             src="https://www.worldpadeltour.com/media-content/2019/07/francisco-navarro-compn-4f278b973c-220x260.JPG"
             alt="profile"
           />
-          <h2>
-            {name} {surname}
-          </h2>
         </div>
         <div id="other-features">
-          <Link to={'/clubs'}>
-            <div id="profile-categories">
+          <Link id="profile-btn-div" to={'/clubs'}>
+            <div id="profile-btn">
               <p>List of Clubs</p>
-              <div>
-                <img id="category-img" src="../../images/placeholder.svg" alt="location"></img>
-              </div>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/club-profile.svg" alt="location"></img>
             </div>
           </Link>
-
-          <Link to={'/profile/favorites'}>
-            <div id="profile-categories">
+          <Link id="profile-btn-div" to={'/profile/favorites'}>
+            <div id="profile-btn">
               <p>My Favorite Clubs</p>
-              <div>
-                <img id="category-img" src="../../images/heart.svg" alt="heart"></img>
-              </div>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/heart-profile.svg" alt="heart"></img>
             </div>
           </Link>
-          <Link to={'/profile/results'}>
-            <div id="profile-categories">
+          <Link id="profile-btn-div" to={'/profile/results'}>
+            <div id="profile-btn">
               <p>My Results</p>
-              <div>
-                <img id="category-img" src="../../images/versus.svg" alt="versus"></img>
-              </div>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/versus-profile.svg" alt="versus"></img>
             </div>
           </Link>
-          <Link to={'/profile/edit-profile'}>
-            <div id="profile-categories">
+          <Link id="profile-btn-div" to={'/profile/edit-profile'}>
+            <div id="profile-btn">
               <p>Edit Profile</p>
-              <div>
-                <img id="category-img" src="../../images/resume.svg" alt="edit-profile"></img>
-              </div>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/edit-profile.svg" alt="edit-profile"></img>
             </div>
           </Link>
         </div>

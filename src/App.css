@@ -49,7 +49,6 @@ h1 {
 
 h2 {
   font-size: 1.6em;
-  color: var(--blue);
 }
 
 #viewport-with-navbar {
@@ -468,31 +467,19 @@ nav ul li a img {
 
 /* --- Profile --- */
 
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-}
-
 #user-profile {
   margin: 5% 0;
-  width: 35vw;
-  height: 35vw;
+  width: 20vw;
+  height: 20vw;
   background: white;
   border-radius: 50%;
-  border: 0.2rem solid var(--bluelight);
+  margin-right: 5%;
 }
 
-#profile-categories {
-  margin: 25px 0;
-  border: 1.5px solid var(--grey);
-  width: 100vw;
-  height: 7vh;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 2px 8px 0 var(--grey), 0 6px 10px 0 var(--grey);
+#other-features {
+  margin-top: 4vh;
 }
+
 #profile-categories p {
   text-decoration: none;
   color: var(--blue);
@@ -501,20 +488,51 @@ nav ul li a img {
   transform: translateY(25%);
 }
 #category-img {
-  width: 4.5vh;
-  margin: 0 auto 5px auto;
-  transform: translateY(10%);
+  width: 4vh;
+  /* margin: 0 auto 5px auto; */
 }
 
 #profile-bg {
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -6%;
+  margin-left: -6%;
+  box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
   display: flex;
   align-items: center;
   width: 100vw;
-  background-color: var(--grey);
 }
 
-#profile-bg img {
-  margin: 5%;
+#profile-bg h1 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.6em;
+  color: var(--font);
+}
+
+#profile-btn-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  align-items: center;
+  margin: 4vh 0;
+}
+
+#profile-btn {
+  color: var(--font);
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#profile-btn h2 {
+  font-weight: normal;
+  font-size: 1em;
 }
 
 /* --- Bookings --- */
@@ -633,7 +651,7 @@ nav ul li a img {
   margin-top: 3%;
   margin-right: 3%;
   right: 4vw;
-  z-index: 1;
+  /* z-index: 1; */
   filter: none;
 }
 
@@ -668,6 +686,8 @@ nav ul li a img {
 
 #club-header-image img {
   width: 100%;
+  max-height: 30vh;
+  object-fit: cover;
 }
 
 #club-detail-header {
@@ -698,7 +718,7 @@ nav ul li a img {
   height: 35vw;
   background: white;
   border-radius: 50%;
-  border: 1px solid #6d7bfa;
-  margin-top: 1vh;
-  margin-bottom: 10vh;
+  border: 2px solid rgba(47, 51, 51, 0.08);
+  margin-top: 3vh;
+  margin-bottom: 5vh;
 }

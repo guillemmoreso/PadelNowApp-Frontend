@@ -15,7 +15,7 @@ class SearchInput extends Component {
   render() {
     return (
       <div id="div-search-input">
-        <img src="../../images/search.svg" alt="search-icon"></img>
+        <img src="../../images/search-input.svg" alt="search-icon"></img>
         <input
           id="club-search-input"
           type="text"

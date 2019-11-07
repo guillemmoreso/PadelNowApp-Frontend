@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-date-picker';
 import { withAuth } from '../Context/AuthContext';
 import clubsService from '../services/clubsService';
 import Backbar from '../components/Navigation/Backbar';
+import ClubHeart from '../components/Club/ClubHeart';
+import HourSelector from '../components/Search/HourSelector';
 
 class ClubsDetail extends Component {
   state = {
+    date: new Date(),
     club: {},
-    userClubs: this.props.user.clubs,
     isLoading: true,
   };
 
@@ -39,7 +42,6 @@ class ClubsDetail extends Component {
   };
 
   render() {
-    const { userClubs } = this.state;
     const { name, location, clubImages, _id } = this.state.club;
 
     return (
@@ -58,25 +60,20 @@ class ClubsDetail extends Component {
         </div>
         {/* <p>Court Price: {price}€</p> */}
         <div id="club-detail-heart">
-          {userClubs.includes(_id) ? (
-            <span
-              className="heart"
-              onClick={() => {
-                this.saveClub(_id);
-              }}
-            >
-              <img src="/images/heart-circle-full.svg" alt="Spot saved" />
-            </span>
-          ) : (
-            <span
-              className="heart"
-              onClick={() => {
-                this.saveClub(_id);
-              }}
-            >
-              <img src="/images/heart-circle-empty.svg" alt="Spot saved" />
-            </span>
-          )}
+          <ClubHeart club={_id} />
+        </div>
+        <div id="datePicker">
+          <span id="select-date">Select date:</span>
+          <DatePicker onChange={this.onDateChange} value={this.state.date} />
+        </div>
+        <br />
+        <div id="display-block">
+          <div id="hour-select-div">
+            <HourSelector />
+          </div>
+          <div id="submit-datapicker">
+            <input type="submit" value="Submit" onClick={this.handleFormSubmit} id="submit-datapicker" />
+          </div>
         </div>
       </section>
     );

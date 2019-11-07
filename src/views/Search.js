@@ -44,6 +44,7 @@ class Search extends Component {
 
   render() {
     const { clubs, isLoading, searchStartingHour } = this.state;
+    console.log('searchStartingHour', searchStartingHour);
     return (
       <div id="viewport-with-navbar">
         <div id="page-name">
@@ -68,7 +69,9 @@ class Search extends Component {
           clubs.map(club => {
             return (
               <div id="highlight-clubs-card-search" key={club._id}>
-                <img id="highlight-clubs-card-img-search" src={club.clubImages[0]} alt="club-avatar"></img>
+                <Link to={`/clubs/${club._id}`}>
+                  <img id="highlight-clubs-card-img-search" src={club.clubImages[0]} alt="club-avatar"></img>
+                </Link>
                 <ClubHeart club={club._id} />
                 <div id="highlight-clubs-card-content">
                   <h1 id="club-name-card">{club.name}</h1>

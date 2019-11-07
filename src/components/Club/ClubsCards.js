@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 import clubsService from '../../services/clubsService';
+import ClubHeart from '../Club/ClubHeart';
 
 class ClubsCards extends Component {
   state = {
     clubs: [],
-    userClubs: this.props.user.clubs,
     isLoading: true,
   };
 
@@ -31,7 +31,7 @@ class ClubsCards extends Component {
   };
 
   render() {
-    const { clubs, isLoading, userClubs } = this.state;
+    const { clubs, isLoading } = this.state;
     return (
       <>
         {!isLoading &&
@@ -39,25 +39,8 @@ class ClubsCards extends Component {
             return (
               <div id="highlight-clubs-card" key={club._id}>
                 <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img>
-                {userClubs.includes(club._id) ? (
-                  <span
-                    className="heart"
-                    onClick={() => {
-                      this.saveClub(club._id);
-                    }}
-                  >
-                    <img src="/images/heart-circle-full.svg" alt="Spot saved" />
-                  </span>
-                ) : (
-                  <span
-                    className="heart"
-                    onClick={() => {
-                      this.saveClub(club._id);
-                    }}
-                  >
-                    <img src="/images/heart-circle-empty.svg" alt="Spot saved" />
-                  </span>
-                )}
+                <ClubHeart club={club._id} />
+
                 <div id="highlight-clubs-card-content">
                   <h1 id="club-name-card">{club.name}</h1>
                   <p id="home-club-text">{club.location}</p>
