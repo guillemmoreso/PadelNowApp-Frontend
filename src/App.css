@@ -65,15 +65,15 @@ h2 {
   top: 0;
   display: flex;
   justify-content: center;
-  background-color: var(--blue);
   margin-top: -6%;
   margin-left: -6%;
+  box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
 }
 #page-name h1 {
   margin: 0;
   padding: 10px;
   font-size: 1.2em;
-  color: #ffffff;
+  color: var(--font);
 }
 
 #page-name-profile {
@@ -81,14 +81,14 @@ h2 {
   top: 0;
   display: flex;
   justify-content: center;
-  background-color: var(--blue);
   margin-top: -6%;
+  box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
 }
 #page-name-profile h1 {
   margin: 0;
   padding: 10px;
   font-size: 1.2em;
-  color: #ffffff;
+  color: var(--font);
 }
 
 /* --- Loading Ball --- */
@@ -181,9 +181,11 @@ input:disabled {
 
 input,
 select {
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 2px solid rgba(47, 51, 51, 0.08);
   font-size: 1em;
   border-radius: 8px;
-  border: solid 1px var(--font);
+  /* border: solid 1px var(--font); */
   height: 6vh;
   padding: 10px;
   background: transparent;
@@ -192,7 +194,7 @@ select {
 
 input::placeholder,
 select::placeholder {
-  color: var(--font);
+  color: #a9a9a9;
   font-size: 1em;
 }
 
@@ -232,7 +234,7 @@ nav {
   width: 100vw;
   background: white;
   position: relative;
-  box-shadow: 0 30px 40px 30px rgba(82, 93, 193, 0.15);
+  box-shadow: 0 30px 40px 30px rgba(164, 217, 108, 0.15);
   border-radius: 30px 30px 0 0;
 }
 
@@ -256,7 +258,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #000000;
+  color: var(--font);
 }
 
 nav ul li a img {
@@ -281,9 +283,11 @@ nav ul li a img {
   margin: 10px auto;
   display: block;
   text-decoration: none;
-  background-color: var(--blue);
+  background-color: var(--green);
   color: white;
-  border-color: transparent;
+  /* border-color: transparent; */
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 1px solid rgba(47, 51, 51, 0.08);
 }
 #logout-btn-div {
   display: flex;
@@ -423,7 +427,7 @@ nav ul li a img {
 /* --- Login / Signup --- */
 
 .log-sign-container {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -450,6 +454,16 @@ nav ul li a img {
 .log-sign-container .alternative {
   font-size: 0.8em;
   margin-top: 10vh;
+}
+
+.log-sign-container span {
+  text-decoration: none !important;
+  font-weight: 700;
+  color: var(--green);
+}
+
+#logo-login {
+  width: 80vw;
 }
 
 /* --- Profile --- */
@@ -506,12 +520,22 @@ nav ul li a img {
 /* --- Bookings --- */
 
 #booking-card {
-  border: 1px solid grey;
-  text-align: center;
+  margin-top: 8%;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  padding: 2%;
+  /* border: 1px solid grey;
+  text-align: center; */
 }
 
+#booking-card #home-book-btn-div {
+  margin: 0;
+}
+
+.with-bottom-border {
+  margin-bottom: 5%;
+}
 #moment-booking :first-child {
-  color: #000000;
+  color: var(--font);
   font-size: 1.4em;
   font-weight: bold;
 }
@@ -576,17 +600,40 @@ nav ul li a img {
   width: 60px;
   height: 62px;
   position: absolute;
-  margin-top: 1%;
-  margin-left: 15%;
+  margin-top: 3%;
+  margin-right: 3%;
   right: 4vw;
   z-index: 1;
   filter: none;
 }
+
 #club-header-image {
-  top: 0;
-  margin-top: -6%;
+  /* top: 0;
+  margin-top: -6%; */
   margin-left: -6%;
   margin-right: -6%;
+}
+
+#club-detail-heart .heart {
+  /* top: 30vh;
+  margin-right: 0%; */
+  right: 5vw;
+  top: 5vh;
+}
+
+#club-detail-location {
+  color: var(--font);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 5%;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+}
+#club-detail-location p {
+  width: 75vw;
+}
+#club-detail-location img {
+  width: 10vw;
 }
 
 #club-header-image img {
@@ -595,6 +642,7 @@ nav ul li a img {
 
 #club-detail-header {
   font-size: 1.5em;
+  margin-bottom: 2%;
 }
 
 /* --- Edit Profile --- */

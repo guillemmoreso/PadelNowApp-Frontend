@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
 import BookingDescription from '../components/Booking/BookingDescription';
+import Backbar from '../components/Navigation/Backbar';
 
 class BookingDetail extends Component {
   state = {
@@ -49,24 +50,30 @@ class BookingDetail extends Component {
     const { booking, isLoading } = this.state;
     return (
       <>
-        {booking._id ? (
-          <>
-            {!isLoading && <BookingDescription booking={booking} />}
-            <div id="logout-btn-div">
-              <button onClick={this.handleBookingDelete} id="logout-btn">
-                Delete Account
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <h1>You sucessfully deleted your booking...</h1>
+        <section className="club-detail-container">
+          <div id="page-name">
+            <Backbar history={this.props.history} />
+            <h1>Booking Details</h1>
+          </div>
+          {booking._id ? (
+            <>
+              {!isLoading && <BookingDescription booking={booking} />}
+              <div id="logout-btn-div">
+                <button onClick={this.handleBookingDelete} id="logout-btn">
+                  Delete Booking
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <h1>You sucessfully deleted your booking...</h1>
 
-            <Link id="logout-btn-div" to="/search">
-              <div id="logout-btn">Book now</div>
-            </Link>
-          </>
-        )}
+              <Link id="logout-btn-div" to="/search">
+                <div id="logout-btn">Book now</div>
+              </Link>
+            </>
+          )}
+        </section>
       </>
     );
   }

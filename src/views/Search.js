@@ -44,10 +44,10 @@ class Search extends Component {
   render() {
     const { clubs, isLoading } = this.state;
     return (
-      <div>
+      <div id="viewport-with-navbar">
         <div id="page-name">
           <Backbar history={this.props.history} />
-          <h1>Profile</h1>
+          <h1>Search</h1>
         </div>
         <br />
         <div id="datePicker">

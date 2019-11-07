@@ -29,42 +29,44 @@ class Bookings extends Component {
 
     return (
       <>
-        <div id="page-name">
-          <Backbar history={this.props.history} />
-          <h1>Bookings</h1>
-        </div>
-        {bookings.length > 0 ? (
-          <>
-            {bookings.map(booking => {
-              return (
-                <div id="booking-card" key={booking._id}>
-                  <div id="moment-booking">
-                    <Moment format=" dddd DD/MM">{booking.day}</Moment>
+        <div id="viewport-with-navbar">
+          <div id="page-name">
+            <Backbar history={this.props.history} />
+            <h1>Bookings</h1>
+            <div></div>
+          </div>
+          {bookings.length > 0 ? (
+            <>
+              {bookings.map(booking => {
+                return (
+                  <div id="booking-card" key={booking._id}>
+                    <div id="moment-booking">
+                      <Moment format="DD dddd MMMM">{booking.day}</Moment>
+                    </div>
+                    <div id="booking-card-details">
+                      <p>
+                        {booking.startingHour}:00 - {booking.startingHour + 1}:00
+                      </p>
+                      <p className="with-bottom-border">{booking.court.courtName}</p>
+                    </div>
+                    <Link id="home-book-btn-div" to={`/bookings/${booking._id}`}>
+                      <div id="home-book-btn">More details </div>
+                    </Link>
                   </div>
-                  <div id="booking-card-details">
-                    <p>
-                      Time: {booking.startingHour}h - {booking.startingHour + 1}h
-                    </p>
-                    <p>Price: {booking.club.price}€</p>
-                    <p>Court: {booking.court.courtName}</p>
-                  </div>
-                  <Link id="home-book-btn-div" to={`/bookings/${booking._id}`}>
-                    <div id="home-book-btn">More details </div>
-                  </Link>
-                </div>
-              );
-            })}
-          </>
-        ) : (
-          <>
-            <h1>You have not booked a match yet... </h1>
-            <Loading />
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <h1>You have not booked a match yet... </h1>
+              <Loading />
 
-            <Link id="logout-btn-div" to="/search">
-              <div id="logout-btn">Book now</div>
-            </Link>
-          </>
-        )}
+              <Link id="logout-btn-div" to="/search">
+                <div id="logout-btn">Book now</div>
+              </Link>
+            </>
+          )}
+        </div>
       </>
     );
   }

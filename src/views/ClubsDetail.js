@@ -40,7 +40,7 @@ class ClubsDetail extends Component {
 
   render() {
     const { userClubs } = this.state;
-    const { name, location, price, clubImages, _id } = this.state.club;
+    const { name, location, clubImages, _id } = this.state.club;
 
     return (
       <section className="club-detail-container">
@@ -52,27 +52,32 @@ class ClubsDetail extends Component {
           <img src={clubImages} alt="club-avatar"></img>
         </div>
         <h1 id="club-detail-header">{name}</h1>
-        <p>{location}</p>
-        <p>Court Price: {price}€</p>
-        {userClubs.includes(_id) ? (
-          <span
-            className="heart"
-            onClick={() => {
-              this.saveClub(_id);
-            }}
-          >
-            <img src="/images/heart-circle-full.svg" alt="Spot saved" />
-          </span>
-        ) : (
-          <span
-            className="heart"
-            onClick={() => {
-              this.saveClub(_id);
-            }}
-          >
-            <img src="/images/heart-circle-empty.svg" alt="Spot saved" />
-          </span>
-        )}
+        <div id="club-detail-location">
+          <p>{location}</p>
+          <img src="/../../images/map.svg" alt="map-icon"></img>
+        </div>
+        {/* <p>Court Price: {price}€</p> */}
+        <div id="club-detail-heart">
+          {userClubs.includes(_id) ? (
+            <span
+              className="heart"
+              onClick={() => {
+                this.saveClub(_id);
+              }}
+            >
+              <img src="/images/heart-circle-full.svg" alt="Spot saved" />
+            </span>
+          ) : (
+            <span
+              className="heart"
+              onClick={() => {
+                this.saveClub(_id);
+              }}
+            >
+              <img src="/images/heart-circle-empty.svg" alt="Spot saved" />
+            </span>
+          )}
+        </div>
       </section>
     );
   }

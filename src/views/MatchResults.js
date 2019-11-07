@@ -29,52 +29,50 @@ class MatchResults extends Component {
 
     return (
       <>
-        <div id="page-name">
-          <Backbar history={this.props.history} />
-          <h1>Match Results</h1>
+        <div id="viewport-with-navbar">
+          <div id="page-name">
+            <Backbar history={this.props.history} />
+            <h1>Match Results</h1>
+          </div>
+          {userBookings.length > 0 ? (
+            <>
+              {userBookings.map(booking => {
+                return (
+                  <div id="booking-card" key={booking._id}>
+                    <div id="moment-booking">
+                      <Moment format="DD dddd MMMM">{booking.day}</Moment>
+                    </div>
+                    <div id="booking-card-details">
+                      <div id="booking-card-details">
+                        <p>
+                          {booking.startingHour}:00 - {booking.startingHour + 1}:00
+                        </p>
+                        <p className="with-bottom-border">{booking.court.courtName}</p>
+                      </div>
+
+                      {!booking.gameResult ? (
+                        userBookings.map(booking => {
+                          return <></>;
+                        })
+                      ) : (
+                        <p>Poner</p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <h1>You have not booked a match yet... </h1>
+              <Loading />
+
+              <Link id="logout-btn-div" to="/search">
+                <div id="logout-btn">Book now</div>
+              </Link>
+            </>
+          )}
         </div>
-        {userBookings.length > 0 ? (
-          <>
-            {userBookings.map(booking => {
-              return (
-                <div id="booking-card" key={booking._id}>
-                  <div id="moment-booking">
-                    <Moment format="dddd DD/MM">{booking.day}</Moment>
-                  </div>
-                  <div id="booking-card-details">
-                    <p>
-                      Time: {booking.startingHour}h - {booking.startingHour + 1}h
-                    </p>
-                    <p>Price: {booking.club.price}€</p>
-                    <p>Court: {booking.court.courtName}</p>
-
-                    {!booking.gameResult ? (
-                      userBookings.map(booking => {
-                        return (
-                          <>
-                            <h3>{booking.startingHour}</h3>
-                            <h3>{booking.club.city}</h3>
-                          </>
-                        );
-                      })
-                    ) : (
-                      <p>Hola</p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </>
-        ) : (
-          <>
-            <h1>You have not booked a match yet... </h1>
-            <Loading />
-
-            <Link id="logout-btn-div" to="/search">
-              <div id="logout-btn">Book now</div>
-            </Link>
-          </>
-        )}
       </>
     );
   }

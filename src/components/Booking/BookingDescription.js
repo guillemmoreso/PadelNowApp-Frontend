@@ -1,6 +1,6 @@
 import React from 'react';
-import { withAuth } from '../../Context/AuthContext';
 import Moment from 'react-moment';
+import { withAuth } from '../../Context/AuthContext';
 
 const BookingDescription = props => {
   const {
@@ -9,13 +9,27 @@ const BookingDescription = props => {
   } = props;
   return (
     <div>
-      <h1>{club.name}</h1>
-      <p>{court.courtName}</p>
-      <p>
-        Game: {startingHour} - {startingHour + 1}
-      </p>
-      <Moment format=" dddd DD/MM">{day}</Moment>
-      <p>Court Price: {startingHour}€</p>
+      <div id="club-header-image">
+        <img src={club.clubImages} alt="club-avatar"></img>
+      </div>
+      <h1 id="club-detail-header">{club.name}</h1>
+      <div id="club-detail-location">
+        <p>{club.location}</p>
+        <img src="/../../images/map.svg" alt="map-icon"></img>
+      </div>
+      <div id="booking-card-details" key={club._id}>
+        <h1 id="club-detail-header">Booking Info</h1>
+        <div id="moment-booking">
+          <Moment format="DD dddd MMMM">{day}</Moment>
+        </div>
+        <div id="booking-card-details">
+          <p>
+            {startingHour}:00 - {startingHour + 1}:00
+          </p>
+          <p>{startingHour}€</p>
+          <p className="with-bottom-border">{court.courtName}</p>
+        </div>
+      </div>
     </div>
   );
 };
