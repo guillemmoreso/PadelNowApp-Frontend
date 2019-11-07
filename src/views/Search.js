@@ -5,6 +5,7 @@ import { withAuth } from '../Context/AuthContext';
 import { withBooking } from '../Context/BookingContext';
 import searchService from '../services/searchService';
 import Backbar from '../components/Navigation/Backbar';
+import ClubHeart from '../components/Club/ClubHeart';
 import HourSelector from '../components/Search/HourSelector';
 
 class Search extends Component {
@@ -42,7 +43,7 @@ class Search extends Component {
   };
 
   render() {
-    const { clubs, isLoading } = this.state;
+    const { clubs, isLoading, searchStartingHour } = this.state;
     return (
       <div id="viewport-with-navbar">
         <div id="page-name">
@@ -62,20 +63,22 @@ class Search extends Component {
             <input type="submit" value="Submit" onClick={this.handleFormSubmit} id="submit-datapicker" />
           </div>
         </div>
-        {/* <header className="header-clubs">
-          <h3>Clubs still with available courts</h3>
-        </header> */}
+
         {!isLoading &&
           clubs.map(club => {
             return (
-              <div key={club._id}>
-                <p>{club.name}</p>
-                <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
-                  <div id="home-book-btn">Club details</div>
-                </Link>
-                <Link id="home-book-btn-div" to={`/reservation/${club._id}`}>
-                  <div id="home-book-btn">Book now</div>
-                </Link>
+              <div id="highlight-clubs-card-search" key={club._id}>
+                <img id="highlight-clubs-card-img-search" src={club.clubImages[0]} alt="club-avatar"></img>
+                <ClubHeart club={club._id} />
+                <div id="highlight-clubs-card-content">
+                  <h1 id="club-name-card">{club.name}</h1>
+
+                  <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
+                    <div id="home-book-btn">
+                      Book at {searchStartingHour}:00 for only {club.price}€{' '}
+                    </div>
+                  </Link>
+                </div>
               </div>
             );
           })}

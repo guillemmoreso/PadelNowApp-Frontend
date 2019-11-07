@@ -584,6 +584,7 @@ nav ul li a img {
   flex-direction: row;
   width: 100%;
   float: left;
+  margin-bottom: 3vh;
 }
 
 #hour-select-div {
@@ -608,6 +609,21 @@ nav ul li a img {
   border: none;
 }
 
+#highlight-clubs-card-search {
+  border: 1px;
+  margin: 10px 0;
+  background-color: white;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+  text-align: center;
+  border-radius: 5px;
+  margin-right: -5%;
+  margin-left: -5%;
+}
+#highlight-clubs-card-img-search {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
 /* --- Club Detail --- */
 
 .heart {

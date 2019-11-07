@@ -24,7 +24,7 @@ export const withBooking = Comp => {
 
 export default class BookingProvider extends Component {
   state = {
-    searchStartingHour: '',
+    searchStartingHour: '9',
     date: null,
   };
   //Tiene que permitir modificorlos set date y searching hour (getters & Setters)
