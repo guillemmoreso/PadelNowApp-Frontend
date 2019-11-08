@@ -13,12 +13,13 @@ export const withBooking = Comp => {
     render() {
       return (
         <BookingConsumer>
-          {({ handleHourChange, searchStartingHour, date }) => (
+          {({ handleHourChange, searchStartingHour, date, handleDateChange }) => (
             <Comp
               {...this.props}
               searchStartingHour={searchStartingHour}
               date={date}
               handleHourChange={handleHourChange}
+              handleDateChange={handleDateChange}
             />
           )}
         </BookingConsumer>
@@ -72,8 +73,9 @@ export default class BookingProvider extends Component {
       <Provider
         value={{
           searchStartingHour,
-          handleHourChange: this.handleHourChange,
           date,
+          handleHourChange: this.handleHourChange,
+          handleDateChange: this.handleDateChange,
         }}
       >
         {children}
