@@ -12,7 +12,7 @@ function PrivateRoute({ component: Comp, isLoggedin, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: '/',
+              pathname: '/signup',
             }}
           />
         )

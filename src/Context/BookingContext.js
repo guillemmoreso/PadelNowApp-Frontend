@@ -34,36 +34,34 @@ export default class BookingProvider extends Component {
   };
   //Tiene que permitir modificorlos set date y searching hour (getters & Setters)
 
-  handleHourChange = selectInput => {
+  // handleHourChange = selectInput => {
+  //   this.setState({
+  //     searchStartingHour: selectInput,
+  //   });
+
+  handleHourChange = hour => {
     this.setState({
-      searchStartingHour: selectInput,
+      searchStartingHour: hour,
     });
 
     searchService
-      .hourChange({ date: this.state.date, searchStartingHour: selectInput })
-      .then(registeredInput => {
-        console.log('inpuuuuuut', registeredInput);
-      })
-      .catch(() => {
-        this.setState({
-          searchStartingHour: null,
-        });
+      .getClubs({ date: this.state.date, searchStartingHour: hour })
+      .then(response => response)
+      .catch(error => {
+        console.error(error);
       });
   };
-  handleDateChange = selectInput => {
+
+  handleDateChange = date => {
     this.setState({
-      date: selectInput,
+      date,
     });
 
     searchService
-      .hourChange({ date: this.state.date, searchStartingHour: selectInput })
-      .then(registeredInput => {
-        console.log('inpuuuuuut', registeredInput);
-      })
-      .catch(() => {
-        this.setState({
-          searchStartingHour: null,
-        });
+      .getClubs({ date: this.state.date, searchStartingHour: date })
+      .then(response => response)
+      .catch(error => {
+        console.error(error);
       });
   };
 

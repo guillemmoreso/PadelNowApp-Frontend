@@ -26,9 +26,12 @@ class SearchService {
     });
   }
 
-  hourChange(selectInput) {
-    console.log('input: ', selectInput);
-    return this.search.post('/search', { selectInput }).then(({ data: selectedHour }) => selectedHour);
+  // hourChange(selectInput) {
+  //   console.log('input: ', selectInput);
+  //   return this.search.post('/search', { selectInput }).then(({ data: selectedHour }) => selectedHour);
+  // }
+  getClubs(query) {
+    return this.search.post('/search', { query }).then(({ data }) => data);
   }
 }
 

@@ -27,8 +27,12 @@ class Search extends Component {
   }
 
   onDateChange = date => {
-    this.props.handleDateSubmit(date).bind(this);
+    this.props.handleDateChange(date);
   };
+
+  // onDateChange = date => {
+  //   this.props.handleDateSubmit(date).bind(this);
+  // };
 
   handleFormSubmit = async () => {
     try {
