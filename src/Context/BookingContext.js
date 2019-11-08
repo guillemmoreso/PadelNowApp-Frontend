@@ -59,7 +59,7 @@ export default class BookingProvider extends Component {
     });
 
     searchService
-      .getClubs({ date: this.state.date, searchStartingHour: date })
+      .getClubs({ date: this.state.date })
       .then(response => response)
       .catch(error => {
         console.error(error);
