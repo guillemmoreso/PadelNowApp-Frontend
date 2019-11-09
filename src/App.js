@@ -36,9 +36,6 @@ class App extends Component {
           <div className="container">
             <div className="data-container">
               <Switch>
-                <AnonRoute exact path="/" component={Homepage} />
-                <AnonRoute exact path="/login" component={Login} />
-                <AnonRoute exact path="/signup" component={Signup} />
                 <PrivateRoute exact path="/search" component={Search} />
                 <PrivateRoute exact path="/reservation/:id" component={Reservation} />
                 <PrivateRoute exact path="/clubs" component={Clubs} />
@@ -50,8 +47,11 @@ class App extends Component {
                 <PrivateRoute exact path="/profile/results" component={MatchResults} />
                 <PrivateRoute exact path="/profile/edit-profile" component={EditProfile} />
                 <PrivateRoute exact path="/map" component={PadelClubsMap} />
+                <Route exact path="/" component={Homepage} />
+                <AnonRoute exact path="/login" component={Login} />
+                <AnonRoute exact path="/signup" component={Signup} />
 
-                <Route component={ErrorPage} />
+                <Route component={ErrorPage} path="/" />
               </Switch>
             </div>
             <PrivateRoute component={Navbar} />

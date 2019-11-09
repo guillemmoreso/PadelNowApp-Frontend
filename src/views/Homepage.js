@@ -58,7 +58,17 @@ class Homepage extends Component {
                 if (club.name.toLowerCase().includes(this.state.value.toLowerCase())) {
                   return (
                     <div id="highlight-clubs-card" key={club._id}>
-                      <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img>
+                      <div
+                        style={{
+                          backgroundImage: `linear-gradient(180deg,transparent,rgba(0,0,0,.5)),url(${
+                            club.clubImages[0]
+                          })`,
+                          height: '30vh',
+                          backgroundSize: 'cover',
+                          backgroundRepeat: 'none',
+                        }}
+                      ></div>
+                      {/* <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img> */}
                       <div id="highlight-clubs-card-content">
                         <h2>{club.name}</h2>
                         <p id="home-club-text">{club.location}</p>

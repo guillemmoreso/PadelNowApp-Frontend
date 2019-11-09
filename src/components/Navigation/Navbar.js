@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 
 class Navbar extends Component {
   render() {
+    const { pathname } = this.props.location;
+    
     return (
       <div className="nav-container">
         <nav>
@@ -16,13 +18,21 @@ class Navbar extends Component {
                     Bookings
                   </Link>
                 </li>
-
-                <li>
-                  <Link to="/search">
-                    <img src={'/images/search.svg'} alt="Search" />
-                    Search
-                  </Link>
-                </li>
+                {pathname === '/map' ? (
+                  <li>
+                    <Link to="/search">
+                      <img src={'/images/search.svg'} alt="Search" />
+                      Search
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/map">
+                      <img src={'/images/map.svg'} alt="Map" />
+                      Map
+                    </Link>
+                  </li>
+                )}
 
                 <li>
                   <Link to="/profile">
@@ -39,4 +49,4 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
+export default withRouter(withAuth(Navbar));

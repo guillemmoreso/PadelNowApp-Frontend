@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 
 function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
+  console.log(isLoggedin);
   return (
     <Route
       {...rest}
@@ -12,7 +13,7 @@ function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: '/search',
+              pathname: '/map',
             }}
           />
         )

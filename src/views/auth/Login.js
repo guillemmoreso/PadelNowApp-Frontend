@@ -33,8 +33,8 @@ class Login extends Component {
           <input type="submit" value="Login" className="btn" />
         </form>
         <p className="alternative">
-          Don't have an account yet?  
-          <Link to={'/signup'}>
+          Don't have an account yet?
+          <Link to="/signup">
             <span>Signup</span>
           </Link>
         </p>
