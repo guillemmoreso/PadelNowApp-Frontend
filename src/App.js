@@ -17,6 +17,7 @@ import Profile from './views/Profile';
 import EditProfile from './views/Edit-Profile';
 import FavoriteClubs from './views/FavoriteClubs';
 import MatchResults from './views/MatchResults';
+import PadelClubsMap from './views/Map';
 import ErrorPage from './views/auth/ErrorPage';
 
 import { withAuth } from './Context/AuthContext';
@@ -48,6 +49,7 @@ class App extends Component {
                 <PrivateRoute exact path="/profile/favorites" component={FavoriteClubs} />
                 <PrivateRoute exact path="/profile/results" component={MatchResults} />
                 <PrivateRoute exact path="/profile/edit-profile" component={EditProfile} />
+                <PrivateRoute exact path="/map" component={PadelClubsMap} />
 
                 <Route component={ErrorPage} />
               </Switch>

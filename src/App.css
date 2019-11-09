@@ -13,6 +13,7 @@
 /* --- Search --- */
 /* --- Club Detail --- */
 /* --- Edit Profile --- */
+/* --- Map --- */
 
 * {
   font-family: 'Work Sans', sans-serif;
@@ -721,4 +722,9 @@ nav ul li a img {
   border: 2px solid rgba(47, 51, 51, 0.08);
   margin-top: 3vh;
   margin-bottom: 5vh;
+}
+
+/* --- Map --- */
+#mapbox {
+  margin: -5%;
 }
