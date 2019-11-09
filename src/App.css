@@ -356,6 +356,7 @@ nav ul li a img {
   border-bottom: 3px solid var(--green);
   width: 100vw;
   margin: 15px 0;
+  height: 5vh;
 }
 
 #highlight-clubs-card {
