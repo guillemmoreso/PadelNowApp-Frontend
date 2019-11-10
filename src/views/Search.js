@@ -69,17 +69,25 @@ class Search extends Component {
             return (
               <div id="highlight-clubs-card-search" key={club._id}>
                 <Link to={`/clubs/${club._id}`}>
-                  <img id="highlight-clubs-card-img-search" src={club.clubImages[0]} alt="club-avatar"></img>
+                  <img
+                    id="highlight-clubs-card-img-search"
+                    style={{
+                      backgroundImage: `linear-gradient(180deg,transparent,rgba(0,0,0,.5)),url(${club.clubImages[0]})`,
+                      height: '30vh',
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'none',
+                    }}
+                  ></img>
+                  {/* <img id="highlight-clubs-card-img-search" src={club.clubImages[0]} alt="club-avatar"></img> */}
                 </Link>
                 <ClubHeart club={club._id} />
-                <div id="highlight-clubs-card-content">
-                  <h1 id="club-name-card">{club.name}</h1>
-                  <Link id="home-book-btn-div" to={`/reservation/${club._id}`}>
-                    <div id="home-book-btn">
-                      Book at {searchStartingHour}:00 for only {club.price}€{' '}
-                    </div>
-                  </Link>
-                </div>
+                <span id="highlight-clubs-card-content">
+                  <h2>{club.name}</h2>
+                  <h2>{club.price}€</h2>
+                </span>
+                <Link id="search-book-btn-div" to={`/reservation/${club._id}`}>
+                  <div id="search-book-btn">Book Now </div>
+                </Link>
               </div>
             );
           })}
