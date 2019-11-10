@@ -19,6 +19,13 @@ class ClubsService {
   saveClubToFavorites(id) {
     return this.clubs.put(`/clubs/${id}/switch`).then(response => response.data);
   }
+
+  dataPickerClubDetail(search) {
+    const { searchStartingHour, date, clubId } = search;
+    return this.clubs.post(`/clubs/${clubId}`, { searchStartingHour, date }).then(({ data }) => {
+      return data;
+    });
+  }
 }
 
 const clubsService = new ClubsService();

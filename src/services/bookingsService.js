@@ -19,6 +19,15 @@ class BookingsService {
   bookingDelete(id) {
     return this.bookings.post(`/bookings/${id}/delete`, {}).then(response => response.data);
   }
+
+  newBooking(newReservation) {
+    const { searchStartingHour, date, clubId, userId, courtId } = newReservation;
+    return this.bookings
+      .post(`/reservation/${clubId}`, { searchStartingHour, date, clubId, userId, courtId })
+      .then(({ data }) => {
+        return data;
+      });
+  }
 }
 
 const bookingsService = new BookingsService();
