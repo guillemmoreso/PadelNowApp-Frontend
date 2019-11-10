@@ -30,14 +30,11 @@ class Search extends Component {
     this.props.handleDateChange(date);
   };
 
-  // onDateChange = date => {
-  //   this.props.handleDateSubmit(date).bind(this);
-  // };
-
   handleFormSubmit = async () => {
     try {
-      const { searchStartingHour, date } = this.state;
+      const { searchStartingHour, date } = this.props;
       const userSearchResult = await searchService.dataPicker({ searchStartingHour, date });
+      console.log(userSearchResult);
       this.setState({ clubs: userSearchResult });
     } catch (error) {
       console.error('Error while searching for available courts');
@@ -46,6 +43,7 @@ class Search extends Component {
 
   render() {
     const { clubs, isLoading, searchStartingHour } = this.state;
+    console.log('props', this.props);
     return (
       <div id="viewport-with-navbar">
         <div id="page-name">
@@ -76,7 +74,6 @@ class Search extends Component {
                 <ClubHeart club={club._id} />
                 <div id="highlight-clubs-card-content">
                   <h1 id="club-name-card">{club.name}</h1>
-
                   <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
                     <div id="home-book-btn">
                       Book at {searchStartingHour}:00 for only {club.price}€{' '}
