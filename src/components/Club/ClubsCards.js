@@ -41,7 +41,7 @@ class ClubsCards extends Component {
                 <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img>
                 <ClubHeart club={club._id} />
 
-                <div id="highlight-clubs-card-content">
+                <div>
                   <h1 id="club-name-card">{club.name}</h1>
                   <p id="home-club-text">{club.location}</p>
 

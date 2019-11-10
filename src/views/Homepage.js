@@ -69,7 +69,7 @@ class Homepage extends Component {
                         }}
                       ></div>
                       {/* <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img> */}
-                      <div id="highlight-clubs-card-content">
+                      <div id="">
                         <h2>{club.name}</h2>
                         <p id="home-club-text">{club.location}</p>
                         <Link id="home-book-btn-div" to="/login">

@@ -38,7 +38,7 @@ class FavoriteClubs extends Component {
                 <div id="highlight-clubs-card" key={club._id}>
                   <img id="highlight-clubs-card-img" src={club.clubImages[0]} alt="club-avatar"></img>
                   <ClubHeart club={club._id} />
-                  <div id="highlight-clubs-card-content">
+                  <div>
                     <h3>{club.name}</h3>
                     <p id="home-club-text">{club.location}</p>
 

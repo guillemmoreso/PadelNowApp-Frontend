@@ -50,17 +50,75 @@ class Reservation extends Component {
 
   render() {
     const { date, searchStartingHour } = this.state;
+    const numberSearchStartingHour = parseInt(searchStartingHour, 10);
     const { name, location, price, clubImages, _id, courts } = this.state.club;
+    console.log(courts);
+
     return (
       <>
-        <h1 id="club-detail-header">{name}</h1>
-        {/* <h1 id="club-detail-header">{courts}</h1> */}
-        <Moment format="DD dddd MMMM">{date}</Moment>
-        <h2>{searchStartingHour}</h2>
-        <p>{location}</p>
-        <p>{price}€</p>
-        <div id="submit-datapicker">
-          <input type="submit" value="Submit" onClick={this.handleFormSubmit} id="submit-datapicker" />
+        <div id="viewport-with-navbar">
+          <div id="page-name">
+            <Backbar history={this.props.history} />
+            <h1>
+              {name} <Moment format="DD/MM/YY">{date}</Moment>
+            </h1>
+          </div>
+
+          <div id="reservation-card">
+            <h1 id="club-detail-header">{name}</h1>
+
+            <div id="moment-booking">
+              <img id="padel-icon" src="../../images/padel.svg" alt="padel-icon"></img>
+              <Moment format="dddd DD MMMM">{date}</Moment>
+            </div>
+            <div id="booking-card-details">
+              <p id="reservation-location">{location}</p>
+              <div id="reservation-hours">
+                <p>
+                  <span>Start</span>
+                  <br />
+                  {searchStartingHour}:00
+                </p>
+                <p>
+                  <span>End</span>
+                  <br />
+                  {numberSearchStartingHour + 1}:00
+                </p>
+                <p>
+                  <span>Duration</span>
+                  <br />
+                  60min
+                </p>
+              </div>
+            </div>
+            <div id="profile-btn-div">
+              <div id="profile-btn">
+                <p>Court Price</p>
+              </div>
+              <div>
+                <h2>{price}€</h2>{' '}
+              </div>
+            </div>
+            <div id="profile-btn-div">
+              <div id="profile-btn">
+                <p>Payment Method</p>
+              </div>
+              <div>
+                <span>Cash</span>
+              </div>
+            </div>
+            <div id="profile-btn-div">
+              <div id="profile-btn">
+                <p>Cancellation Policy</p>
+              </div>
+              <div>
+                <span>24h</span>
+              </div>
+            </div>
+            <div id="submit-reservation">
+              <input type="submit" value="Confirm Payment" onClick={this.handleFormSubmit} id="submit-datapicker" />
+            </div>
+          </div>
         </div>
       </>
     );
