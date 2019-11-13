@@ -90,9 +90,6 @@ class Homepage extends Component {
             )}
           </div>
         </div>
-        <p className="love">
-          Made with <i className="icon ion-heart"></i> in Chicago
-        </p>
       </>
     );
   }

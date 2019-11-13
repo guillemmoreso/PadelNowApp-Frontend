@@ -16,6 +16,14 @@ class ProfileService {
     return this.profile.get('/profile/results').then(({ data: bookings }) => bookings);
   }
 
+  getAllUserFriends() {
+    return this.profile.get('/profile/friends').then(({ data: friends }) => friends);
+  }
+
+  getAllUsers() {
+    return this.profile.get('/profile/friends/users').then(({ data: allUsers }) => allUsers);
+  }
+
   // uploadHandler(formData) {
   //   return this.profile.post('/profile/edit-profile/upload', formData).then(({ data: avatarImg }) => avatarImg);
   // }

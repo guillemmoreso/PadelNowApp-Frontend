@@ -56,6 +56,14 @@ class Profile extends Component {
               <img id="category-img" src="../../images/edit-profile.svg" alt="edit-profile"></img>
             </div>
           </Link>
+          <Link id="profile-btn-div" to={'/profile/friends'}>
+            <div id="profile-btn">
+              <p>Friends Ranking</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/podium.svg" alt="edit-profile"></img>
+            </div>
+          </Link>
         </div>
 
         <div id="logout-btn-div">

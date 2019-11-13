@@ -14,9 +14,11 @@ import Reservation from './views/Reservation';
 import Bookings from './views/Bookings';
 import BookingDetail from './views/BookingDetail';
 import Profile from './views/Profile';
+import ProfileDetail from './views/ProfileDetail';
 import EditProfile from './views/Edit-Profile';
 import FavoriteClubs from './views/FavoriteClubs';
 import MatchResults from './views/MatchResults';
+import Friends from './views/Friends';
 import PadelClubsMap from './views/Map';
 import ErrorPage from './views/auth/ErrorPage';
 
@@ -43,8 +45,10 @@ class App extends Component {
                 <PrivateRoute exact path="/bookings" component={Bookings} />
                 <PrivateRoute exact path="/bookings/:id" component={BookingDetail} />
                 <PrivateRoute exact path="/profile" component={Profile} />
+                <PrivateRoute exact path="/profile/user/:id" component={ProfileDetail} />
                 <PrivateRoute exact path="/profile/favorites" component={FavoriteClubs} />
                 <PrivateRoute exact path="/profile/results" component={MatchResults} />
+                <PrivateRoute exact path="/profile/friends" component={Friends} />
                 <PrivateRoute exact path="/profile/edit-profile" component={EditProfile} />
                 <PrivateRoute exact path="/map" component={PadelClubsMap} />
                 <AnonRoute exact path="/" component={Homepage} />
