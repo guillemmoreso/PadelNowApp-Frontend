@@ -16,8 +16,7 @@
     "react-moment": "^0.9.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-toastify": "^5.4.0",
-    "universal-cookie": "^4.0.2"
+    "react-toastify": "^5.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

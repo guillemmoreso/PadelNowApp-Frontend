@@ -50,25 +50,18 @@ class PadelClubsMap extends Component {
   // Enables the pin input toggling
   closeLayerToggle = () => {
     const { closeLayer } = this.state;
-    if (!closeLayer) {
-      this.setState({
-        closeLayer: true,
-      });
-    }
+    this.setState({
+      closeLayer: !this.state.closeLayer,
+    });
   };
 
   popupsToggle = () => {
     const { popupsStatus } = this.state;
-    if (popupsStatus) {
-      this.setState({
-        popupsStatus: false,
-        closeLayer: false,
-      });
-    } else {
-      this.setState({
-        popupsStatus: true,
-      });
-    }
+    this.setState({
+      popupsStatus: !this.state.popupsStatus,
+      closeLayer: this.state.popupsStatus ? true : false,
+    });
+    console.log('popupsStatus', popupsStatus);
   };
 
   // Close all popups if a click is done anywhere in the map but the opened popup
@@ -137,10 +130,8 @@ class PadelClubsMap extends Component {
                   longitude={club.geometry.coordinates[1]}
                   clubName={club.name}
                   img={club.clubImages[0]}
-                  popupsStatus={popupsStatus}
                   popupsToggle={this.popupsToggle}
                   zoom={viewport.zoom}
-                  closeLayerToggle={this.closeLayerToggle}
                   {...this.props}
                 ></ClubMarker>
               );

@@ -5,6 +5,7 @@ const locationIcon = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-
   C20.1,15.8,20.2,15.8,20.2,15.7z`;
 
 class Pin extends Component {
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return (
       <svg height="7vw" viewBox="0 0 25 25" style={{ fill: '#a4d96c', stroke: '#017069', strokeWidth: '2px' }}>

@@ -9,32 +9,24 @@ class ClubMarker extends Component {
   };
 
   togglePopup = () => {
-    const { showPopup } = this.state;
-    const { popupsToggle, closeLayerToggle } = this.props;
-    closeLayerToggle();
-    popupsToggle();
-    if (showPopup) {
-      this.setState({
-        showPopup: false,
-      });
-    } else {
-      this.setState({
-        showPopup: true,
-      });
-    }
+    // const { popupsToggle } = this.props;
+    // popupsToggle();
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
   };
 
   render() {
-    const { id, latitude, longitude, clubName, img, popupsStatus } = this.props;
+    const { id, latitude, longitude, clubName, img } = this.props;
     const { showPopup } = this.state;
     return (
-      <React.Fragment>
+      <>
         <div onClick={this.togglePopup}>
           <Marker className={'club-marker'} key={`marker-${id}`} latitude={latitude} longitude={longitude}>
             <LocationIcon />
           </Marker>
         </div>
-        {popupsStatus && showPopup ? (
+        {showPopup ? (
           <Popup className="club-popup-container" key={`popup-${id}`} latitude={latitude} longitude={longitude}>
             <Link to={`/clubs/${id}`}>
               <div className="club-popup-image">
@@ -46,7 +38,7 @@ class ClubMarker extends Component {
             </Link>
           </Popup>
         ) : null}
-      </React.Fragment>
+      </>
     );
   }
 }

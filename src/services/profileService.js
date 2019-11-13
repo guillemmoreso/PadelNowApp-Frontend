@@ -15,6 +15,18 @@ class ProfileService {
   getAllUserBookings() {
     return this.profile.get('/profile/results').then(({ data: bookings }) => bookings);
   }
+
+  // uploadHandler(formData) {
+  //   return this.profile.post('/profile/edit-profile/upload', formData).then(({ data: avatarImg }) => avatarImg);
+  // }
+
+  // handleUpload(uploadData) {
+  //   return this.profile.post('/profile/edit-profile/upload', uploadData).then({ avatarImg: response.secure_url });
+  // }
+
+  // saveNewThing() {
+  //   return this.profile.post('/profile/edit-profile/upload', uploadData).then({ avatarImg: response.secure_url });
+  // }
 }
 
 const profileService = new ProfileService();

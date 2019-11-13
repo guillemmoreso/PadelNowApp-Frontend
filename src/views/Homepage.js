@@ -40,9 +40,11 @@ class Homepage extends Component {
         </div>
         <div id="home-banner">
           <div id="home-banner-title">
-            <h1>Book your padel court easily with PadelNow!</h1>
+            {/* <h1>Book your padel court easily with PadelNow!</h1> */}
+            <h1>An app made for padel lovers</h1>
           </div>
-          <div id="home-banner-text">Find all available courts in the bests clubs!</div>
+          {/* <div id="home-banner-text">Find all available courts in the bests clubs!</div> */}
+          <div id="home-banner-text">Book your padel court easily with PadelNow!</div>
           <div id="home-banner-search">
             <div id="home-search">
               <SearchInput filterClubs={this.filterClubs} />
@@ -88,6 +90,9 @@ class Homepage extends Component {
             )}
           </div>
         </div>
+        <p className="love">
+          Made with <i className="icon ion-heart"></i> in Chicago
+        </p>
       </>
     );
   }

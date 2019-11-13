@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import Backbar from '../components/Navigation/Backbar';
+import profileService from '../services/profileService';
 
 class EditProfile extends Component {
   state = {
@@ -8,6 +9,7 @@ class EditProfile extends Component {
     surname: this.props.user.surname,
     username: this.props.user.username,
     password: '',
+    avatarImg: '',
   };
 
   handleChange = event => {
@@ -26,6 +28,17 @@ class EditProfile extends Component {
     });
   };
 
+  // uploadHandler = e => {
+  //   e.preventDefault();
+  //   profileService.handleUpload(uploadData);
+  // };
+
+  handleFileUpload = e => {
+    const uploadData = new FormData();
+    uploadData.append('avatarImg', e.target.files[0]);
+    profileService.handleUpload(uploadData);
+  };
+
   render() {
     const { name, surname, username, password } = this.state;
     const { handleUserDelete } = this.props;
@@ -42,6 +55,9 @@ class EditProfile extends Component {
             src="https://www.worldpadeltour.com/media-content/2019/07/francisco-navarro-compn-4f278b973c-220x260.JPG"
             alt="profile"
           />
+          <input type="file" onChange={e => this.handleFileUpload(e)} />
+          <button onClick={this.uploadHandler}>Submit</button>
+
           <form onSubmit={this.handleFormSubmit} id="signup-input">
             <input type="text" name="name" value={name} onChange={this.handleChange} />
             <br />

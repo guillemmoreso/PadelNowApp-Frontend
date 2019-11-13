@@ -71,9 +71,11 @@ h2 {
   top: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: -6%;
   margin-left: -6%;
   box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
+  max-height: 50px;
 }
 #page-name h1 {
   margin: 0;
@@ -354,6 +356,7 @@ nav ul li a img {
 #div-search-input img {
   width: 5vw;
   /* position: absolute; */
+  max-height: 75px;
 }
 
 #club-search-input {
@@ -363,6 +366,7 @@ nav ul li a img {
   width: 100vw;
   margin: 15px 0;
   height: 5vh;
+  max-height: 42px;
 }
 
 #highlight-clubs-card {
@@ -634,6 +638,7 @@ nav ul li a img {
   background-color: #e8e8e8;
   box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
   border: none;
+  height: 100%;
 }
 
 #highlight-clubs-card-search {
@@ -728,9 +733,11 @@ nav ul li a img {
   justify-content: space-between;
   padding-bottom: 5%;
   border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  max-height: 58px;
 }
 #club-detail-location p {
   width: 75vw;
+  max-height: 45px;
 }
 #club-detail-location img {
   width: 10vw;

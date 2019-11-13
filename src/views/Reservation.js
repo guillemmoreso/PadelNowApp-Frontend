@@ -41,8 +41,6 @@ class Reservation extends Component {
       const userId = this.props.user._id;
       const courtId = this.state.club.courts;
       const userBooking = await bookingsService.newBooking({ searchStartingHour, date, clubId, userId, courtId });
-      //   console.log(userBooking);
-      //   this.setState({ clubs: userSearchResult });
     } catch (error) {
       console.error('Error while searching for available courts');
     }
