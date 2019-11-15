@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 
 function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
-  console.log(isLoggedin);
   return (
     <Route
       {...rest}

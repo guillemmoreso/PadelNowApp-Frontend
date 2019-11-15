@@ -30,14 +30,9 @@ class EditProfile extends Component {
 
   checkUploadResult = async resultEvent => {
     if (resultEvent.event === 'success') {
-      const avatarImg = resultEvent.info.secure_url;
-      console.log('upload', avatarImg);
-      const uploadImage = await profileService.uploadImage({ avatarImg });
+      const avatarImgUpload = resultEvent.info.secure_url;
+      const avatarImg = await profileService.uploadImage({ avatarImgUpload });
       this.setState({ avatarImg });
-
-      // this.props
-      //   .handlePostPhoto({ user_id: this.props.user._id, caption: '', url: resultEvent.info.secure_url })
-      //   .then(this.props.history.push('/profile'));
     }
   };
 
@@ -46,7 +41,7 @@ class EditProfile extends Component {
   };
 
   render() {
-    const { name, surname, username, password } = this.state;
+    const { name, surname, username, password, avatarImg } = this.state;
     const { handleUserDelete } = this.props;
 
     const widget = window.cloudinary.createUploadWidget(
@@ -66,7 +61,7 @@ class EditProfile extends Component {
           <h1>Edit Profile</h1>
         </div>
         <div className="edit-profile-container">
-          <img id="user-profile-edit" src={this.props.user.avatarImg} alt="profile" />
+          <img id="user-profile-edit" src={avatarImg} alt="profile" />
           <div id="upload-avatar">
             <button onClick={() => this.showWidget(widget)}>Upload Picture</button>
           </div>

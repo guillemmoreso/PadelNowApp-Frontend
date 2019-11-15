@@ -36,23 +36,12 @@ class ProfileService {
     return this.profile.put(`/player/${id}/petition`).then(response => response.data);
   }
 
-  uploadImage(img) {
-    const { avatarImg } = img;
-    return this.profile.post('/profile/edit-profile/upload', { avatarImg }).then(({ data }) => {
+  uploadImage(avatarImgUpload) {
+    console.log(avatarImgUpload);
+    return this.profile.put('/profile/edit-profile/upload', avatarImgUpload).then(({ data }) => {
       return data;
     });
   }
-  // uploadHandler(formData) {
-  //   return this.profile.post('/profile/edit-profile/upload', formData).then(({ data: avatarImg }) => avatarImg);
-  // }
-
-  // handleUpload(uploadData) {
-  //   return this.profile.post('/profile/edit-profile/upload', uploadData).then({ avatarImg: response.secure_url });
-  // }
-
-  // saveNewThing() {
-  //   return this.profile.post('/profile/edit-profile/upload', uploadData).then({ avatarImg: response.secure_url });
-  // }
 }
 
 const profileService = new ProfileService();

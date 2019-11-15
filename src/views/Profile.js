@@ -88,7 +88,7 @@ class Profile extends Component {
               <img id="category-img" src="../../images/versus-profile.svg" alt="versus"></img>
             </div>
           </Link>
-          <Link id="profile-btn-div" to={'/profile/friends'}>
+          <Link id="profile-btn-div" to={'/profile/friends/petitions'}>
             <div id="profile-btn">
               <p>Manage Friends</p>
             </div>
