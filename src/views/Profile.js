@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withAuth } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
+import { withAuth } from '../Context/AuthContext';
 
 class Profile extends Component {
   state = {
@@ -8,8 +8,8 @@ class Profile extends Component {
   };
 
   render() {
-    const { handleLogout } = this.props;
-    const { name, surname } = this.props.user;
+    const { handleLogout, handleUserDelete } = this.props;
+    const { name, surname, avatarImg } = this.props.user;
 
     return (
       <div id="viewport-with-navbar">
@@ -17,19 +17,15 @@ class Profile extends Component {
           <h1>
             {name} {surname}
           </h1>
-          <img
-            id="user-profile"
-            src="https://www.worldpadeltour.com/media-content/2019/07/francisco-navarro-compn-4f278b973c-220x260.JPG"
-            alt="profile"
-          />
+          <img id="user-profile" src={avatarImg} alt="profile" />
         </div>
         <div id="other-features">
           <Link id="profile-btn-div" to={'/player'}>
             <div id="profile-btn">
-              <p>My Player status</p>
+              <p>My Stats</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/club-profile.svg" alt="location"></img>
+              <img id="category-img" src="../../images/success.svg" alt="location"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/clubs'}>
@@ -37,7 +33,12 @@ class Profile extends Component {
               <p>List of Clubs</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/club-profile.svg" alt="location"></img>
+              <img
+                id="category-img"
+                src="../../images/address.svg"
+                alt="location"
+                style={{ fill: '#2f3333' }}
+              ></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/favorites'}>
@@ -69,15 +70,25 @@ class Profile extends Component {
               <p>Manage Friends</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/podium.svg" alt="edit-profile"></img>
+              <img id="category-img" src="../../images/add-user.svg" alt="edit-profile"></img>
             </div>
           </Link>
-        </div>
-
-        <div id="logout-btn-div">
-          <button onClick={handleLogout} id="logout-btn">
-            Logout
-          </button>
+          <Link id="profile-btn-div" to={'/profile/friends'}>
+            <div id="profile-btn" onClick={handleLogout}>
+              <p>Logout</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/logout.svg" alt="logout"></img>
+            </div>
+          </Link>
+          <div id="profile-btn-div" style={{ borderBottom: 'none' }}>
+            <div id="profile-btn" onClick={handleUserDelete}>
+              <p style={{ color: '#ff0000' }}>Delete Account</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/cancel-button.svg" alt="delete"></img>
+            </div>
+          </div>
         </div>
       </div>
     );

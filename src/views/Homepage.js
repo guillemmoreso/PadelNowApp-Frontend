@@ -70,13 +70,13 @@ class Homepage extends Component {
         <div id="home-banner">
           <div id="home-banner-search">
             <div id="home-search">
+              <h3> Find your Club:</h3>
               <SearchInput filterClubs={this.filterClubs} />
             </div>
           </div>
         </div>
         <div id="highlight-clubs">
           <div id="highlight-clubs-header">
-            <h3> Find your Club:</h3>
             {clubs.length > 0
               ? clubs.map(club => {
                   if (club.name.toLowerCase().includes(this.state.value.toLowerCase())) {

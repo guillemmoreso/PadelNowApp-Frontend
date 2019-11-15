@@ -34,8 +34,8 @@ class Login extends Component {
         </form>
         <p className="alternative">
           Don't have an account yet?
-          <Link to="/signup">
-            <span>Signup</span>
+          <Link to="/signup" style={{ textDecoration: 'none' }}>
+            <span> Signup</span>
           </Link>
         </p>
       </div>

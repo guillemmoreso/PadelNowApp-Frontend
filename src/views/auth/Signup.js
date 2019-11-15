@@ -45,9 +45,9 @@ class Signup extends Component {
 
         <div>
           <p className="alternative">
-            Already have an account?
-            <Link to={'/login'}>
-              <span>Login</span>
+            Already have an account? 
+            <Link to={'/login'} style={{ textDecoration: 'none' }}>
+              <span> Login</span>
             </Link>
           </p>
         </div>

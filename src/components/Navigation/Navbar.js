@@ -28,7 +28,7 @@ class Navbar extends Component {
                 ) : (
                   <li>
                     <Link to="/map">
-                      <img src={'/images/map.svg'} alt="Map" />
+                      <img src={'/images/map-navbar.svg'} alt="Map" />
                       Map
                     </Link>
                   </li>
