@@ -376,7 +376,7 @@ nav ul li a img {
   margin-top: -5%;
   margin-left: -5%;
   margin-right: -5%;
-  height: 90vh;
+  height: 85vh;
   background-image: linear-gradient(199deg, #a4d96c, #017069);
 }
 
@@ -421,7 +421,7 @@ nav ul li a img {
 }
 
 #login-signup-cta {
-  margin-top: 10vh;
+  margin: 5vh 0;
 }
 
 #loading-header {
