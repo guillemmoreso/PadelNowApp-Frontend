@@ -9,7 +9,7 @@ class EditProfile extends Component {
     surname: this.props.user.surname,
     username: this.props.user.username,
     password: '',
-    avatarImg: '',
+    avatarImg: this.props.user.avatarImg,
   };
 
   handleChange = event => {
@@ -28,20 +28,36 @@ class EditProfile extends Component {
     });
   };
 
-  // uploadHandler = e => {
-  //   e.preventDefault();
-  //   profileService.handleUpload(uploadData);
-  // };
+  checkUploadResult = async resultEvent => {
+    if (resultEvent.event === 'success') {
+      const avatarImg = resultEvent.info.secure_url;
+      console.log('upload', avatarImg);
+      const uploadImage = await profileService.uploadImage({ avatarImg });
+      this.setState({ avatarImg });
 
-  handleFileUpload = e => {
-    const uploadData = new FormData();
-    uploadData.append('avatarImg', e.target.files[0]);
-    profileService.handleUpload(uploadData);
+      // this.props
+      //   .handlePostPhoto({ user_id: this.props.user._id, caption: '', url: resultEvent.info.secure_url })
+      //   .then(this.props.history.push('/profile'));
+    }
+  };
+
+  showWidget = widget => {
+    widget.open();
   };
 
   render() {
     const { name, surname, username, password } = this.state;
     const { handleUserDelete } = this.props;
+
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'dalhi9ynf',
+        uploadPreset: 'oyxpj1uw',
+      },
+      (error, result) => {
+        this.checkUploadResult(result);
+      },
+    );
 
     return (
       <>
@@ -50,14 +66,10 @@ class EditProfile extends Component {
           <h1>Edit Profile</h1>
         </div>
         <div className="edit-profile-container">
-          <img
-            id="user-profile-edit"
-            src="https://www.worldpadeltour.com/media-content/2019/07/francisco-navarro-compn-4f278b973c-220x260.JPG"
-            alt="profile"
-          />
-          <input type="file" onChange={e => this.handleFileUpload(e)} />
-          <button onClick={this.uploadHandler}>Submit</button>
-
+          <img id="user-profile-edit" src={this.props.user.avatarImg} alt="profile" />
+          <div>
+            <button onClick={() => this.showWidget(widget)}>Upload avatar</button>
+          </div>
           <form onSubmit={this.handleFormSubmit} id="signup-input">
             <input type="text" name="name" value={name} onChange={this.handleChange} />
             <br />

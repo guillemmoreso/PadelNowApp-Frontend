@@ -7,10 +7,7 @@ import Search from '../components/User/SearchUsers';
 
 class Friends extends Component {
   state = {
-    allUsers: [],
-    value: '',
-    userFriends: [],
-    isLoading: true,
+    petitions: this.props.user.petitions,
   };
 
   async componentDidMount() {
@@ -26,16 +23,10 @@ class Friends extends Component {
       console.log(error);
     }
   }
-
-  filterClubs = value => {
-    this.setState({
-      value,
-    });
-  };
-
+  
   render() {
-    const { userFriends, isLoading, allUsers } = this.state;
-    console.log(userFriends);
+    const { userFriends, isLoading, allUsers } = this.props.user.petitions;
+
     return (
       <>
         <div id="viewport-with-navbar">
@@ -43,24 +34,8 @@ class Friends extends Component {
             <Backbar history={this.props.history} />
             <h1>My Friends</h1>
           </div>
-          <Link to="/profile/friends/search">
-            <div>Search</div>
-          </Link>
-          <Link to="/profile/friends/petitions">
-            <div>Petitions</div>
-          </Link>
-
-          <h1>MY FRIENDS</h1>
-          {userFriends &&
-            userFriends.map(friend => {
-              return (
-                <div id="highlight-clubs-card" key={friend._id}>
-                  <div>
-                    <h1 id="club-name-card">{friend.name}</h1>
-                  </div>
-                </div>
-              );
-            })}
+          <h1>Petitions pending:</h1>
+          <p>{this.props.user.petitions}</p>
         </div>
       </>
     );

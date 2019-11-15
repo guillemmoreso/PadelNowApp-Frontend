@@ -52,7 +52,7 @@ class Search extends Component {
         </div>
         <div id="datePicker">
           <span id="select-date">Select date:</span>
-          <DatePicker onChange={this.onDateChange} value={this.props.date} />
+          <DatePicker onChange={this.onDateChange} value={this.props.date} minDate={new Date()} />
         </div>
         <br />
         <div id="display-block">

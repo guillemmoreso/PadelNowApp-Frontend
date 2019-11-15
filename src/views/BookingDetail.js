@@ -10,7 +10,6 @@ import Backbar from '../components/Navigation/Backbar';
 class BookingDetail extends Component {
   state = {
     booking: {},
-    isLoading: true,
   };
 
   async componentDidMount() {
@@ -23,13 +22,9 @@ class BookingDetail extends Component {
       const booking = await bookingsService.getBookingById(id);
       this.setState({
         booking,
-        isLoading: false,
       });
     } catch (error) {
       console.log(error);
-      this.setState({
-        isLoading: false,
-      });
     }
   }
 
@@ -42,7 +37,7 @@ class BookingDetail extends Component {
     try {
       await bookingsService.bookingDelete(id);
       toast.success('Booking deleted');
-      
+
       this.props.history.push('/bookings');
     } catch (error) {
       console.error('Error while booking delete');

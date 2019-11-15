@@ -24,6 +24,14 @@ class Profile extends Component {
           />
         </div>
         <div id="other-features">
+          <Link id="profile-btn-div" to={'/player'}>
+            <div id="profile-btn">
+              <p>My Player status</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/club-profile.svg" alt="location"></img>
+            </div>
+          </Link>
           <Link id="profile-btn-div" to={'/clubs'}>
             <div id="profile-btn">
               <p>List of Clubs</p>
@@ -58,7 +66,7 @@ class Profile extends Component {
           </Link>
           <Link id="profile-btn-div" to={'/profile/friends'}>
             <div id="profile-btn">
-              <p>Friends Ranking</p>
+              <p>Manage Friends</p>
             </div>
             <div>
               <img id="category-img" src="../../images/podium.svg" alt="edit-profile"></img>

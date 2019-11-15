@@ -119,7 +119,31 @@ h2 {
   animation: animate 1.5s linear infinite;
 }
 
+#loading-ball-mini {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #c9f364;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  animation: animate 1.5s linear infinite;
+}
+
 #loading-ball::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid #fff;
+  left: -65%;
+  filter: blur(1px);
+}
+
+#loading-ball-mini::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -155,6 +179,31 @@ h2 {
     transform: translate(-50%, -50%) translateY(-200px) rotate(360deg);
   }
 }
+
+#loading-ball-mini::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid #fff;
+  right: -65%;
+  filter: blur(1px);
+}
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -50%) translateY(-50px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(0px) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-50px) rotate(360deg);
+  }
+}
+
 #loading-ball-shadow {
   position: absolute;
   width: 150px;
@@ -321,14 +370,71 @@ nav ul li a img {
 
 #logo-div {
   top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
   margin-top: -5%;
   margin-left: -5%;
   margin-right: -5%;
+  height: 95vh;
+  background-image: linear-gradient(199deg, #a4d96c, #017069);
 }
 
+#swipe-down-div {
+  color: var(--font);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+#swipe-down-div img {
+  width: 15px;
+}
+/* #login-signup-cta {
+  margin-top: 50vh;
+} */
+/* #home-banner {
+  margin-top: 10vh;
+} */
+#loading-div {
+  width: 100%;
+  height: 20vh;
+}
+#homepage-header {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  color: #fff;
+}
+
+#header-book-btn-div {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+#login-signup-cta {
+  margin-top: 10vh;
+}
+
+#loading-header {
+  max-height: 5vh;
+}
+
+#header-book-btn {
+  border-radius: 0.2em;
+  background-color: var(--green);
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+}
 #logo-large {
   width: 150px;
   height: auto;
@@ -337,11 +443,12 @@ nav ul li a img {
 
 #home-banner-title h1 {
   margin: 0 0 0.5rem 0;
+  color: #ffffff;
 }
 
 #home-banner-text {
   font-size: 0.9em;
-  color: #2f3333;
+  color: #ffffff;
 }
 
 #highlight-clubs-header {

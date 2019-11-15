@@ -1,6 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import React, { Component, createContext } from 'react';
 import authService from '../services/authService';
+import profileService from '../services/profileService';
 import Loading from '../components/Loading/Loading';
 
 const AuthContext = createContext();
@@ -23,6 +24,7 @@ export const withAuth = Comp => {
             handleSignup,
             handleProfileUpdate,
             handleUserDelete,
+            handlePostPhoto,
           }) => (
             <Comp
               {...this.props}
@@ -34,6 +36,7 @@ export const withAuth = Comp => {
               handleSignup={handleSignup}
               handleProfileUpdate={handleProfileUpdate}
               handleUserDelete={handleUserDelete}
+              handlePostPhoto={handlePostPhoto}
             />
           )}
         </AuthConsumer>
@@ -162,6 +165,10 @@ export default class AuthProvider extends Component {
       });
   };
 
+  handlePostPhoto = user => {
+    profileService.uploadAvatarImg(user);
+  };
+
   render() {
     const { isLoading, isLoggedin, user } = this.state;
     const { children } = this.props;
@@ -179,6 +186,7 @@ export default class AuthProvider extends Component {
           handleSignup: this.handleSignup,
           handleProfileUpdate: this.handleProfileUpdate,
           handleUserDelete: this.handleUserDelete,
+          handlePostPhoto: this.handlePostPhoto,
         }}
       >
         {children}

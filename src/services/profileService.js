@@ -24,6 +24,24 @@ class ProfileService {
     return this.profile.get('/profile/friends/users').then(({ data: allUsers }) => allUsers);
   }
 
+  uploadAvatarImg(user) {
+    return this.profile.post('/profile/friends/users').then(response => response.data);
+  }
+
+  getUserById(id) {
+    return this.profile.get(`/player/${id}`).then(({ data: player }) => player);
+  }
+
+  savePetition(id) {
+    return this.profile.put(`/player/${id}/petition`).then(response => response.data);
+  }
+
+  uploadImage(img) {
+    const { avatarImg } = img;
+    return this.profile.post('/profile/edit-profile/upload', { avatarImg }).then(({ data }) => {
+      return data;
+    });
+  }
   // uploadHandler(formData) {
   //   return this.profile.post('/profile/edit-profile/upload', formData).then(({ data: avatarImg }) => avatarImg);
   // }

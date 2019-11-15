@@ -38,27 +38,32 @@ class MatchResults extends Component {
             <>
               {userBookings.map(booking => {
                 return (
-                  <div id="booking-card" key={booking._id}>
-                    <div id="moment-booking">
-                      <Moment format="DD dddd MMMM">{booking.day}</Moment>
-                    </div>
-                    <div id="booking-card-details">
-                      <div id="booking-card-details">
-                        <p>
-                          {booking.startingHour}:00 - {booking.startingHour + 1}:00
-                        </p>
-                        <p className="with-bottom-border">{booking.court.courtName}</p>
-                      </div>
+                  <>
+                    <Link to={`/profile/results/${booking._id}`} style={{ textDecoration: 'none' }}>
+                      <div id="booking-card" key={booking._id}>
+                        <div id="moment-booking">
+                          <Moment format="DD dddd MMMM">{booking.day}</Moment>
+                        </div>
+                        <div id="booking-card-details">
+                          <div id="booking-card-details">
+                            <p>
+                              {booking.startingHour}:00 - {booking.startingHour + 1}:00
+                            </p>
+                            <p>{booking.gameWon}</p>
+                            <p className="with-bottom-border">{booking.court.courtName}</p>
+                          </div>
 
-                      {!booking.gameResult ? (
-                        userBookings.map(booking => {
-                          return <></>;
-                        })
-                      ) : (
-                        <p>Poner</p>
-                      )}
-                    </div>
-                  </div>
+                          {!booking.gameResult ? (
+                            userBookings.map(booking => {
+                              return <></>;
+                            })
+                          ) : (
+                            <p>Poner</p>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </>
                 );
               })}
             </>

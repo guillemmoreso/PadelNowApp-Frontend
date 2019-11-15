@@ -28,6 +28,14 @@ class BookingsService {
         return data;
       });
   }
+
+  gameResult(bookingResult) {
+    const { gameWon, bookingId } = bookingResult;
+    return this.bookings.put(`/profile/results/${bookingId}`, { gameWon })
+    .then(({ data }) => {
+      return data;
+    });
+  }
 }
 
 const bookingsService = new BookingsService();
