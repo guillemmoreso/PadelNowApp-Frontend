@@ -49,6 +49,17 @@ class FavoriteClubs extends Component {
                 </div>
               );
             })}
+          {clubs.length === 0 && (
+            <>
+              <div id="missing-favorite-div">
+                <img id="sorry-img" src="../../images/club-favorite.svg" alt="location"></img>
+                <h2>Still waiting your Crush? </h2>
+                <Link id="home-book-btn-div" to={'/clubs'}>
+                  <div id="home-book-btn">Select Favorite Clubs</div>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </>
     );

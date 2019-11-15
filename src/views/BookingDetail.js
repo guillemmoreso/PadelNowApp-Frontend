@@ -36,8 +36,7 @@ class BookingDetail extends Component {
     } = this.props;
     try {
       await bookingsService.bookingDelete(id);
-      toast.success('Booking deleted');
-
+      toast.error('Booking deleted');
       this.props.history.push('/bookings');
     } catch (error) {
       console.error('Error while booking delete');

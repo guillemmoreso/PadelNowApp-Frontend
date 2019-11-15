@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { withAuth } from '../Context/AuthContext';
 
 class Profile extends Component {
@@ -7,8 +9,26 @@ class Profile extends Component {
     img: '',
   };
 
+  onClickLogout = async () => {
+    try {
+      toast.info('Logout succesfully');
+      this.props.handleLogout();
+    } catch (error) {
+      console.error('Error while logout ');
+    }
+  };
+
+  onClickDelete = async () => {
+    try {
+      this.props.handleUserDelete();
+      toast.warn('Account deleted');
+    } catch (error) {
+      console.error('Error while logout ');
+    }
+  };
+
   render() {
-    const { handleLogout, handleUserDelete } = this.props;
+    // const { handleLogout, handleUserDelete } = this.props;
     const { name, surname, avatarImg } = this.props.user;
 
     return (
@@ -25,7 +45,7 @@ class Profile extends Component {
               <p>My Stats</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/success.svg" alt="location"></img>
+              <img id="category-img" src="../../images/success.svg" alt="sucess"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/search'}>
@@ -33,7 +53,7 @@ class Profile extends Component {
               <p>Search Availability</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/search.svg" alt="location" style={{ fill: '#2f3333' }}></img>
+              <img id="category-img" src="../../images/search.svg" alt="search" style={{ fill: '#2f3333' }}></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/clubs'}>
@@ -41,7 +61,7 @@ class Profile extends Component {
               <p>List of Clubs</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/address.svg" alt="location" style={{ fill: '#2f3333' }}></img>
+              <img id="category-img" src="../../images/address.svg" alt="address" style={{ fill: '#2f3333' }}></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/favorites'}>
@@ -52,12 +72,12 @@ class Profile extends Component {
               <img id="category-img" src="../../images/heart-profile.svg" alt="heart"></img>
             </div>
           </Link>
-          <Link id="profile-btn-div" to={'/friends'}>
+          <Link id="profile-btn-div" to={'/profile/friends'}>
             <div id="profile-btn">
               <p>My Ranking</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/podium.svg" alt="location" style={{ fill: '#2f3333' }}></img>
+              <img id="category-img" src="../../images/podium.svg" alt="podium" style={{ fill: '#2f3333' }}></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/results'}>
@@ -73,7 +93,7 @@ class Profile extends Component {
               <p>Manage Friends</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/add-user.svg" alt="edit-profile"></img>
+              <img id="category-img" src="../../images/add-user.svg" alt="add-user"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/edit-profile'}>
@@ -84,17 +104,16 @@ class Profile extends Component {
               <img id="category-img" src="../../images/edit-profile.svg" alt="edit-profile"></img>
             </div>
           </Link>
-
-          <Link id="profile-btn-div" to={'/profile/friends'}>
-            <div id="profile-btn" onClick={handleLogout}>
+          <div id="profile-btn-div">
+            <div id="profile-btn" onClick={this.onClickLogout}>
               <p>Logout</p>
             </div>
             <div>
               <img id="category-img" src="../../images/logout.svg" alt="logout"></img>
             </div>
-          </Link>
+          </div>
           <div id="profile-btn-div" style={{ borderBottom: 'none' }}>
-            <div id="profile-btn" onClick={handleUserDelete}>
+            <div id="profile-btn" onClick={this.onClickDelete}>
               <p style={{ color: '#ff0000' }}>Delete Account</p>
             </div>
             <div>

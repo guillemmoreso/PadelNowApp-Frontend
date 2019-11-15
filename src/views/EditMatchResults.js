@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Moment from 'react-moment';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
 import Loading from '../components/Loading/Loading';
 import Backbar from '../components/Navigation/Backbar';
 import BookingDescription from '../components/Booking/BookingDescription';
+import 'react-toastify/dist/ReactToastify.css';
 
 class EditMatchResults extends Component {
   state = {
     bookingResult: {},
     isLoading: true,
-    gameWon: false,
+    gameWon: '',
   };
 
   async componentDidMount() {
@@ -37,8 +39,8 @@ class EditMatchResults extends Component {
       const bookingId = this.props.match.params.id;
       const { gameWon } = this.state;
       const bookingResult = await bookingsService.gameResult({ gameWon, bookingId });
-      console.log('bookingId', bookingResult);
-
+      toast.info('Game Result Submited');
+      this.props.history.push('/profile/results');
       this.setState({ bookingResult, gameWon });
     } catch (error) {
       console.error('Error while inserting Game Result');
@@ -46,13 +48,13 @@ class EditMatchResults extends Component {
   };
 
   handleGameResult = event => {
-    if (event.target.value === 'Won') this.setState({ gameWon: true });
-    else this.setState({ gameWon: false });
+    if (event.target.value === 'Won') this.setState({ gameWon: 'Won' });
+    else this.setState({ gameWon: 'Lost' });
     console.log('State:GameWon', this.state.gameWon);
   };
 
   render() {
-    const { bookingResult, isLoading } = this.state;
+    const { bookingResult, isLoading, gameWon } = this.state;
 
     return (
       <>
@@ -81,10 +83,7 @@ class EditMatchResults extends Component {
                       <option value="Lost">Lost</option>
                     </select>
                     <input type="submit" />
-                    {/* PONER NOTIFICACION */}
                   </form>
-                  {/* <p className="with-bottom-border">{bookingResult.court.courtName}</p> */}
-                  <p>{this.state.gameWon && 'jjjjj'}</p>
                 </div>
               </div>
             </div>

@@ -37,7 +37,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <ToastContainer autoClose={3000} />
+        <ToastContainer autoClose={2500} />
         <Router>
           <div className="container">
             <div className="data-container">

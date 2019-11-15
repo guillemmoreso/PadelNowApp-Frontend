@@ -26,7 +26,7 @@ class MatchResults extends Component {
 
   render() {
     const { userBookings } = this.state;
-
+    console.log(userBookings);
     return (
       <>
         <div id="viewport-with-navbar">
@@ -49,17 +49,15 @@ class MatchResults extends Component {
                             <p>
                               {booking.startingHour}:00 - {booking.startingHour + 1}:00
                             </p>
-                            <p>{booking.gameWon}</p>
-                            <p className="with-bottom-border">{booking.court.courtName}</p>
+                            <p>{booking.court.courtName}</p>
+                            <h2 className="with-bottom-border">
+                              {booking.gameWon === 'Won' ? (
+                                <p style={{ color: '#a4d96c' }}>Won</p>
+                              ) : booking.gameWon === 'Lost' ? (
+                                <p style={{ color: 'rgb(237, 92, 115)' }}>Lost</p>
+                              ) : null}
+                            </h2>
                           </div>
-
-                          {!booking.gameResult ? (
-                            userBookings.map(booking => {
-                              return <></>;
-                            })
-                          ) : (
-                            <p>Poner</p>
-                          )}
                         </div>
                       </div>
                     </Link>
@@ -69,11 +67,10 @@ class MatchResults extends Component {
             </>
           ) : (
             <>
-              <h1>You have not booked a match yet... </h1>
+              <h1 style={{ textAlign: 'center' }}>No matches finished... </h1>
               <Loading />
-
-              <Link id="logout-btn-div" to="/search">
-                <div id="logout-btn">Book now</div>
+              <Link id="home-book-btn-div" to={'/search'}>
+                <div id="home-book-btn">Book Now</div>
               </Link>
             </>
           )}

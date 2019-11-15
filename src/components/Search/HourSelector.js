@@ -37,6 +37,7 @@ class HourSelector extends Component {
         <option value="20">20:00</option>
         <option value="21">21:00</option>
         <option value="22">22:00</option>
+        <option value="23">23:00</option>
       </select>
     );
   }

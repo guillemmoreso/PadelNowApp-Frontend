@@ -91,6 +91,19 @@ class Search extends Component {
               </div>
             );
           })}
+        {clubs.length === 0 && (
+          <>
+            <div id="sorry-div">
+              <img id="sorry-img" src="../../images/sorry.svg" alt="location"></img>
+              <h2>
+                Sorry... <br />
+                No available clubs
+                <br />
+                Try another date!
+              </h2>
+            </div>
+          </>
+        )}
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { withAuth } from '../../Context/AuthContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Signup extends Component {
   state = {
@@ -24,6 +26,7 @@ class Signup extends Component {
       username,
       password,
     });
+    toast.success('Welcome to Padelnow');
   };
 
   render() {
@@ -45,7 +48,7 @@ class Signup extends Component {
 
         <div>
           <p className="alternative">
-            Already have an account? 
+            Already have an account?
             <Link to={'/login'} style={{ textDecoration: 'none' }}>
               <span> Login</span>
             </Link>

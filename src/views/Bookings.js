@@ -25,7 +25,7 @@ class Bookings extends Component {
   }
 
   render() {
-    const { bookings } = this.state;
+    const { bookings, isLoading } = this.state;
     const { pathname } = this.props.location;
     console.log(pathname);
 
@@ -37,7 +37,7 @@ class Bookings extends Component {
             <h1>Upcoming Bookings</h1>
           </div>
 
-          {bookings.length > 0 ? (
+          {!isLoading && bookings.length > 0 ? (
             <>
               {bookings.map(booking => {
                 return (
@@ -60,12 +60,16 @@ class Bookings extends Component {
             </>
           ) : (
             <>
-              <h1>You have not booked a match yet... </h1>
-              <Loading />
-
-              <Link id="logout-btn-div" to="/search">
-                <div id="logout-btn">Book now</div>
-              </Link>
+              <div id="missing-favorite-div">
+                <img id="sorry-img" src="../../images/nerd.svg" alt="location"></img>
+                <h2>
+                  Still No Bookings... <br />
+                  What's your Excuse?
+                </h2>
+                <Link id="home-book-btn-div" to={'/search'}>
+                  <div id="home-book-btn">Let's Padel!</div>
+                </Link>
+              </div>
             </>
           )}
         </div>

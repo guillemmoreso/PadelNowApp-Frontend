@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { withAuth } from '../../Context/AuthContext';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { withAuth } from '../../Context/AuthContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
   state = {
@@ -20,6 +22,7 @@ class Login extends Component {
       username,
       password,
     });
+    toast.success('Welcome to Padelnow');
   };
 
   render() {

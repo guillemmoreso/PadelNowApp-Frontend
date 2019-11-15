@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
+import { toast } from 'react-toastify';
 import { withAuth } from '../Context/AuthContext';
 import { withBooking } from '../Context/BookingContext';
 import clubsService from '../services/clubsService';
 import bookingsService from '../services/bookingsService';
 import Backbar from '../components/Navigation/Backbar';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Reservation extends Component {
   state = {
@@ -41,6 +43,8 @@ class Reservation extends Component {
       const userId = this.props.user._id;
       const courtId = this.state.club.courts;
       const userBooking = await bookingsService.newBooking({ searchStartingHour, date, clubId, userId, courtId });
+      toast.success('Booking Accepted');
+      this.props.history.push('/bookings');
     } catch (error) {
       console.error('Error while searching for available courts');
     }
@@ -114,7 +118,7 @@ class Reservation extends Component {
               </div>
             </div>
             <div id="submit-reservation">
-              <input type="submit" value="Confirm Payment" onClick={this.handleFormSubmit} id="submit-datapicker" />
+              <input type="submit" value="Confirm Booking" onClick={this.handleFormSubmit} id="submit-datapicker" />
             </div>
           </div>
         </div>

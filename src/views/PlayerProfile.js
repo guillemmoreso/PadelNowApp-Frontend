@@ -12,8 +12,9 @@ class PlayerProfile extends Component {
   };
 
   render() {
-    const { name, surname, username, avatarImg, description, level } = this.props.user;
-
+    const { name, surname, username, avatarImg, description, level, gameWon } = this.props.user;
+    const gameWon1 = this.props.user;
+    console.log('gameWon1', gameWon1);
     return (
       <>
         <div id="page-name">
@@ -29,7 +30,8 @@ class PlayerProfile extends Component {
             </p>
             <p>
               <span>Won</span>
-              <br />0
+              <br />
+              {gameWon}
             </p>
             <p>
               <span>Lost</span>
@@ -37,12 +39,12 @@ class PlayerProfile extends Component {
             </p>
           </div>
           <h2 style={{ margin: '20px 0 10px 20px' }}>About</h2>
-          <p>{description}</p>
+          <p style={{ color: '#808080', margin: '0 20px' }}>{description}</p>
           <h2 style={{ margin: '20px 0 10px 20px' }}>Level</h2>
-          <p>{level}</p>
+          <p style={{ color: '#808080', margin: '0 20px' }}>{level}</p>
         </div>
         <div id="submit-reservation">
-          <input type="submit" value="Edit Stats" onClick={this.handleBookingDelete} id="submit-datapicker" />
+          <input type="submit" value="Submit Stats" id="submit-datapicker" />
         </div>
       </>
     );
