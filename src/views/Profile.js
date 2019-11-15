@@ -28,17 +28,20 @@ class Profile extends Component {
               <img id="category-img" src="../../images/success.svg" alt="location"></img>
             </div>
           </Link>
+          <Link id="profile-btn-div" to={'/search'}>
+            <div id="profile-btn">
+              <p>Search Availability</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/search.svg" alt="location" style={{ fill: '#2f3333' }}></img>
+            </div>
+          </Link>
           <Link id="profile-btn-div" to={'/clubs'}>
             <div id="profile-btn">
               <p>List of Clubs</p>
             </div>
             <div>
-              <img
-                id="category-img"
-                src="../../images/address.svg"
-                alt="location"
-                style={{ fill: '#2f3333' }}
-              ></img>
+              <img id="category-img" src="../../images/address.svg" alt="location" style={{ fill: '#2f3333' }}></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/favorites'}>
@@ -49,20 +52,20 @@ class Profile extends Component {
               <img id="category-img" src="../../images/heart-profile.svg" alt="heart"></img>
             </div>
           </Link>
+          <Link id="profile-btn-div" to={'/friends'}>
+            <div id="profile-btn">
+              <p>My Ranking</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/podium.svg" alt="location" style={{ fill: '#2f3333' }}></img>
+            </div>
+          </Link>
           <Link id="profile-btn-div" to={'/profile/results'}>
             <div id="profile-btn">
               <p>My Results</p>
             </div>
             <div>
               <img id="category-img" src="../../images/versus-profile.svg" alt="versus"></img>
-            </div>
-          </Link>
-          <Link id="profile-btn-div" to={'/profile/edit-profile'}>
-            <div id="profile-btn">
-              <p>Edit Profile</p>
-            </div>
-            <div>
-              <img id="category-img" src="../../images/edit-profile.svg" alt="edit-profile"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/friends'}>
@@ -73,6 +76,15 @@ class Profile extends Component {
               <img id="category-img" src="../../images/add-user.svg" alt="edit-profile"></img>
             </div>
           </Link>
+          <Link id="profile-btn-div" to={'/profile/edit-profile'}>
+            <div id="profile-btn">
+              <p>Edit Profile</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/edit-profile.svg" alt="edit-profile"></img>
+            </div>
+          </Link>
+
           <Link id="profile-btn-div" to={'/profile/friends'}>
             <div id="profile-btn" onClick={handleLogout}>
               <p>Logout</p>

@@ -53,22 +53,19 @@ class BookingDetail extends Component {
             <Backbar history={this.props.history} />
             <h1>Booking Details</h1>
           </div>
-          {booking._id ? (
+          {booking._id && (
             <>
               {!isLoading && <BookingDescription booking={booking} />}
-              <div id="logout-btn-div">
-                <button onClick={this.handleBookingDelete} id="logout-btn">
-                  Delete Booking
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <h1>You sucessfully deleted your booking...</h1>
 
-              <Link id="logout-btn-div" to="/search">
-                <div id="logout-btn">Book now</div>
-              </Link>
+              <div id="submit-reservation" style={{ backgroundColor: 'rgb(237, 92, 115)' }}>
+                <input
+                  type="submit"
+                  value="Delete Booking"
+                  onClick={this.handleBookingDelete}
+                  id="submit-datapicker"
+                  style={{ backgroundColor: 'rgb(237, 92, 115)' }}
+                />
+              </div>
             </>
           )}
         </section>

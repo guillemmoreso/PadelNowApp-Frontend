@@ -67,8 +67,8 @@ class EditProfile extends Component {
         </div>
         <div className="edit-profile-container">
           <img id="user-profile-edit" src={this.props.user.avatarImg} alt="profile" />
-          <div>
-            <button onClick={() => this.showWidget(widget)}>Upload avatar</button>
+          <div id="upload-avatar">
+            <button onClick={() => this.showWidget(widget)}>Upload Picture</button>
           </div>
           <form onSubmit={this.handleFormSubmit} id="signup-input">
             <input type="text" name="name" value={name} onChange={this.handleChange} />
@@ -87,11 +87,6 @@ class EditProfile extends Component {
             <br />
             <input type="submit" value="Submit" className="btn" />
           </form>
-          <div id="logout-btn-div">
-            <button onClick={handleUserDelete} id="logout-btn">
-              Delete Account
-            </button>
-          </div>
         </div>
       </>
     );

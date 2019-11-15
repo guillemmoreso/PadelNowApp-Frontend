@@ -18,16 +18,34 @@ const BookingDescription = props => {
         <img src="/../../images/map.svg" alt="map-icon"></img>
       </div>
       <div id="booking-card-details" key={club._id}>
-        <h1 id="club-detail-header">Booking Info</h1>
-        <div id="moment-booking">
+        <div id="moment-booking" style={{ margin: '10px 0 0 0' }}>
           <Moment format="DD dddd MMMM">{day}</Moment>
-        </div>
-        <div id="booking-card-details">
-          <p>
-            {startingHour}:00 - {startingHour + 1}:00
-          </p>
-          <p>{startingHour}€</p>
           <p className="with-bottom-border">{court.courtName}</p>
+        </div>
+        <div id="reservation-hours">
+          <p>
+            <span>Start</span>
+            <br />
+            {startingHour}:00
+          </p>
+          <p>
+            <span>End</span>
+            <br />
+            {startingHour + 1}:00
+          </p>
+          <p>
+            <span>Duration</span>
+            <br />
+            60min
+          </p>
+        </div>
+        <div id="profile-btn-div" style={{ margin: '0 0 20px 0' }}>
+          <div id="profile-btn">
+            <p>Court Price</p>
+          </div>
+          <div>
+            <h2 style={{ color: '#017069' }}>{club.price}€</h2>
+          </div>
         </div>
       </div>
     </div>

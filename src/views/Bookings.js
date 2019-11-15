@@ -26,15 +26,17 @@ class Bookings extends Component {
 
   render() {
     const { bookings } = this.state;
+    const { pathname } = this.props.location;
+    console.log(pathname);
 
     return (
       <>
         <div id="viewport-with-navbar">
           <div id="page-name">
             <Backbar history={this.props.history} />
-            <h1>Bookings</h1>
-            <div></div>
+            <h1>Upcoming Bookings</h1>
           </div>
+
           {bookings.length > 0 ? (
             <>
               {bookings.map(booking => {
