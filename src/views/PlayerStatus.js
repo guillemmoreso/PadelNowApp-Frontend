@@ -6,7 +6,8 @@ import Backbar from '../components/Navigation/Backbar';
 
 class PlayerStatus extends Component {
   state = {
-    playerInfo: {},
+    player: [],
+    games: [],
     userPetitions: this.props.user.petitions,
     isLoading: true,
   };
@@ -19,8 +20,10 @@ class PlayerStatus extends Component {
     } = this.props;
     try {
       const playerInfo = await profileService.getUserById(id);
+      console.log(playerInfo.games);
       this.setState({
-        playerInfo,
+        player: playerInfo.player,
+        games: playerInfo.games,
         isLoading: false,
       });
     } catch (error) {
@@ -37,13 +40,12 @@ class PlayerStatus extends Component {
   };
 
   render() {
-    const { player, games } = this.state.playerInfo;
+    const { player, games } = this.state;
     const { userPetitions, isLoading } = this.state;
-    console.log('player', player);
 
     return (
       <>
-        {!isLoading && (
+        {!isLoading && player ? (
           <>
             <div id="page-name">
               <Backbar history={this.props.history} />
@@ -52,8 +54,11 @@ class PlayerStatus extends Component {
             <h1>Games:{games.length}</h1>
             <h1>Won:{games.gameResult === 'Won'}</h1>
             <h1>Lost:{games.length}</h1>
+            {/* {this.state.player.map(user => {
+              return <p>{user.username}</p>;
+            })} */}
           </>
-        )}
+        ) : null}
         {!isLoading && games ? (
           <p>{games.filter(({ gameResult }) => gameResult === 'Won').length}</p>
         ) : // games.map(result => {
