@@ -54,8 +54,6 @@ class Reservation extends Component {
     const { date, searchStartingHour } = this.state;
     const numberSearchStartingHour = parseInt(searchStartingHour, 10);
     const { name, location, price, clubImages, _id, courts } = this.state.club;
-    console.log(courts);
-
     return (
       <>
         <div id="viewport-with-navbar">

@@ -13,7 +13,7 @@ class EditMatchResults extends Component {
   state = {
     bookingResult: {},
     isLoading: true,
-    gameResult: '',
+    gameResult: 'TBC',
   };
 
   async componentDidMount() {
@@ -40,8 +40,8 @@ class EditMatchResults extends Component {
       const { gameResult } = this.state;
       const bookingResult = await bookingsService.gameResult({ gameResult, bookingId });
       toast.info('Game Result Submited');
-      this.props.history.push('/profile/results');
       this.setState({ bookingResult, gameResult });
+      this.props.history.push('/profile/results');
     } catch (error) {
       console.error('Error while inserting Game Result');
     }
@@ -54,7 +54,7 @@ class EditMatchResults extends Component {
 
   render() {
     const { bookingResult, isLoading } = this.state;
-
+    console.log(bookingResult);
     return (
       <>
         {!isLoading && (
@@ -73,6 +73,7 @@ class EditMatchResults extends Component {
                   <p>
                     {bookingResult.startingHour}:00 - {bookingResult.startingHour + 1}:00
                   </p>
+                  <p>Current Status: {bookingResult.gameResult}</p>
                   <form onSubmit={this.handleFormSubmit}>
                     <select id="selector" onChange={this.handleGameResult}>
                       <option value="--" defaultValue>

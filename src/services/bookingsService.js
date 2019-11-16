@@ -30,9 +30,8 @@ class BookingsService {
   }
 
   gameResult(bookingResult) {
-    const { gameWon, bookingId } = bookingResult;
-    return this.bookings.put(`/profile/results/${bookingId}`, { gameWon })
-    .then(({ data }) => {
+    const { gameResult, bookingId } = bookingResult;
+    return this.bookings.put(`/profile/results/${bookingId}`, { gameResult }).then(({ data }) => {
       return data;
     });
   }

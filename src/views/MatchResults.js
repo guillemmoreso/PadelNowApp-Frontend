@@ -26,7 +26,6 @@ class MatchResults extends Component {
 
   render() {
     const { userBookings } = this.state;
-    console.log(userBookings);
     return (
       <>
         <div id="viewport-with-navbar">
@@ -51,9 +50,9 @@ class MatchResults extends Component {
                             </p>
                             <p>{booking.court.courtName}</p>
                             <h2 className="with-bottom-border">
-                              {booking.gameWon === 'Won' ? (
+                              {booking.gameResult === 'Won' ? (
                                 <p style={{ color: '#a4d96c' }}>Won</p>
-                              ) : booking.gameWon === 'Lost' ? (
+                              ) : booking.gameResult === 'Lost' ? (
                                 <p style={{ color: 'rgb(237, 92, 115)' }}>Lost</p>
                               ) : null}
                             </h2>
