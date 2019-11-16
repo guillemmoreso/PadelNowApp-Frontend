@@ -33,6 +33,14 @@ class FriendSearch extends Component {
     });
   };
 
+  // sendPetition = id => {
+  //   profileService.savePetition(id).then(response => {
+  //     this.setState({
+  //       userPetitions: response.updatedUser.petitions,
+  //     });
+  //   });
+  // };
+
   render() {
     const { userFriends, isLoading, allUsers } = this.state;
 
@@ -54,13 +62,13 @@ class FriendSearch extends Component {
                     <div key={user._id}>
                       <h2>{user.name}</h2>
                       <Link to={`/player/${user._id}`}>See {user.name} player status</Link>
-                      <span
+                      {/* <span
                         onClick={() => {
                           this.sendPetition(user._id);
                         }}
                       >
                         Send petition
-                      </span>
+                      </span> */}
                     </div>
                   );
                 }

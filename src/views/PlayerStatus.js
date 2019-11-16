@@ -39,7 +39,7 @@ class PlayerStatus extends Component {
   render() {
     const { player, games } = this.state.playerInfo;
     const { userPetitions, isLoading } = this.state;
-    console.log('games', games);
+    console.log('player', player);
 
     return (
       <>
@@ -60,6 +60,16 @@ class PlayerStatus extends Component {
         //   return <p>{result.gameResult.filter(({ gameResult }) => gameResult === 'Won').length}</p>;
         // })
         null}
+        {!isLoading && (
+          <span
+            onClick={() => {
+              this.sendPetition(player._id);
+            }}
+            style={{ backgroundColor: 'blue', color: 'white' }}
+          >
+            Send petition
+          </span>
+        )}
       </>
     );
   }

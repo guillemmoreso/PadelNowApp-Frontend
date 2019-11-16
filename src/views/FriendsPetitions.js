@@ -3,27 +3,24 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import profileService from '../services/profileService';
 import Backbar from '../components/Navigation/Backbar';
-import Search from '../components/User/SearchUsers';
 
 class Friends extends Component {
   state = {
-    petitions: this.props.user.petitions,
+    petitions: [],
   };
 
   async componentDidMount() {
     try {
-      const allUsers = await profileService.getAllUsers();
-      const userFriends = await profileService.getAllUserFriends();
+      const petitions = await profileService.getPetitions();
       this.setState({
-        allUsers,
-        userFriends,
+        petitions,
         isLoading: false,
       });
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   render() {
     const { userFriends, isLoading, allUsers } = this.props.user.petitions;
 

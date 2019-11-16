@@ -36,6 +36,10 @@ class ProfileService {
     return this.profile.put(`/player/${id}/petition`).then(response => response.data);
   }
 
+  getPetitions() {
+    return this.profile.get('/profile/friends/petitions').then(response => response.data);
+  }
+
   uploadImage(avatarImgUpload) {
     return this.profile.put('/profile/edit-profile/upload', avatarImgUpload).then(({ data }) => {
       return data;
