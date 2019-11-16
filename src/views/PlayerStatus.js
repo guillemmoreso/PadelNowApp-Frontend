@@ -23,7 +23,6 @@ class PlayerStatus extends Component {
     } = this.props;
     try {
       const playerInfo = await profileService.getUserById(id);
-      console.log(playerInfo.games);
       this.setState({
         player: playerInfo.player,
         games: playerInfo.games,
@@ -40,7 +39,6 @@ class PlayerStatus extends Component {
       const userId = this.props.user._id;
       const { level } = this.state;
       const profilelevel = await profileService.profileStats({ level, userId });
-      console.log('submit', profilelevel);
       toast.info('Profile Level Updated');
       this.setState({ level: profilelevel });
       this.props.history.push('/profile');
@@ -70,9 +68,10 @@ class PlayerStatus extends Component {
 
   sendPetition = id => {
     profileService.savePetition(id).then(response => {
-      this.setState({
-        userPetitions: response.updatedUser.petitions,
-      });
+      console.log('petition', response.updateUser);
+      // this.setState({
+      //   userPetitions: response.updatedUser.petitions,
+      // });
     });
   };
 
@@ -140,12 +139,10 @@ class PlayerStatus extends Component {
                 </>
               )}
             </div>
-            {this.props.user._id === player._id ? (
-              <Link to={'/player'}>
-                <div id="submit-reservation">
-                  <button id="submit-datapicker">Edit Stats</button>
-                </div>
-              </Link>
+            {player.petitions.includes(this.props.user._id) ? (
+              <div id="submit-reservation">
+                <p>Petition sent</p>
+              </div>
             ) : (
               <div
                 id="submit-reservation"
@@ -155,6 +152,13 @@ class PlayerStatus extends Component {
               >
                 Send petition
               </div>
+            )}
+            {this.props.user._id === player._id && (
+              <Link to={'/player'}>
+                <div id="submit-reservation">
+                  <button id="submit-datapicker">Edit Stats</button>
+                </div>
+              </Link>
             )}
           </>
         ) : null}

@@ -6,12 +6,14 @@ import Backbar from '../components/Navigation/Backbar';
 
 class Friends extends Component {
   state = {
-    petitions: [],
+    petitions: {},
+    isLoading: true,
   };
 
   async componentDidMount() {
     try {
       const petitions = await profileService.getPetitions();
+      console.log('petitionsrecei', petitions);
       this.setState({
         petitions,
         isLoading: false,
@@ -22,8 +24,8 @@ class Friends extends Component {
   }
 
   render() {
-    const { userFriends, isLoading, allUsers } = this.props.user.petitions;
-
+    const { petitions, isLoading } = this.state;
+    console.log('petition', this.props.user.petitions);
     return (
       <>
         <div id="viewport-with-navbar">
@@ -32,7 +34,22 @@ class Friends extends Component {
             <h1>My Friends</h1>
           </div>
           <h1>Petitions pending:</h1>
-          <p>{this.props.user.petitions}</p>
+          {!isLoading &&
+            petitions.map(petition => {
+              return (
+                <div id="highlight-clubs-card" key={petition._id}>
+                  <div>
+                    <h1 id="club-name-card">{petition.name}</h1>
+                    <div id="home-book-btn">Accept</div>
+                    <div id="home-book-btn">Decline</div>
+
+                    <Link id="home-book-btn-div" to={`/player/${petition._id}`}>
+                      <div id="home-book-btn">See stats</div>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </>
     );
