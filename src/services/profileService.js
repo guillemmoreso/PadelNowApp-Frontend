@@ -51,6 +51,13 @@ class ProfileService {
       return data;
     });
   }
+
+  profileStats(stats) {
+    const { level, userId } = stats;
+    return this.profile.put(`/player/${userId}`, { level }).then(({ data }) => {
+      return data;
+    });
+  }
 }
 
 const profileService = new ProfileService();

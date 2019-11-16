@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { withAuth } from '../Context/AuthContext';
 import { withBooking } from '../Context/BookingContext';
 import profileService from '../services/profileService';
@@ -7,43 +9,72 @@ import Backbar from '../components/Navigation/Backbar';
 
 class PlayerProfile extends Component {
   state = {
-    player: {},
-    userPetitions: this.props.user.petitions,
+    level: this.props.user.level,
+  };
+
+  handleFormSubmit = async e => {
+    e.preventDefault();
+    try {
+      const { level } = this.state;
+      const profilelevel = await profileService.profileStats({ level });
+      toast.info('Game Result Submited');
+      this.setState({ level: profilelevel });
+      this.props.history.push(`/player/${this.props.user._id}`);
+    } catch (error) {
+      console.error('Error while inserting Game Result');
+    }
+  };
+
+  // handleLevel = event => {
+  //   if (event.target.value === 'Won') this.setState({ gameResult: 'Won' });
+  //   else this.setState({ gameResult: 'Lost' });
+  // };
+  handleLevel = event => {
+    switch (event.target.value) {
+      case 'Beginner':
+        this.setState({ level: 'Beginner' });
+        break;
+      case 'Intermediate':
+        this.setState({ level: 'Beginner' });
+        break;
+      case 'Advanced':
+        this.setState({ level: 'Advanced' });
+        break;
+      case 'Pro':
+        this.setState({ level: 'Pro' });
+        break;
+      default:
+        this.setState({ level: 'Unknown' });
+    }
   };
 
   render() {
-    const { name, surname, username, avatarImg, description, level, gameWon } = this.props.user;
+    const { level } = this.state;
     return (
       <>
         <div id="page-name">
           <Backbar history={this.props.history} />
           <h1>Edit Player Profile</h1>
         </div>
-        <div id="profile-stats-card">
-          <img id="user-profile-stats" src={avatarImg} alt="profile" />
-          <div id="profile-stats">
-            <p>
-              <span>Games</span>
-              <br />0
-            </p>
-            <p>
-              <span>Won</span>
-              <br />
-              {gameWon}
-            </p>
-            <p>
-              <span>Lost</span>
-              <br />0
-            </p>
+        {level && (
+          <div id="profile-stats-card" style={{ marginTop: '5%' }}>
+            <form onSubmit={this.handleFormSubmit}>
+              <h2 style={{ margin: '20px 0 10px 20px' }}>Choose Level</h2>
+              <select id="selector" onChange={this.handleLevel}>
+              <option value="--" defaultValue>
+                --
+              </option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Pro">Pro</option>
+            </select>
+              <div id="submit-reservation">
+                <input type="submit" value="Submit Stats" id="submit-datapicker" />
+              </div>
+            </form>
           </div>
-          <h2 style={{ margin: '20px 0 10px 20px' }}>About</h2>
-          <p style={{ color: '#808080', margin: '0 20px' }}>{description}</p>
-          <h2 style={{ margin: '20px 0 10px 20px' }}>Level</h2>
-          <p style={{ color: '#808080', margin: '0 20px' }}>{level}</p>
-        </div>
-        <div id="submit-reservation">
-          <input type="submit" value="Submit Stats" id="submit-datapicker" />
-        </div>
+        )}
       </>
     );
   }
