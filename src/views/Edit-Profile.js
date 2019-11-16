@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { withAuth } from '../Context/AuthContext';
 import Backbar from '../components/Navigation/Backbar';
 import profileService from '../services/profileService';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class EditProfile extends Component {
   state = {
     name: this.props.user.name,
     surname: this.props.user.surname,
     username: this.props.user.username,
-    password: '',
     avatarImg: this.props.user.avatarImg,
   };
 
@@ -19,13 +20,14 @@ class EditProfile extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    const { name, surname, username, password } = this.state;
+    const { name, surname, username } = this.state;
     this.props.handleProfileUpdate({
       name,
       surname,
       username,
-      password,
     });
+    toast.info('Profile Updated Sucessfully');
+    this.props.history.push('/profile');
   };
 
   checkUploadResult = async resultEvent => {
@@ -66,19 +68,14 @@ class EditProfile extends Component {
             <button onClick={() => this.showWidget(widget)}>Upload Picture</button>
           </div>
           <form onSubmit={this.handleFormSubmit} id="signup-input">
+            <label>Name</label>
             <input type="text" name="name" value={name} onChange={this.handleChange} />
             <br />
+            <label>Surname</label>
             <input type="text" name="surname" value={surname} onChange={this.handleChange} />
             <br />
+            <label>Username</label>
             <input type="text" name="username" value={username} onChange={this.handleChange} />
-            <br />
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-              placeholder="New Password"
-            />
             <br />
             <input type="submit" value="Submit" className="btn" />
           </form>

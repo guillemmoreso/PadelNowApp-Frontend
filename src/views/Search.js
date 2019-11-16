@@ -91,7 +91,7 @@ class Search extends Component {
               </div>
             );
           })}
-        {clubs.length === 0 && (
+        {!isLoading && clubs.length === 0 && (
           <>
             <div id="sorry-div">
               <img id="sorry-img" src="../../images/sorry.svg" alt="location"></img>

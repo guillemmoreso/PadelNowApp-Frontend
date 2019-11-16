@@ -13,8 +13,6 @@ class PlayerProfile extends Component {
 
   render() {
     const { name, surname, username, avatarImg, description, level, gameWon } = this.props.user;
-    const gameWon1 = this.props.user;
-    console.log('gameWon1', gameWon1);
     return (
       <>
         <div id="page-name">

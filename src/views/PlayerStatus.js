@@ -36,24 +36,53 @@ class PlayerStatus extends Component {
   };
 
   render() {
-    const { name, surname, username, avatarImg, friends, _id } = this.state.player;
+    const { name, surname, username, avatarImg, friends, _id, description, level, gameWon } = this.state.player;
     const { userPetitions } = this.state;
 
     return (
       <>
         <div id="page-name">
           <Backbar history={this.props.history} />
-          <h1>{name}</h1>
+          <h1>{username}</h1>
         </div>
-        <p>{_id}</p>
-        <p>{this.props.user._id}</p>
-        <span
+        <div id="profile-stats-card">
+          <img id="user-profile-stats" src={avatarImg} alt="profile" />
+          <div id="profile-stats">
+            <p>
+              <span>Games</span>
+              <br />0
+            </p>
+            <p>
+              <span>Won</span>
+              <br />
+              {gameWon}
+            </p>
+            <p>
+              <span>Lost</span>
+              <br />0
+            </p>
+          </div>
+          <h2 style={{ margin: '20px 0 10px 20px', fontSize: '19px' }}>
+            About {name} {surname}
+          </h2>
+          <p style={{ color: '#808080', margin: '0 20px' }}>{description}</p>
+          <h2 style={{ margin: '20px 0 10px 20px' }}>Level</h2>
+          <p style={{ color: '#808080', margin: '0 20px' }}>{level}</p>
+        </div>
+        <Link to={'/player'}>
+          <div id="submit-reservation">
+            <input type="submit" value="Edit Stats" id="submit-datapicker" />
+          </div>
+        </Link>
+
+        {/* PONER CONDICION IF USER --> EDIT USER SINO STAT OF PETITION */}
+        {/* <span
           onClick={() => {
             this.sendPetition(_id);
           }}
         >
           Send petition
-        </span>
+        </span> */}
 
         {/* {!userPetitions ? <p>Adeu</p> : this.props.user._id === _id ? <p>petition sent</p> : <p>sent petition</p>} */}
       </>

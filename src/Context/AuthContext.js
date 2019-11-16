@@ -107,10 +107,10 @@ export default class AuthProvider extends Component {
   handleProfileUpdate = user => {
     authService
       .profileUpdate(user)
-      .then(registeredUser => {
+      .then(updatedUser => {
         this.setState({
           isLoggedin: true,
-          user: registeredUser,
+          user: updatedUser,
           isLoading: false,
         });
       })

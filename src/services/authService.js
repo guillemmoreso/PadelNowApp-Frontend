@@ -14,7 +14,7 @@ class AuthService {
       return data;
     });
   }
-  
+
   login(user) {
     const { username, password } = user;
     return this.auth.post('/login', { username, password }).then(({ data }) => data);
@@ -33,8 +33,8 @@ class AuthService {
   }
 
   profileUpdate(user) {
-    const { username, password, name, surname } = user;
-    return this.auth.post('/profile/edit-profile', { username, password, name, surname }).then(({ data }) => {
+    const { username, name, surname } = user;
+    return this.auth.put('/profile/edit-profile', { username, name, surname }).then(({ data }) => {
       return data;
     });
   }
