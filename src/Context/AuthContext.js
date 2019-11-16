@@ -50,6 +50,7 @@ export default class AuthProvider extends Component {
     isLoggedin: false,
     user: undefined,
     isLoading: true,
+    
   };
 
   componentDidMount() {

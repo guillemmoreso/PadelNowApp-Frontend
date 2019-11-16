@@ -13,7 +13,7 @@ class EditMatchResults extends Component {
   state = {
     bookingResult: {},
     isLoading: true,
-    gameWon: '',
+    gameResult: '',
   };
 
   async componentDidMount() {
@@ -37,24 +37,23 @@ class EditMatchResults extends Component {
     e.preventDefault();
     try {
       const bookingId = this.props.match.params.id;
-      const { gameWon } = this.state;
-      const bookingResult = await bookingsService.gameResult({ gameWon, bookingId });
+      const { gameResult } = this.state;
+      const bookingResult = await bookingsService.gameResult({ gameResult, bookingId });
       toast.info('Game Result Submited');
       this.props.history.push('/profile/results');
-      this.setState({ bookingResult, gameWon });
+      this.setState({ bookingResult, gameResult });
     } catch (error) {
       console.error('Error while inserting Game Result');
     }
   };
 
   handleGameResult = event => {
-    if (event.target.value === 'Won') this.setState({ gameWon: 'Won' });
-    else this.setState({ gameWon: 'Lost' });
-    console.log('State:GameWon', this.state.gameWon);
+    if (event.target.value === 'Won') this.setState({ gameResult: 'Won' });
+    else this.setState({ gameResult: 'Lost' });
   };
 
   render() {
-    const { bookingResult, isLoading, gameWon } = this.state;
+    const { bookingResult, isLoading } = this.state;
 
     return (
       <>

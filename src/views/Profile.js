@@ -29,7 +29,7 @@ class Profile extends Component {
 
   render() {
     // const { handleLogout, handleUserDelete } = this.props;
-    const { name, surname, avatarImg } = this.props.user;
+    const { name, surname, avatarImg, _id } = this.props.user;
 
     return (
       <div id="viewport-with-navbar">
@@ -40,7 +40,7 @@ class Profile extends Component {
           <img id="user-profile" src={avatarImg} alt="profile" />
         </div>
         <div id="other-features">
-          <Link id="profile-btn-div" to={'/player'}>
+          <Link id="profile-btn-div" to={`/player/${_id}`}>
             <div id="profile-btn">
               <p>My Stats</p>
             </div>

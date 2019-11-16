@@ -19,6 +19,7 @@ class PlayerStatus extends Component {
     } = this.props;
     try {
       const player = await profileService.getUserById(id);
+      console.log('player', player);
       this.setState({
         player,
       });
@@ -36,8 +37,9 @@ class PlayerStatus extends Component {
   };
 
   render() {
-    const { name, surname, username, avatarImg, friends, _id, description, level, gameWon } = this.state.player;
+    const { name, surname, username, avatarImg, friends, _id, description, level, games } = this.state.player;
     const { userPetitions } = this.state;
+    console.log('playeer', games);
 
     return (
       <>
@@ -54,8 +56,7 @@ class PlayerStatus extends Component {
             </p>
             <p>
               <span>Won</span>
-              <br />
-              {gameWon}
+              <br />0
             </p>
             <p>
               <span>Lost</span>

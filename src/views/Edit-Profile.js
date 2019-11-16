@@ -35,6 +35,7 @@ class EditProfile extends Component {
       const avatarImgUpload = resultEvent.info.secure_url;
       const avatarImg = await profileService.uploadImage({ avatarImgUpload });
       this.setState({ avatarImg });
+      //PONER AQUI HANDLEUSERUPDATE COM A EDIT USER i treure window reload
       window.location.reload();
     }
   };
