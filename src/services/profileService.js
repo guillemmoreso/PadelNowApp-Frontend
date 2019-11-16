@@ -37,7 +37,6 @@ class ProfileService {
   }
 
   uploadImage(avatarImgUpload) {
-    console.log(avatarImgUpload);
     return this.profile.put('/profile/edit-profile/upload', avatarImgUpload).then(({ data }) => {
       return data;
     });
