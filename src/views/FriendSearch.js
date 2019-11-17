@@ -38,9 +38,8 @@ class FriendSearch extends Component {
         <div id="viewport-with-navbar">
           <div id="page-name">
             <Backbar history={this.props.history} />
-            <h1>My Friends</h1>
+            <h1>Explore Players</h1>
           </div>
-          <h1>FRIENDS SEARCH</h1>
           <div id="home-search">
             <Search filterClubs={this.filterClubs} />
           </div>
@@ -48,9 +47,16 @@ class FriendSearch extends Component {
             ? allUsers.map(user => {
                 if (user.name.toLowerCase().includes(this.state.value.toLowerCase()) && this.state.value.length > 0) {
                   return (
-                    <div key={user._id}>
-                      <h2>{user.name}</h2>
-                      <Link to={`/player/${user._id}`}>See {user.name} player status</Link>
+                    <div id="myfriends-card" key={user._id}>
+                      <Link to={`/player/${user._id}`} style={{ textDecoration: 'none' }}>
+                        <img id="user-profile-friends" src={user.avatarImg} alt="friend-avatar"></img>
+                      </Link>
+                      <div id="friend-btn-div">
+                        <p style={{ fontWeight: 'bold' }}>{user.username}</p>
+                        <p id="friend-name-card">
+                          {user.name} {user.surname}
+                        </p>
+                      </div>
                     </div>
                   );
                 }

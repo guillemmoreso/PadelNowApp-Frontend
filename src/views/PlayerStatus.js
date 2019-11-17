@@ -84,7 +84,7 @@ class PlayerStatus extends Component {
           <>
             <div id="page-name">
               <Backbar history={this.props.history} />
-              <h1>{player.username} Stats</h1>
+              <h1 style={{ textTransform: 'capitalize' }}>{player.username} Stats</h1>
             </div>
           </>
         ) : null}
@@ -110,40 +110,66 @@ class PlayerStatus extends Component {
                 </p>
               </div>
               {this.props.user._id === player._id && this.props.user.level === 'Undefined' ? (
-                <div id="profile-stats-card" style={{ marginTop: '5%' }}>
-                  <form onSubmit={this.handleFormSubmit}>
-                    <h2 style={{ margin: '20px 0 10px 20px' }}>Choose Level</h2>
-                    <select id="selector" onChange={this.handleLevel}>
-                      <option value="--" defaultValue>
-                        --
-                      </option>
-                      <option value="Beginner">Beginner</option>
-                      <option value="Intermediate">Intermediate</option>
-                      <option value="Advanced">Advanced</option>
-                      <option value="Pro">Pro</option>
-                    </select>
-                    <div id="submit-reservation">
-                      <input type="submit" value="Submit Stats" id="submit-datapicker" />
-                    </div>
-                  </form>
-                </div>
+                <form onSubmit={this.handleFormSubmit}>
+                  <h2>Choose Level</h2>
+                  <select id="selector" onChange={this.handleLevel}>
+                    <option value="--" defaultValue>
+                      --
+                    </option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Pro">Pro</option>
+                  </select>
+                  <div id="submit-reservation">
+                    <input type="submit" value="Submit Stats" id="submit-datapicker" />
+                  </div>
+                </form>
               ) : (
                 <>
-                  <h2 style={{ margin: '20px 0 10px 20px' }}>Level</h2>
-                  <p style={{ color: '#808080', margin: '0 20px' }}>{player.level}</p>
-                  {/* {this.props.user._id === player._id && level !== 'Undefined' ? (
-                    <p onClick={(() => this.setState({ level: 'Undefined' }), this.handleLevel, this.handleFormSubmit)}>
-                      Edit
-                    </p>
-                  ) : null} */}
+                  <h2 style={{ textAlign: 'start' }}>Level</h2>
+                  <p id="inserted-stat">{player.level}</p>
                 </>
               )}
-            </div>
-            {player.petitions.includes(this.props.user._id) ? (
-              <div id="submit-reservation">
-                <p>Petition sent</p>
+              <h2 style={{ textAlign: 'start' }}>Badges Unlocked</h2>
+              <div>
+                <div id="badges">
+                  <ul>
+                    {player.level && (
+                      <li>
+                        <img id="badge-img" src="../../images/badge.svg" alt="badge" />
+                        <p>{player.level}</p>
+                      </li>
+                    )}
+                    {player.friends && (
+                      <li>
+                        <img id="badge-img" src="../../images/reward.svg" alt="reward" />
+                        <p>Friends</p>
+                      </li>
+                    )}
+                    {games && (
+                      <li>
+                        <img id="badge-img" src="../../images/discount.svg" alt="discount" />
+                        <p>Discount</p>
+                      </li>
+                    )}
+
+                    <li>
+                      <img id="badge-img" src="../../images/approved-signal.svg" alt="okey" />
+                      <p>Verified</p>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            ) : (
+              {this.props.user._id === player._id && (
+                <Link to={'/player'}>
+                  <div id="submit-reservation" style={{ marginTop: '50px' }}>
+                    <button id="submit-datapicker">Edit Stats</button>
+                  </div>
+                </Link>
+              )}
+            </div>
+            {this.props.user._id === !player._id && player.petitions.includes(this.props.user._id) ? (
               <div
                 id="submit-reservation"
                 onClick={() => {
@@ -152,14 +178,7 @@ class PlayerStatus extends Component {
               >
                 Send petition
               </div>
-            )}
-            {this.props.user._id === player._id && (
-              <Link to={'/player'}>
-                <div id="submit-reservation">
-                  <button id="submit-datapicker">Edit Stats</button>
-                </div>
-              </Link>
-            )}
+            ) : null}
           </>
         ) : null}
       </>

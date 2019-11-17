@@ -17,6 +17,7 @@
 /* --- Reservation --- */
 /* --- Profile Stats --- */
 /* --- Friends --- */
+/* --- Player Stats --- */
 
 * {
   font-family: 'Work Sans', sans-serif;
@@ -1038,6 +1039,7 @@ nav ul li a img {
 
 #profile-stats span {
   font-weight: bold;
+  font-size: 1.2em;
 }
 
 #profile-stats-card {
@@ -1050,6 +1052,61 @@ nav ul li a img {
   box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
 }
 
+#profile-stats-card h2 {
+  margin: 20px 0 10px 20px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#profile-stats-card #selector {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#inserted-stat {
+  color: #808080;
+  margin: 0 20px;
+  font-size: 1.2em;
+}
+
+#badges {
+  position: relative;
+  border-radius: 30px 30px 0 0;
+}
+
+#badge-img {
+  width: 10vw;
+}
+
+#badges ul {
+  flex-direction: row;
+  padding-inline-start: 0;
+  list-style: none;
+  justify-content: space-around;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+#badges ul li {
+  margin: 0;
+  text-align: center;
+}
+
+#badges ul li a {
+  text-decoration: none;
+  color: var(--font);
+}
+
+#badges ul li a img {
+  width: 4.5vh;
+  margin: 0 auto 5px auto;
+  display: block;
+}
+
 /* --- Friends --- */
 
 #myfriends-card {
@@ -1059,13 +1116,14 @@ nav ul li a img {
 }
 
 #friend-name-card {
-  width: 80px;
+  width: 300px;
   max-height: 80px;
   object-fit: cover;
   display: flex;
   text-transform: capitalize;
   font-weight: lighter;
   color: #808080;
+  margin-top: 5px;
 }
 
 #friend-btn-div {
