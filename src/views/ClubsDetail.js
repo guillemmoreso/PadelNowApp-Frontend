@@ -54,8 +54,11 @@ class ClubsDetail extends Component {
       // console.log('clubID', clubId);
       const { searchStartingHour, date } = this.props;
       const courtIsFull = await clubsService.dataPickerClubDetail({ searchStartingHour, date, clubId });
+      console.log('courtIsFull', courtIsFull);
       if (courtIsFull.length > 0) {
         this.setState({ reservation: false });
+      } else if (courtIsFull === 'Date Error') {
+        this.setState({ reservation: 'Date Error' });
       } else {
         this.setState({ reservation: true });
       }
@@ -100,7 +103,7 @@ class ClubsDetail extends Component {
         </div>
         <br></br>
         <div id="reservation">
-          {reservation ? (
+          {reservation && reservation != null ? (
             <>
               {/* Pensar como esconder el mensaje si el usuario hace mas de un submit */}
               <Link to={`/reservation/${_id}`}>
@@ -110,12 +113,10 @@ class ClubsDetail extends Component {
           ) : (
             <>
               {reservation === null && <></>}
+              {reservation === 'Date Error' && <p>I am not sure you can go to the past...</p>}
               {reservation === false && (
                 <p>
-                  All the courts at {this.props.searchStartingHour} are booked... You can find all available courts at
-                  {this.props.searchStartingHour}
-                  here:
-                  <Link to="/search">See other Clubs</Link>
+                  Court unavailable...
                 </p>
               )}
             </>
