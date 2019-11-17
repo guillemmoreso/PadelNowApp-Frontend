@@ -17,16 +17,20 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
-  handleFormSubmit = e => {
+  handleFormSubmit = async e => {
     e.preventDefault();
-    const { name, surname, username, password } = this.state;
-    this.props.handleSignup({
-      name,
-      surname,
-      username,
-      password,
-    });
-    toast.success('Welcome to Padelnow');
+    try {
+      const { name, surname, username, password } = this.state;
+      this.props.handleSignup({
+        name,
+        surname,
+        username,
+        password,
+      });
+      toast.success('Welcome to Padelnow');
+    } catch (error) {
+      console.error('Error while signing in');
+    }
   };
 
   render() {
@@ -34,6 +38,7 @@ class Signup extends Component {
     return (
       <div className="log-sign-container">
         <img id="logo-login" src="../../images/padelnow-logo.png" alt="nav-avatar"></img>
+
         <form onSubmit={this.handleFormSubmit} id="signup-input">
           <input type="text" name="name" value={name} onChange={this.handleChange} placeholder="Name" />
           <br />

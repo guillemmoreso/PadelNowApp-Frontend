@@ -15,14 +15,18 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
-  handleFormSubmit = e => {
+  handleFormSubmit = async e => {
     e.preventDefault();
-    const { username, password } = this.state;
-    this.props.handleLogin({
-      username,
-      password,
-    });
-    toast.success('Welcome to Padelnow');
+    try {
+      const { username, password } = this.state;
+      this.props.handleLogin({
+        username,
+        password,
+      });
+      toast.success('Welcome to Padelnow');
+    } catch (error) {
+      console.error('Error while loggin in');
+    }
   };
 
   render() {
