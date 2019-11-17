@@ -40,7 +40,9 @@ class Friends extends Component {
                 <div id="highlight-clubs-card" key={petition._id}>
                   <div>
                     <h1 id="club-name-card">{petition.name}</h1>
-                    <div id="home-book-btn">Accept</div>
+                    <Link to={`/profile/friends/${petition._id}/accept`}>
+                      <div id="home-book-btn">Accept</div>
+                    </Link>
                     <div id="home-book-btn">Decline</div>
 
                     <Link id="home-book-btn-div" to={`/player/${petition._id}`}>

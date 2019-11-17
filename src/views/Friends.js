@@ -17,6 +17,7 @@ class Friends extends Component {
     try {
       const allUsers = await profileService.getAllUsers();
       const userFriends = await profileService.getAllUserFriends();
+      console.log('userFriends', userFriends);
       this.setState({
         allUsers,
         userFriends,
@@ -57,6 +58,7 @@ class Friends extends Component {
                 <div id="highlight-clubs-card" key={friend._id}>
                   <div>
                     <h1 id="club-name-card">{friend.name}</h1>
+                    <img src={friend.avatarImg}></img>
                   </div>
                 </div>
               );
