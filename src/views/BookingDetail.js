@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { withAuth } from '../Context/AuthContext';
@@ -10,6 +9,7 @@ import Backbar from '../components/Navigation/Backbar';
 class BookingDetail extends Component {
   state = {
     booking: {},
+    isLoading: true,
   };
 
   async componentDidMount() {
@@ -18,10 +18,12 @@ class BookingDetail extends Component {
         params: { id },
       },
     } = this.props;
+
     try {
       const booking = await bookingsService.getBookingById(id);
       this.setState({
         booking,
+        isLoading: false,
       });
     } catch (error) {
       console.log(error);
@@ -34,12 +36,13 @@ class BookingDetail extends Component {
         params: { id },
       },
     } = this.props;
+
     try {
       await bookingsService.bookingDelete(id);
       toast.error('Booking deleted');
       this.props.history.push('/bookings');
     } catch (error) {
-      console.error('Error while booking delete');
+      console.error('Error while deleting booking');
     }
   };
 

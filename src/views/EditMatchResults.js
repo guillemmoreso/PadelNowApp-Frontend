@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Moment from 'react-moment';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
-import Loading from '../components/Loading/Loading';
 import Backbar from '../components/Navigation/Backbar';
-import BookingDescription from '../components/Booking/BookingDescription';
 import 'react-toastify/dist/ReactToastify.css';
 
 class EditMatchResults extends Component {
@@ -22,6 +19,7 @@ class EditMatchResults extends Component {
         params: { id },
       },
     } = this.props;
+
     try {
       const bookingResult = await bookingsService.getBookingById(id);
       this.setState({
@@ -39,8 +37,8 @@ class EditMatchResults extends Component {
       const bookingId = this.props.match.params.id;
       const { gameResult } = this.state;
       const bookingResult = await bookingsService.gameResult({ gameResult, bookingId });
-      toast.info('Game Result Submited');
       this.setState({ bookingResult, gameResult });
+      toast.info('Game Result Submited');
       this.props.history.push('/profile/results');
     } catch (error) {
       console.error('Error while inserting Game Result');
@@ -54,7 +52,6 @@ class EditMatchResults extends Component {
 
   render() {
     const { bookingResult, isLoading } = this.state;
-    console.log(bookingResult);
     return (
       <>
         {!isLoading && (

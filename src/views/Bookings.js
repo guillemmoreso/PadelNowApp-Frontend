@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { withAuth } from '../Context/AuthContext';
 import bookingsService from '../services/bookingsService';
-import Loading from '../components/Loading/Loading';
 import Backbar from '../components/Navigation/Backbar';
 
 class Bookings extends Component {

@@ -11,8 +11,8 @@ class PlayerStatus extends Component {
     player: [],
     games: [],
     userPetitions: this.props.user.petitions,
-    isLoading: true,
     level: this.props.user.level,
+    isLoading: true,
   };
 
   async componentDidMount() {
@@ -21,6 +21,7 @@ class PlayerStatus extends Component {
         params: { id },
       },
     } = this.props;
+
     try {
       const playerInfo = await profileService.getUserById(id);
       this.setState({
@@ -39,8 +40,8 @@ class PlayerStatus extends Component {
       const userId = this.props.user._id;
       const { level } = this.state;
       const profilelevel = await profileService.profileStats({ level, userId });
-      toast.info('Profile Level Updated');
       this.setState({ level: profilelevel });
+      toast.info('Profile Level Updated');
       this.props.history.push('/profile');
     } catch (error) {
       console.error('Error while inserting Game Result');
@@ -68,7 +69,6 @@ class PlayerStatus extends Component {
 
   sendPetition = id => {
     profileService.savePetition(id).then(response => {
-      console.log('petition', response.updateUser);
       // this.setState({
       //   userPetitions: response.updatedUser.petitions,
       // });

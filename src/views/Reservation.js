@@ -11,9 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 class Reservation extends Component {
   state = {
     club: {},
-    isLoading: true,
     searchStartingHour: this.props.searchStartingHour,
     date: this.props.date,
+    isLoading: true,
   };
 
   async componentDidMount() {
@@ -22,6 +22,7 @@ class Reservation extends Component {
         params: { id },
       },
     } = this.props;
+
     try {
       const club = await clubsService.getClubById(id);
       this.setState({
@@ -30,9 +31,6 @@ class Reservation extends Component {
       });
     } catch (error) {
       console.log(error);
-      this.setState({
-        isLoading: false,
-      });
     }
   }
 
@@ -53,7 +51,7 @@ class Reservation extends Component {
   render() {
     const { date, searchStartingHour } = this.state;
     const numberSearchStartingHour = parseInt(searchStartingHour, 10);
-    const { name, location, price, clubImages, _id, courts } = this.state.club;
+    const { name, location, price } = this.state.club;
     return (
       <>
         <div id="viewport-with-navbar">
@@ -96,7 +94,7 @@ class Reservation extends Component {
                 <p>Court Price</p>
               </div>
               <div>
-                <h2>{price}€</h2>{' '}
+                <h2>{price}€</h2>
               </div>
             </div>
             <div id="profile-btn-div">

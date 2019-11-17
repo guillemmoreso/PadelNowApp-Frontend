@@ -7,19 +7,16 @@ import Search from '../components/User/SearchUsers';
 
 class FriendSearch extends Component {
   state = {
-    allUsers: [],
     value: '',
-    userFriends: [],
+    allUsers: [],
     isLoading: true,
   };
 
   async componentDidMount() {
     try {
       const allUsers = await profileService.getAllUsers();
-      const userFriends = await profileService.getAllUserFriends();
       this.setState({
         allUsers,
-        userFriends,
         isLoading: false,
       });
     } catch (error) {
@@ -33,16 +30,8 @@ class FriendSearch extends Component {
     });
   };
 
-  // sendPetition = id => {
-  //   profileService.savePetition(id).then(response => {
-  //     this.setState({
-  //       userPetitions: response.updatedUser.petitions,
-  //     });
-  //   });
-  // };
-
   render() {
-    const { userFriends, isLoading, allUsers } = this.state;
+    const { isLoading, allUsers } = this.state;
 
     return (
       <>
@@ -55,51 +44,19 @@ class FriendSearch extends Component {
           <div id="home-search">
             <Search filterClubs={this.filterClubs} />
           </div>
-          {allUsers.length > 0
+          {!isLoading && allUsers.length > 0
             ? allUsers.map(user => {
                 if (user.name.toLowerCase().includes(this.state.value.toLowerCase()) && this.state.value.length > 0) {
                   return (
                     <div key={user._id}>
                       <h2>{user.name}</h2>
                       <Link to={`/player/${user._id}`}>See {user.name} player status</Link>
-                      {/* <span
-                        onClick={() => {
-                          this.sendPetition(user._id);
-                        }}
-                      >
-                        Send petition
-                      </span> */}
                     </div>
                   );
                 }
                 return null;
               })
             : null}
-          {/* {!isLoading &&
-            userFriends.map(club => {
-              return (
-                <div id="highlight-clubs-card" key={club._id}>
-                  <div>
-                    <Link id="home-book-btn-div" to={`/profile/user/${club._id}`}>
-                      <h3>{club.name}</h3>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          <h1>All USERS</h1>
-          {!isLoading &&
-            allUsers.map(club => {
-              return (
-                <div id="highlight-clubs-card" key={club._id}>
-                  <div>
-                    <Link id="home-book-btn-div" to={`/profile/user/${club._id}`}>
-                      <h3>{club.name}</h3>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })} */}
         </div>
       </>
     );

@@ -13,7 +13,6 @@ class Friends extends Component {
   async componentDidMount() {
     try {
       const petitions = await profileService.getPetitions();
-      console.log('petitionsrecei', petitions);
       this.setState({
         petitions,
         isLoading: false,
@@ -25,7 +24,6 @@ class Friends extends Component {
 
   render() {
     const { petitions, isLoading } = this.state;
-    console.log('petition', this.props.user.petitions);
     return (
       <>
         <div id="viewport-with-navbar">
@@ -44,7 +42,6 @@ class Friends extends Component {
                       <div id="home-book-btn">Accept</div>
                     </Link>
                     <div id="home-book-btn">Decline</div>
-
                     <Link id="home-book-btn-div" to={`/player/${petition._id}`}>
                       <div id="home-book-btn">See stats</div>
                     </Link>

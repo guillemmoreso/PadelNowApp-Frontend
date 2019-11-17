@@ -20,15 +20,14 @@ class Profile extends Component {
 
   onClickDelete = async () => {
     try {
-      this.props.handleUserDelete();
       toast.warn('Account deleted');
+      this.props.handleUserDelete();
     } catch (error) {
       console.error('Error while logout ');
     }
   };
 
   render() {
-    // const { handleLogout, handleUserDelete } = this.props;
     const { name, surname, avatarImg, _id } = this.props.user;
 
     return (

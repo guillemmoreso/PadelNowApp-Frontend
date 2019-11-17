@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { withAuth } from '../Context/AuthContext';
@@ -17,18 +16,14 @@ class PlayerProfile extends Component {
     try {
       const { level } = this.state;
       const profilelevel = await profileService.profileStats({ level });
-      toast.info('Game Result Submited');
       this.setState({ level: profilelevel });
+      toast.info('Game Result Submited');
       this.props.history.push(`/player/${this.props.user._id}`);
     } catch (error) {
       console.error('Error while inserting Game Result');
     }
   };
 
-  // handleLevel = event => {
-  //   if (event.target.value === 'Won') this.setState({ gameResult: 'Won' });
-  //   else this.setState({ gameResult: 'Lost' });
-  // };
   handleLevel = event => {
     switch (event.target.value) {
       case 'Beginner':
@@ -61,14 +56,14 @@ class PlayerProfile extends Component {
             <form onSubmit={this.handleFormSubmit}>
               <h2 style={{ margin: '20px 0 10px 20px' }}>Choose Level</h2>
               <select id="selector" onChange={this.handleLevel}>
-              <option value="--" defaultValue>
-                --
-              </option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-              <option value="Pro">Pro</option>
-            </select>
+                <option value="--" defaultValue>
+                  --
+                </option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Pro">Pro</option>
+              </select>
               <div id="submit-reservation">
                 <input type="submit" value="Submit Stats" id="submit-datapicker" />
               </div>

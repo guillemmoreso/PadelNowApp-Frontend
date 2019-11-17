@@ -23,16 +23,18 @@ class Clubs extends Component {
   }
 
   render() {
-    // const { clubs, isLoading } = this.state;
+    const { isLoading } = this.state;
     return (
       <>
-        <div id="viewport-with-navbar">
-          <div id="page-name">
-            <Backbar history={this.props.history} />
-            <h1>Clubs</h1>
+        {!isLoading && (
+          <div id="viewport-with-navbar">
+            <div id="page-name">
+              <Backbar history={this.props.history} />
+              <h1>Clubs</h1>
+            </div>
+            <ClubsCards />
           </div>
-          <ClubsCards />
-        </div>
+        )}
       </>
     );
   }

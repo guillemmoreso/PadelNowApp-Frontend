@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { toast } from 'react-toastify';
 import { withAuth } from '../Context/AuthContext';
 import Backbar from '../components/Navigation/Backbar';
 import profileService from '../services/profileService';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class EditProfile extends Component {
@@ -45,9 +45,7 @@ class EditProfile extends Component {
   };
 
   render() {
-    const { name, surname, username, password, avatarImg } = this.state;
-    const { handleUserDelete } = this.props;
-
+    const { name, surname, username, avatarImg } = this.state;
     const widget = window.cloudinary.createUploadWidget(
       {
         cloudName: 'dalhi9ynf',

@@ -34,7 +34,6 @@ class Search extends Component {
     try {
       const { searchStartingHour, date } = this.props;
       const userSearchResult = await searchService.dataPicker({ searchStartingHour, date });
-      console.log(userSearchResult);
       this.setState({ clubs: userSearchResult });
     } catch (error) {
       console.error('Error while searching for available courts');
@@ -77,8 +76,8 @@ class Search extends Component {
                       backgroundSize: 'cover',
                       backgroundRepeat: 'none',
                     }}
+                    alt="with-gradient"
                   ></img>
-                  {/* <img id="highlight-clubs-card-img-search" src={club.clubImages[0]} alt="club-avatar"></img> */}
                 </Link>
                 <ClubHeart club={club._id} />
                 <span id="highlight-clubs-card-content">
@@ -91,6 +90,7 @@ class Search extends Component {
               </div>
             );
           })}
+
         {!isLoading && clubs.length === 0 && (
           <>
             <div id="sorry-div">

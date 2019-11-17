@@ -9,14 +9,15 @@ class Homepage extends Component {
   state = {
     clubs: [],
     value: '',
+    isLoading: true,
   };
 
   async componentDidMount() {
     try {
       const clubs = await clubsService.getAllClubs();
-
       this.setState({
         clubs,
+        isLoading: false,
       });
     } catch (error) {
       console.log(error);
@@ -30,7 +31,7 @@ class Homepage extends Component {
   };
 
   render() {
-    const { clubs } = this.state;
+    const { clubs, isLoading } = this.state;
 
     return (
       <>
@@ -77,7 +78,7 @@ class Homepage extends Component {
         </div>
         <div id="highlight-clubs">
           <div id="highlight-clubs-header">
-            {clubs.length > 0
+            {!isLoading && clubs.length > 0
               ? clubs.map(club => {
                   if (club.name.toLowerCase().includes(this.state.value.toLowerCase())) {
                     return (

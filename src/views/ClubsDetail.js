@@ -4,7 +4,6 @@ import DatePicker from 'react-date-picker';
 import { withAuth } from '../Context/AuthContext';
 import { withBooking } from '../Context/BookingContext';
 import clubsService from '../services/clubsService';
-import searchService from '../services/searchService';
 import Backbar from '../components/Navigation/Backbar';
 import ClubHeart from '../components/Club/ClubHeart';
 import HourSelector from '../components/Search/HourSelector';
@@ -22,6 +21,7 @@ class ClubsDetail extends Component {
         params: { id },
       },
     } = this.props;
+
     try {
       const club = await clubsService.getClubById(id);
       this.setState({
@@ -30,9 +30,6 @@ class ClubsDetail extends Component {
       });
     } catch (error) {
       console.log(error);
-      this.setState({
-        isLoading: false,
-      });
     }
   }
 
@@ -51,10 +48,9 @@ class ClubsDetail extends Component {
   handleFormSubmit = async () => {
     try {
       const clubId = this.props.match.params.id;
-      // console.log('clubID', clubId);
       const { searchStartingHour, date } = this.props;
       const courtIsFull = await clubsService.dataPickerClubDetail({ searchStartingHour, date, clubId });
-      console.log('courtIsFull', courtIsFull);
+
       if (courtIsFull.length > 0) {
         this.setState({ reservation: false });
       } else if (courtIsFull === 'Date Error') {
@@ -84,7 +80,6 @@ class ClubsDetail extends Component {
           <p>{location}</p>
           <img src="/../../images/map.svg" alt="map-icon"></img>
         </div>
-        {/* <p>Court Price: {price}€</p> */}
         <div id="club-detail-heart">
           <ClubHeart club={_id} />
         </div>
@@ -105,7 +100,6 @@ class ClubsDetail extends Component {
         <div id="reservation">
           {reservation && reservation != null ? (
             <>
-              {/* Pensar como esconder el mensaje si el usuario hace mas de un submit */}
               <Link to={`/reservation/${_id}`}>
                 <div>Book now</div>
               </Link>
@@ -114,11 +108,7 @@ class ClubsDetail extends Component {
             <>
               {reservation === null && <></>}
               {reservation === 'Date Error' && <p>I am not sure you can go to the past...</p>}
-              {reservation === false && (
-                <p>
-                  Court unavailable...
-                </p>
-              )}
+              {reservation === false && <p>Court unavailable...</p>}
             </>
           )}
         </div>
