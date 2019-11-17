@@ -6,7 +6,6 @@ import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
 import clubsService from '../../services/clubsService';
 import ClubMarker from './ClubMarker';
-import CloseLayer from './CloseLayer';
 
 const geolocateStyle = {
   float: 'right',
@@ -24,7 +23,6 @@ class PadelClubsMap extends Component {
     },
     clubs: [],
     popupsStatus: false,
-    closeLayer: false,
   };
 
   // GET all clubs data
@@ -47,21 +45,11 @@ class PadelClubsMap extends Component {
     });
   }
 
-  // Enables the pin input toggling
-  closeLayerToggle = () => {
-    const { closeLayer } = this.state;
-    this.setState({
-      closeLayer: !this.state.closeLayer,
-    });
-  };
-
   popupsToggle = () => {
     const { popupsStatus } = this.state;
     this.setState({
       popupsStatus: !this.state.popupsStatus,
-      closeLayer: this.state.popupsStatus ? true : false,
     });
-    console.log('popupsStatus', popupsStatus);
   };
 
   // Close all popups if a click is done anywhere in the map but the opened popup
@@ -70,7 +58,6 @@ class PadelClubsMap extends Component {
     if (popupsStatus) {
       this.setState({
         popupsStatus: false,
-        closeLayer: false,
       });
     }
   };
@@ -93,7 +80,7 @@ class PadelClubsMap extends Component {
   };
 
   render() {
-    const { viewport, clubs, popupsStatus, closeLayer } = this.state;
+    const { viewport, clubs, popupsStatus } = this.state;
     return (
       <>
         <div id="mapbox">
@@ -136,7 +123,6 @@ class PadelClubsMap extends Component {
                 ></ClubMarker>
               );
             })}
-            {closeLayer && <CloseLayer closeAllPopups={this.closeAllPopups} />}
           </ReactMapGL>
         </div>
       </>

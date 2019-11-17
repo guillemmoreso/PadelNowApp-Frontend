@@ -28,10 +28,6 @@ class ProfileService {
     return this.profile.post('/profile/friends/users').then(response => response.data);
   }
 
-  // getUserById(id) {
-  //   return this.profile.get(`/player/${id}`).then(({ data: player }) => player);
-  // }
-
   getUserById(id) {
     return this.profile.get(`/player/${id}`).then(({ data }) => {
       return data;

@@ -55,7 +55,6 @@ class ClubsCards extends Component {
                     <h1 id="club-name-card">{club.name}</h1>
                     <p id="home-club-text">{club.location}</p>
 
-                    {/* <Link id="home-book-btn-div" to="/login"> */}
                     <Link id="home-book-btn-div" to={`/clubs/${club._id}`}>
                       <div id="home-book-btn">Book now</div>
                     </Link>

@@ -30,15 +30,9 @@ export const withBooking = Comp => {
 
 export default class BookingProvider extends Component {
   state = {
-    searchStartingHour: '9',
+    searchStartingHour: '20',
     date: new Date(),
   };
-  //Tiene que permitir modificorlos set date y searching hour (getters & Setters)
-
-  // handleHourChange = selectInput => {
-  //   this.setState({
-  //     searchStartingHour: selectInput,
-  //   });
 
   handleHourChange = hour => {
     this.setState({

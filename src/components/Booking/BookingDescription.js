@@ -41,7 +41,7 @@ const BookingDescription = props => {
         </div>
         <div id="profile-btn-div" style={{ margin: '0 0 20px 0' }}>
           <div id="profile-btn">
-            <p>Court Price</p>
+            <p>To pay in cash:</p>
           </div>
           <div>
             <h2 style={{ color: '#017069' }}>{club.price}€</h2>

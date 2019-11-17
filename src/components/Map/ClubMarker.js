@@ -9,8 +9,6 @@ class ClubMarker extends Component {
   };
 
   togglePopup = () => {
-    // const { popupsToggle } = this.props;
-    // popupsToggle();
     this.setState({
       showPopup: !this.state.showPopup,
     });
