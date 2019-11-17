@@ -16,6 +16,7 @@
 /* --- Map --- */
 /* --- Reservation --- */
 /* --- Profile Stats --- */
+/* --- Friends --- */
 
 * {
   font-family: 'Work Sans', sans-serif;
@@ -1047,4 +1048,38 @@ nav ul li a img {
   padding: 5%;
   border-radius: 5px;
   box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+}
+
+/* --- Friends --- */
+
+#myfriends-card {
+  display: flex;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  margin-top: 5%;
+}
+
+#friend-name-card {
+  width: 80px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #808080;
+}
+
+#friend-btn-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  margin: 20px 0;
+}
+
+#user-profile-friends {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  border: 1px solid rgba(152, 152, 152, 0.15);
+  margin: 10px 25px 10px 10px;
 }

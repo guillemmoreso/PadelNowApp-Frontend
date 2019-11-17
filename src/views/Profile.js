@@ -52,7 +52,7 @@ class Profile extends Component {
               <p>Search Availability</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/search.svg" alt="search" style={{ fill: '#2f3333' }}></img>
+              <img id="category-img" src="../../images/search.svg" alt="search"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/clubs'}>
@@ -60,7 +60,7 @@ class Profile extends Component {
               <p>List of Clubs</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/address.svg" alt="address" style={{ fill: '#2f3333' }}></img>
+              <img id="category-img" src="../../images/address.svg" alt="address"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/favorites'}>
@@ -73,10 +73,10 @@ class Profile extends Component {
           </Link>
           <Link id="profile-btn-div" to={'/profile/friends'}>
             <div id="profile-btn">
-              <p>My Ranking</p>
+              <p>My Friends</p>
             </div>
             <div>
-              <img id="category-img" src="../../images/podium.svg" alt="podium" style={{ fill: '#2f3333' }}></img>
+              <img id="category-img" src="../../images/friends.svg" alt="friends"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/results'}>
@@ -89,10 +89,18 @@ class Profile extends Component {
           </Link>
           <Link id="profile-btn-div" to={'/profile/friends/petitions'}>
             <div id="profile-btn">
-              <p>Manage Friends</p>
+              <p>Manage Petitions</p>
             </div>
             <div>
               <img id="category-img" src="../../images/add-user.svg" alt="add-user"></img>
+            </div>
+          </Link>
+          <Link id="profile-btn-div" to={'/profile/friends/search'}>
+            <div id="profile-btn">
+              <p>Explore Players</p>
+            </div>
+            <div>
+              <img id="category-img" src="../../images/recruitment.svg" alt="explore-users"></img>
             </div>
           </Link>
           <Link id="profile-btn-div" to={'/profile/edit-profile'}>

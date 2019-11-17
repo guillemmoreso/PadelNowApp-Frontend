@@ -31,27 +31,30 @@ class Friends extends Component {
             <Backbar history={this.props.history} />
             <h1>My Friends</h1>
           </div>
-          <Link to="/profile/friends/search">
-            <div>Search</div>
-          </Link>
-          <Link to="/profile/friends/petitions">
-            <div>Petitions</div>
-          </Link>
 
-          <h1>MY FRIENDS</h1>
           {!isLoading && userFriends.length > 0 ? (
             userFriends.map(friend => {
               return (
-                <div id="highlight-clubs-card" key={friend._id}>
-                  <div>
-                    <h1 id="club-name-card">{friend.name}</h1>
-                    <img src={friend.avatarImg} alt="friend-avatar"></img>
+                <div id="myfriends-card" key={friend._id}>
+                  <Link to={`/player/${friend._id}`} style={{ textDecoration: 'none' }}>
+                    <img id="user-profile-friends" src={friend.avatarImg} alt="friend-avatar"></img>
+                  </Link>
+                  <div id="friend-btn-div">
+                    <p style={{ fontWeight: 'bold' }}>{friend.username}</p>
+                    <p id="friend-name-card">
+                      {friend.name} {friend.surname}
+                    </p>
                   </div>
                 </div>
               );
             })
           ) : (
-            <p>NO FRIENDS...</p>
+            <div id="missing-favorite-div">
+              <Link id="home-book-btn-div" to={'/profile/friends/search'} style={{ textDecoration: 'none' }}>
+                <img id="sorry-img" src="../../images/recruitment.svg" alt="location"></img>
+                <h2>Search Friends</h2>
+              </Link>
+            </div>
           )}
         </div>
       </>
