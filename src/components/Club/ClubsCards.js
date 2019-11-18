@@ -44,6 +44,7 @@ class ClubsCards extends Component {
       <>
         <SearchInput filterClubs={this.filterClubs} />
         {!isLoading &&
+          // eslint-disable-next-line array-callback-return
           clubs.map(club => {
             if (club.name.toLowerCase().includes(this.state.value.toLowerCase()))
               return (

@@ -25,7 +25,6 @@ class Bookings extends Component {
 
   render() {
     const { bookings, isLoading } = this.state;
-    const { pathname } = this.props.location;
 
     return (
       <>

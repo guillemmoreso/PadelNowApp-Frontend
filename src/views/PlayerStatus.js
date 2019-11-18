@@ -67,8 +67,8 @@ class PlayerStatus extends Component {
   };
 
   render() {
-    const { player, games, level } = this.state;
-    const { userPetitions, isLoading } = this.state;
+    const { player, games } = this.state;
+    const { isLoading } = this.state;
     const { id } = this.props.match.params;
     return (
       <>

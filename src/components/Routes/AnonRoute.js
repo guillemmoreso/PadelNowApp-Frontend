@@ -10,11 +10,13 @@ function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
         !isLoggedin ? (
           <Comp {...props} />
         ) : (
-          <Redirect
-            to={{
-              pathname: '/map',
-            }}
-          />
+          <>
+            <Redirect
+              to={{
+                pathname: '/map',
+              }}
+            />
+          </>
         )
       }
     />

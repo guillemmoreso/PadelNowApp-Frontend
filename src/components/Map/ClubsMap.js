@@ -46,7 +46,6 @@ class PadelClubsMap extends Component {
   }
 
   popupsToggle = () => {
-    const { popupsStatus } = this.state;
     this.setState({
       popupsStatus: !this.state.popupsStatus,
     });
@@ -80,7 +79,7 @@ class PadelClubsMap extends Component {
   };
 
   render() {
-    const { viewport, clubs, popupsStatus } = this.state;
+    const { viewport, clubs } = this.state;
     return (
       <>
         <div id="mapbox">

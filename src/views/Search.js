@@ -43,7 +43,6 @@ class Search extends Component {
 
   render() {
     const { clubs, isLoading } = this.state;
-    const { searchStartingHour } = this.props;
     return (
       <div id="viewport-with-navbar">
         <div id="page-name">
@@ -77,7 +76,7 @@ class Search extends Component {
                       backgroundSize: 'cover',
                       backgroundRepeat: 'none',
                     }}
-                  ></img>
+                  />
                 </Link>
                 <ClubHeart club={club._id} />
                 <span id="highlight-clubs-card-content">

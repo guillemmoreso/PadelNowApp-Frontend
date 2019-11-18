@@ -25,7 +25,7 @@ class Login extends Component {
       });
       toast.success('Welcome to Padelnow');
     } catch (error) {
-      console.error('Error while loggin in');
+      console.error('Error while logging in');
     }
   };
 

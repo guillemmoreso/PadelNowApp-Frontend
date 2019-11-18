@@ -40,7 +40,7 @@ class Reservation extends Component {
       const clubId = this.props.match.params.id;
       const userId = this.props.user._id;
       const courtId = this.state.club.courts;
-      const userBooking = await bookingsService.newBooking({ searchStartingHour, date, clubId, userId, courtId });
+      await bookingsService.newBooking({ searchStartingHour, date, clubId, userId, courtId });
       toast.success('Booking Accepted');
       this.props.history.push('/bookings');
     } catch (error) {
