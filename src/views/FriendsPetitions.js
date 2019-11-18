@@ -32,13 +32,18 @@ class Friends extends Component {
             <Backbar history={this.props.history} />
             <h1>My Petitions</h1>
           </div>
-          <h1>Petitions pending:</h1>
           {!isLoading &&
             petitions.map(petition => {
               return (
-                <div id="highlight-clubs-card" key={petition._id}>
-                  <div>
-                    <h1 id="club-name-card">{petition.name}</h1>
+                <div id="myfriends-card" key={petition._id}>
+                  <Link to={`/player/${petition._id}`} style={{ textDecoration: 'none' }}>
+                    <img id="user-profile-friends" src={petition.avatarImg} alt="friend-avatar"></img>
+                  </Link>
+                  <div id="friend-btn-div">
+                    <p style={{ fontWeight: 'bold' }}>{petition.username}</p>
+                    <p id="friend-name-card">
+                      {petition.name} {petition.surname}
+                    </p>
                     <Petitions petition={petition._id} />
                   </div>
                 </div>

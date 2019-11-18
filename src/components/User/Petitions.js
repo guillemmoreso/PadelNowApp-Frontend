@@ -28,22 +28,24 @@ class Petitions extends Component {
       <>
         {this.props.petition && (
           <>
-            <div
-              id="home-book-btn"
-              onClick={() => {
-                this.acceptPetition(this.props.petition);
-              }}
-            >
-              Accept
-            </div>
-            <div
-              id="home-book-btn"
-              onClick={() => {
-                this.denyPetition(this.props.petition);
-              }}
-              style={{ backgroundColor: 'rgb(237, 92, 115)' }}
-            >
-              Deny
+            <div id="petitions-btn">
+              <div
+                id="petition-span-btn"
+                onClick={() => {
+                  this.acceptPetition(this.props.petition);
+                }}
+              >
+                Accept
+              </div>
+              <div
+                id="petition-span-btn"
+                onClick={() => {
+                  this.denyPetition(this.props.petition);
+                }}
+                style={{ backgroundColor: 'rgb(237, 92, 115)' }}
+              >
+                Deny
+              </div>
             </div>
           </>
         )}

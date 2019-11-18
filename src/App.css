@@ -1156,3 +1156,21 @@ nav ul li a img {
   border-radius: 5px;
   font-weight: bold;
 }
+#petitions-btn {
+  display: flex;
+}
+#petition-span-btn {
+  width: 80px;
+  margin: 0 5px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #ffffff;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: var(--green);
+  border-radius: 5px;
+  font-weight: bold;
+}
