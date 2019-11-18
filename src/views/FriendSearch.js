@@ -72,7 +72,7 @@ class FriendSearch extends Component {
                               this.props.history.push(`/player/${user._id}`);
                             }}
                           >
-                            See Profile Stats
+                            See user Stats
                           </span>
                         ) : (
                           <span

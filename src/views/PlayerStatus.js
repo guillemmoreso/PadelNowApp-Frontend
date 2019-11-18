@@ -70,7 +70,6 @@ class PlayerStatus extends Component {
     const { player, games, level } = this.state;
     const { userPetitions, isLoading } = this.state;
     const { id } = this.props.match.params;
-    console.log(this.props.user._id);
     return (
       <>
         {!isLoading && player ? (

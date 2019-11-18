@@ -52,7 +52,6 @@ class Friends extends Component {
             <div id="missing-favorite-div">
               <Link id="home-book-btn-div" to={'/profile/friends/search'} style={{ textDecoration: 'none' }}>
                 <img id="sorry-img" src="../../images/recruitment.svg" alt="location"></img>
-                <h2>Search Friends</h2>
               </Link>
             </div>
           )}

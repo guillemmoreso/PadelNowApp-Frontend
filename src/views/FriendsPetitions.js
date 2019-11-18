@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import profileService from '../services/profileService';
 import Backbar from '../components/Navigation/Backbar';
+import Petitions from '../components/User/Petitions';
 
 class Friends extends Component {
   state = {
@@ -24,12 +25,14 @@ class Friends extends Component {
 
   render() {
     const { petitions, isLoading } = this.state;
+    console.log('props', this.props.history);
+
     return (
       <>
         <div id="viewport-with-navbar">
           <div id="page-name">
             <Backbar history={this.props.history} />
-            <h1>My Friends</h1>
+            <h1>My Petitions</h1>
           </div>
           <h1>Petitions pending:</h1>
           {!isLoading &&
@@ -38,13 +41,7 @@ class Friends extends Component {
                 <div id="highlight-clubs-card" key={petition._id}>
                   <div>
                     <h1 id="club-name-card">{petition.name}</h1>
-                    <Link to={`/profile/friends/${petition._id}/accept`}>
-                      <div id="home-book-btn">Accept</div>
-                    </Link>
-                    <div id="home-book-btn">Decline</div>
-                    <Link id="home-book-btn-div" to={`/player/${petition._id}`}>
-                      <div id="home-book-btn">See stats</div>
-                    </Link>
+                    <Petitions petition={petition._id} />
                   </div>
                 </div>
               );
