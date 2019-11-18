@@ -46,6 +46,10 @@ class ProfileService {
     return this.profile.put(`/profile/friends/petitions/${id}/accept`).then(response => response.data);
   }
 
+  denyPetition(id) {
+    return this.profile.put(`/profile/friends/petitions/${id}/deny`).then(response => response.data);
+  }
+
   uploadImage(avatarImgUpload) {
     return this.profile.put('/profile/edit-profile/upload', avatarImgUpload).then(({ data }) => {
       return data;
