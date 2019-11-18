@@ -7,16 +7,33 @@ class Petitions extends Component {
     userPetitions: this.props.user.petitions,
   };
 
-  acceptPetition = id => {
-    profileService.acceptPetition(id).then(response => {
+  //   acceptPetition = id => {
+  //     profileService.acceptPetition(id).then(response => {
+  //       this.setState({
+  //         userPetitions: response.updatedUser.petitions,
+  //       });
+  //     });
+  //     this.props.handleProfileUpdate();
+  //   };
+
+  acceptPetition = () => {
+    profileService.acceptPetition(this.props.petition).then(response => {
       this.setState({
         userPetitions: response.updatedUser.petitions,
       });
     });
   };
 
-  denyPetition = id => {
-    profileService.denyPetition(id).then(response => {
+  //   denyPetition = id => {
+  //     profileService.denyPetition(id).then(response => {
+  //       this.setState({
+  //         userPetitions: response.updatedUser.petitions,
+  //       });
+  //     });
+  //   };
+
+  denyPetition = () => {
+    profileService.denyPetition(this.props.petition).then(response => {
       this.setState({
         userPetitions: response.updatedUser.petitions,
       });
@@ -24,17 +41,13 @@ class Petitions extends Component {
   };
 
   render() {
+    console.log('hola', this.friendPetitions);
     return (
       <>
         {this.props.petition && (
           <>
             <div id="petitions-btn">
-              <div
-                id="petition-span-btn"
-                onClick={() => {
-                  this.acceptPetition(this.props.petition);
-                }}
-              >
+              <div id="petition-span-btn" onClick={this.acceptPetition}>
                 Accept
               </div>
               <div

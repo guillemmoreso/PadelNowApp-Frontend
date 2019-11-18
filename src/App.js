@@ -31,6 +31,7 @@ import { withAuth } from './Context/AuthContext';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import AnonRoute from './components/Routes/AnonRoute';
 import Navbar from './components/Navigation/Navbar';
+import Petitions from './components/User/Petitions';
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this

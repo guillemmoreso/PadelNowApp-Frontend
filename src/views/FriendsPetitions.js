@@ -25,6 +25,7 @@ class Friends extends Component {
 
   render() {
     const { petitions, isLoading } = this.state;
+    console.log('thisprops', this.props);
     return (
       <>
         <div id="viewport-with-navbar">
