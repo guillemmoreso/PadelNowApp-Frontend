@@ -30,7 +30,7 @@ export const withBooking = Comp => {
 
 export default class BookingProvider extends Component {
   state = {
-    searchStartingHour: '20',
+    searchStartingHour: '9',
     date: new Date(),
   };
 

@@ -9,6 +9,7 @@ class FriendSearch extends Component {
   state = {
     value: '',
     allUsers: [],
+    userPetitions: this.props.user.petitions,
     isLoading: true,
   };
 
@@ -27,6 +28,14 @@ class FriendSearch extends Component {
   filterClubs = value => {
     this.setState({
       value,
+    });
+  };
+
+  sendPetition = id => {
+    profileService.savePetition(id).then(response => {
+      // this.setState({
+      //   userPetitions: response.updatedUser.petitions,
+      // });
     });
   };
 
@@ -56,6 +65,26 @@ class FriendSearch extends Component {
                         <p id="friend-name-card">
                           {user.name} {user.surname}
                         </p>
+                        {this.props.user._id === user._id || user.petitions.includes(this.props.user._id) ? (
+                          <span
+                            id="petition-span"
+                            onClick={() => {
+                              this.props.history.push(`/player/${user._id}`);
+                            }}
+                          >
+                            See Profile Stats
+                          </span>
+                        ) : (
+                          <span
+                            id="petition-span"
+                            onClick={() => {
+                              this.sendPetition(user._id);
+                              this.props.history.push(`/player/${user._id}`);
+                            }}
+                          >
+                            Send Petition
+                          </span>
+                        )}
                       </div>
                     </div>
                   );

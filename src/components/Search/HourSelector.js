@@ -11,7 +11,9 @@ class HourSelector extends Component {
   render() {
     return (
       <select id="selector" onChange={this.onHourChange}>
-        <option value="9">9:00</option>
+        <option defaultValue value="9">
+          9:00
+        </option>
         <option value="10">10:00</option>
         <option value="11">11:00</option>
         <option value="12">12:00</option>
@@ -22,9 +24,7 @@ class HourSelector extends Component {
         <option value="17">17:00</option>
         <option value="18">18:00</option>
         <option value="19">19:00</option>
-        <option defaultValue value="20">
-          20:00
-        </option>
+        <option value="20">20:00</option>
         <option value="21">21:00</option>
         <option value="22">22:00</option>
         <option value="23">23:00</option>

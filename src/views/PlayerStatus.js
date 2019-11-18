@@ -10,7 +10,6 @@ class PlayerStatus extends Component {
   state = {
     player: [],
     games: [],
-    userPetitions: this.props.user.petitions,
     level: this.props.user.level,
     isLoading: true,
   };
@@ -67,17 +66,11 @@ class PlayerStatus extends Component {
     }
   };
 
-  sendPetition = id => {
-    profileService.savePetition(id).then(response => {
-      // this.setState({
-      //   userPetitions: response.updatedUser.petitions,
-      // });
-    });
-  };
-
   render() {
     const { player, games, level } = this.state;
     const { userPetitions, isLoading } = this.state;
+    const { id } = this.props.match.params;
+    console.log(this.props.user._id);
     return (
       <>
         {!isLoading && player ? (
@@ -109,7 +102,7 @@ class PlayerStatus extends Component {
                   {!isLoading && games ? <p>{games.filter(({ gameResult }) => gameResult === 'Lost').length}</p> : null}
                 </p>
               </div>
-              {this.props.user._id === player._id && this.props.user.level === 'Undefined' ? (
+              {this.props.user._id === id && this.props.user.level === 'Undefined' ? (
                 <form onSubmit={this.handleFormSubmit}>
                   <h2>Choose Level</h2>
                   <select id="selector" onChange={this.handleLevel}>
@@ -169,16 +162,6 @@ class PlayerStatus extends Component {
                 </Link>
               )}
             </div>
-            {this.props.user._id === !player._id && player.petitions.includes(this.props.user._id) ? (
-              <div
-                id="submit-reservation"
-                onClick={() => {
-                  this.sendPetition(player._id);
-                }}
-              >
-                Send petition
-              </div>
-            ) : null}
           </>
         ) : null}
       </>
