@@ -21,7 +21,7 @@ class SearchInput extends Component {
           type="text"
           value={this.state.value}
           onChange={this.changeInputValue}
-          placeholder="Where do you want to play?"
+          placeholder="Insert user name here"
         />
         <span id="input-search-focus-border"></span>
       </div>

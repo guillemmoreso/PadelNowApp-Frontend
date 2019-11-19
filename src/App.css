@@ -1165,6 +1165,7 @@ nav ul li a img {
   border-radius: 50%;
   border: 1px solid rgba(152, 152, 152, 0.15);
   margin: 10px 25px 10px 10px;
+  object-fit: cover;
 }
 
 #petition-span {

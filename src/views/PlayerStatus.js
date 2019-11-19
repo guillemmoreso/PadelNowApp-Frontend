@@ -127,19 +127,19 @@ class PlayerStatus extends Component {
               <div>
                 <div id="badges">
                   <ul>
-                    {player.level && (
+                    {player.level != 'Undefined' && (
                       <li>
                         <img id="badge-img" src="../../images/badge.svg" alt="badge" />
                         <p>{player.level}</p>
                       </li>
                     )}
-                    {player.friends && (
+                    {player.friends.length > 0 && (
                       <li>
                         <img id="badge-img" src="../../images/reward.svg" alt="reward" />
                         <p>Friends</p>
                       </li>
                     )}
-                    {games && (
+                    {games.length > 0 && (
                       <li>
                         <img id="badge-img" src="../../images/discount.svg" alt="discount" />
                         <p>Discount</p>
