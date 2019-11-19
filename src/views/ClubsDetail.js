@@ -97,18 +97,30 @@ class ClubsDetail extends Component {
           </div>
         </div>
         <br></br>
-        <div id="reservation">
+        <div id="reservation-club">
           {reservation && reservation != null ? (
             <>
-              <Link to={`/reservation/${_id}`}>
-                <div>Book now</div>
+              <Link to={`/reservation/${_id}`} style={{ textDecoration: 'none' }}>
+                <h2 id="submit-datapicker-club">Book court at: {this.props.searchStartingHour}:00 </h2>
               </Link>
             </>
           ) : (
             <>
               {reservation === null && <></>}
               {reservation === 'Date Error' && <p>I am not sure you can go to the past...</p>}
-              {reservation === false && <p>Court unavailable...</p>}
+              {reservation === false && (
+                <>
+                  <div>
+                    <img
+                      id="sorry-img"
+                      src="../../images/sorry.svg"
+                      alt="location"
+                      style={{ width: '15vw' }}
+                    ></img>
+                    <p>Court unavailable...</p>
+                  </div>
+                </>
+              )}
             </>
           )}
         </div>

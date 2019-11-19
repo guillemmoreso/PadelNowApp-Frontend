@@ -858,6 +858,31 @@ nav ul li a img {
   margin-bottom: 2%;
 }
 
+#reservation-club {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#reservation-club p {
+  color: var(--strongGreen);
+  font-weight: bold;
+}
+#padelnow-pin {
+  width: 15vw;
+}
+
+#submit-datapicker-club {
+  width: 100%;
+  background-color: var(--green);
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+}
+
 /* --- Edit Profile --- */
 
 .edit-profile-container {
